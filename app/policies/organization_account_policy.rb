@@ -1,9 +1,9 @@
 class OrganizationAccountPolicy
-  attr_reader :current_user, :model
+  attr_reader :current_user, :organization_account
 
-  def initialize(current_user, model)
+  def initialize(current_user, organization_account)
     @current_user = current_user
-    @user = model
+    @org_acc = organization_account
   end
 
   def index?
@@ -11,15 +11,16 @@ class OrganizationAccountPolicy
   end
 
   def show?
-    @current_user.admin? or @current_user == @user
+    @current_user.admin? or @org_acc == @current_user.organization_account
+
   end
 
   def update?
-    @current_user.admin?
+    @current_user.admin? or @org_acc == @current_user.organization_account
   end
 
   def destroy?
-    return false if @current_user == @user
+    # return false if @current_user == @user
     @current_user.admin?
   end
 
