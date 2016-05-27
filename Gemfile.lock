@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/gordienko/jquery-dadata-rails.git
+  revision: 9beaff9f4fadcdc2827624d2c2b27bdf09099963
+  specs:
+    jquery-dadata-rails (1.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -258,6 +264,7 @@ DEPENDENCIES
   high_voltage
   html2haml
   jbuilder (~> 2.0)
+  jquery-dadata-rails!
   jquery-rails
   launchy
   pg

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Value:
+  = @organization_profile.value
+%p
+  %b Unrestricted value:
+  = @organization_profile.unrestricted_value
+
+= link_to 'Edit', edit_organization_profile_path(@organization_profile)
+\|
+= link_to 'Back', organization_profiles_path

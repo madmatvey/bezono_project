@@ -11,13 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525123931) do
+ActiveRecord::Schema.define(version: 20160527101919) do
 
   create_table "organization_accounts", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "organization_profiles", force: :cascade do |t|
+    t.string   "inn"
+    t.string   "address_value"
+    t.string   "kpp"
+    t.string   "management_name"
+    t.string   "management_post"
+    t.string   "name_full_with_opf"
+    t.string   "name_short_with_opf"
+    t.string   "name_latin"
+    t.string   "name_full"
+    t.string   "name_short"
+    t.string   "ogrn"
+    t.string   "okved"
+    t.string   "opf_code"
+    t.string   "opf_full"
+    t.string   "opf_short"
+    t.string   "state_actuality_date"
+    t.string   "state_registration_date"
+    t.string   "state_liquidation_date"
+    t.string   "state_status"
+    t.string   "type"
+    t.integer  "organization_account_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "organization_profiles", ["organization_account_id"], name: "index_organization_profiles_on_organization_account_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                   default: "", null: false
