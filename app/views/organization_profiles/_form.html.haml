@@ -27,7 +27,7 @@
       $("#organization_profile_inn").suggestions({
           serviceUrl: "https://dadata.ru/api/v2",
 
-          token: "435f02d60ff84849b1cf5ec5e6f34ccc5cd948e4",
+          token: "#{Rails.application.secrets.dadata_token}",
           type: "PARTY",
           count: 7,
           onSelect: function(suggestion) {
