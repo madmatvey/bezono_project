@@ -1,0 +1,57 @@
+%h1 Listing organization_profiles
+
+%table
+  %thead
+    %tr
+      %th inn
+      %th address_value
+      %th kpp
+      %th management_name
+      %th management_post
+      %th name_full_with_opf
+      %th name_short_with_opf
+      %th name_latin
+      %th name_full
+      %th name_short
+      %th ogrn
+      %th okved
+      %th opf_code
+      %th opf_full
+      %th opf_short
+      %th state_actuality_date
+      %th state_registration_date
+      %th state_liquidation_date
+      %th state_status
+      %th org_type
+
+
+  %tbody
+    - @organization_profiles.each do |organization_profile|
+      %tr
+        %td= organization_profile.inn
+        %td= organization_profile.address_value
+        %td= organization_profile.kpp
+        %td= organization_profile.management_name
+        %td= organization_profile.management_post
+        %td= organization_profile.name_full_with_opf
+        %td= organization_profile.name_short_with_opf
+        %td= organization_profile.name_latin
+        %td= organization_profile.name_full
+        %td= organization_profile.name_short
+        %td= organization_profile.ogrn
+        %td= organization_profile.okved
+        %td= organization_profile.opf_code
+        %td= organization_profile.opf_full
+        %td= organization_profile.opf_short
+        %td= organization_profile.state_actuality_date
+        %td= organization_profile.state_registration_date
+        %td= organization_profile.state_liquidation_date
+        %td= organization_profile.state_status
+        %td= organization_profile.org_type
+        %td= link_to 'Show', organization_profile
+        %td= link_to 'Edit', edit_organization_profile_path(organization_profile)
+        %td= link_to 'Destroy', organization_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Organization profile', new_organization_profile_path

@@ -7,9 +7,10 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to '24TENDER', root_path, class: 'navbar-brand'
+      = link_to t('home'), root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'
       %ul.nav.navbar-nav.navbar-right
         = render 'layouts/nav_links_for_auth'
+        %li= link_to t("about"), page_path('about')

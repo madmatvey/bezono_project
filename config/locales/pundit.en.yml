@@ -1,0 +1,7 @@
+en:
+ pundit:
+   default: 'Access denied. You cannot perform this action.'
+   user_policy:
+     update?: 'Access denied. You cannot edit this post!'
+     create?: 'Access denied. You cannot create posts!'
+     show?: 'Access denied. You cannot see this user profile!'
