@@ -3,3 +3,11 @@ en:
   project_name: "Bezono Project"
   users: "Users"
   about: "About"
+  time:
+    formats:
+      long: "%B %d, %Y"
+  date: #Throws an exception otherwise.
+    order:
+      - "year"
+      - "month"
+      - "day"

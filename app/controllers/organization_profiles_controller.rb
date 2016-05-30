@@ -88,7 +88,7 @@ class OrganizationProfilesController < ApplicationController
           :state_registration_date, #Дата регистрации
           :state_liquidation_date, #Дата ликвидации
           :state_status, # Статус организации ACTIVE — действующая; LIQUIDATING — ликвидируется; LIQUIDATED — ликвидирована.
-          :type #Тип орг
+          :org_type #Тип орг
           )
     end
 end

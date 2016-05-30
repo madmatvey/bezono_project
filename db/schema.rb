@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 20160527101919) do
     t.string   "opf_code"
     t.string   "opf_full"
     t.string   "opf_short"
-    t.string   "state_actuality_date"
-    t.string   "state_registration_date"
-    t.string   "state_liquidation_date"
+    t.datetime "state_actuality_date"
+    t.datetime "state_registration_date"
+    t.datetime "state_liquidation_date"
     t.string   "state_status"
-    t.string   "type"
+    t.string   "org_type"
     t.integer  "organization_account_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

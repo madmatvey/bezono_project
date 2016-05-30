@@ -1,6 +1,5 @@
 = simple_form_for(@organization_profile) do |f|
   = f.error_notification
-
   .form-inputs
     = f.input :inn
     = f.input :address_value
@@ -17,11 +16,11 @@
     = f.input :opf_code #Код ОКОПФ
     = f.input :opf_full #Полное название ОПФ
     = f.input :opf_short # Краткое название ОПФ
-    = f.input :state_actuality_date #Дата актуальности сведений
-    = f.input :state_registration_date #Дата регистрации
-    = f.input :state_liquidation_date #Дата ликвидации
+    = f.input :state_actuality_date, :as => :date_picker
+    = f.input :state_registration_date, :as => :date_picker #Дата регистрации
+    = f.input :state_liquidation_date, :as => :date_picker #Дата ликвидации
     = f.input :state_status # Статус организации ACTIVE — действующая; LIQUIDATING — ликвидируется; LIQUIDATED — ликвидирована.
-    = f.input :type #Тип орг
+    = f.input :org_type #Тип орг
 
     :javascript
       $("#organization_profile_inn").suggestions({
@@ -31,11 +30,14 @@
           type: "PARTY",
           count: 7,
           onSelect: function(suggestion) {
-              $('#organization_profile_inn').val(suggestion.data.inn);
+              $('#organization_profile_inn').val(suggestion.data.inn || '');
               $('#organization_profile_address_value').val(suggestion.data.address.value);
               $('#organization_profile_kpp').val(suggestion.data.kpp);
-              $('#organization_profile_management_name').val(suggestion.data.management.name);
-              $('#organization_profile_management_post').val(suggestion.data.management.post);
+              if (suggestion.data.management)
+              {
+                $('#organization_profile_management_name').val(suggestion.data.management.name || suggestion.data.management);
+                $('#organization_profile_management_post').val(suggestion.data.management.post || '');
+              }
               $('#organization_profile_name_full_with_opf').val(suggestion.data.name.full_with_opf);
               $('#organization_profile_name_short_with_opf').val(suggestion.data.name.short_with_opf);
               $('#organization_profile_name_latin').val(suggestion.data.name.latin);
@@ -46,11 +48,11 @@
               $('#organization_profile_opf_code').val(suggestion.data.opf.code);
               $('#organization_profile_opf_full').val(suggestion.data.opf.full);
               $('#organization_profile_opf_short').val(suggestion.data.opf.short);
-              $('#organization_profile_state_actuality_date').val(suggestion.data.state.actuality_date);
-              $('#organization_profile_state_registration_date').val(suggestion.data.state.registration_date);
-              $('#organization_profile_state_liquidation_date').val(suggestion.data.state.liquidation_date);
+              $('#organization_profile_state_actuality_date').val(moment(suggestion.data.state.actuality_date).format("DD/MM/YYYY"));
+              $('#organization_profile_state_registration_date').val(moment(suggestion.data.state.registration_date).format("DD/MM/YYYY"));
+              $('#organization_profile_state_liquidation_date').val(moment(suggestion.data.state.liquidation_date).format("DD/MM/YYYY"));
               $('#organization_profile_state_status').val(suggestion.data.state.status);
-              $('#organization_profile_type').val(suggestion.data.type);
+              $('#organization_profile_org_type').val(suggestion.data.type);
           }
       });
 

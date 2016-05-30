@@ -8,6 +8,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-dadata-rails', github: 'gordienko/jquery-dadata-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
+
 group :development, :test do
   gem 'byebug'
 end
