@@ -27,9 +27,9 @@ gem 'high_voltage'
 gem 'pundit'
 gem 'simple_form'
 group :development do
+  gem 'quiet_assets'
   gem 'better_errors'
   gem 'html2haml'
-  gem 'quiet_assets'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
 end
