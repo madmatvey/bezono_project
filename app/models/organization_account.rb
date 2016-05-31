@@ -6,5 +6,4 @@ class OrganizationAccount < ActiveRecord::Base
 
 
 
-
 end

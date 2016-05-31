@@ -14,7 +14,7 @@ class OrganizationProfilesController < ApplicationController
 
   # GET /organization_profiles/new
   def new
-    @organization_profile = OrganizationProfile.new
+  
   end
 
   # GET /organization_profiles/1/edit
@@ -24,7 +24,7 @@ class OrganizationProfilesController < ApplicationController
   # POST /organization_profiles
   # POST /organization_profiles.json
   def create
-    @organization_profile = OrganizationProfile.new(organization_profile_params)
+    @organization_profile = current_user.organization_account.organization_profile.build(organization_profile_params)
 
     respond_to do |format|
       if @organization_profile.save
