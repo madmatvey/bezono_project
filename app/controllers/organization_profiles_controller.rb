@@ -14,7 +14,7 @@ class OrganizationProfilesController < ApplicationController
 
   # GET /organization_profiles/new
   def new
-
+    @organization_profile = OrganizationProfile.new
   end
 
   # GET /organization_profiles/1/edit
