@@ -7,3 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+demo_account = OrganizationAccount.create(name: Rails.application.secrets.demo_account)
+demo_profile = OrganizationProfile.create
+user.organization_account=demo_account
+demo_account.organization_profile=demo_profile
+user.save
