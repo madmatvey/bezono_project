@@ -24,6 +24,7 @@ group :development do
   gem 'better_errors'
   gem 'html2haml'
   gem 'quiet_assets'
+  gem 'therubyracer'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
 end
