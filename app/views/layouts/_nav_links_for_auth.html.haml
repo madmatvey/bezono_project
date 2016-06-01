@@ -1,9 +1,20 @@
 - if user_signed_in?
-  %li= link_to current_user.email, user_path(id: current_user.id)
-  %li= link_to t("devise.button.sign_out"), destroy_user_session_path, :method=>'delete'
+  %li.dropdown
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      =current_user.name
+      |
+      =current_user.role.capitalize
+      %span.caret
+    %ul.dropdown-menu{:role => "menu"}
+      - if current_user.try(:admin?)
+        %li= link_to t("users"), users_path
+      %li= link_to current_user.email, edit_user_registration_path
+      %li= link_to current_user.name, user_path(id: current_user.id)
+      %li.divider
+      %li= link_to current_user.organization_account.organization_profile.name_short, organization_profile_path(id: current_user.organization_account.organization_profile.id)
+      %li.divider
+      %li
+        = link_to t("devise.button.sign_out"), destroy_user_session_path, :method=>'delete'
 - else
   %li= link_to t("devise.button.sign_in"), new_user_session_path
   %li= link_to t("devise.button.sign_up"), new_user_registration_path
-- if user_signed_in?
-  - if current_user.try(:admin?)
-    %li= link_to t("users"), users_path
