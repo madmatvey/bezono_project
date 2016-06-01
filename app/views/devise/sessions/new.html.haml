@@ -1,10 +1,11 @@
 .authform
-  %h2 Log in
+  %h2
+    = I18n.t('devise.button.sign_in')
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-inputs
       = f.input :email, required: false, autofocus: true
       = f.input :password, required: false
       = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
     .form-actions
-      = f.button :submit, "Log in"
+      = f.button :submit, I18n.t('devise.button.sign_in')
   = render "devise/shared/links"

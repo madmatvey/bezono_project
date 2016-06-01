@@ -8,6 +8,4 @@
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
-demo_account = OrganizationAccount.create(name: 'demo_account')
-user.organization_account = demo_account
-user.save
+demo_account = OrganizationAccount.create(name: Rails.application.secrets.demo_account)

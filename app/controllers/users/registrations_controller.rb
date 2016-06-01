@@ -14,7 +14,7 @@ class  Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @organization_account = OrganizationAccount.find(params[:user][:organization_account_id])
+    @organization_account = OrganizationAccount.find_by(name: Rails.application.secrets.demo_account)
     @user = User.new(sign_up_params)
     @user.organization_account = @organization_account
     build_resource(sign_up_params)
@@ -56,7 +56,7 @@ private
   end
 
   def account_update_params
-      params.require(:user).permit(:email,:password, :password_confirmation, :current_password,
+      params.require(:user).permit(:name, :email,:password, :password_confirmation, :current_password,
     :organization_account_id)
   end
 
