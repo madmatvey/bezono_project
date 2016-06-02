@@ -5,27 +5,31 @@ class OrganizationProfilesController < ApplicationController
   # GET /organization_profiles.json
   def index
     @organization_profiles = OrganizationProfile.all
+      authorize OrganizationProfile
   end
 
   # GET /organization_profiles/1
   # GET /organization_profiles/1.json
   def show
+    authorize @organization_profile
   end
 
   # GET /organization_profiles/new
   def new
     @organization_profile = OrganizationProfile.new
+    authorize @organization_profile
   end
 
   # GET /organization_profiles/1/edit
   def edit
+    authorize @organization_profile
   end
 
   # POST /organization_profiles
   # POST /organization_profiles.json
   def create
     @organization_profile = current_user.organization_account.organization_profile.build(organization_profile_params)
-
+    authorize @organization_profile
     respond_to do |format|
       if @organization_profile.save
         format.html { redirect_to @organization_profile, notice: 'Organization profile was successfully created.' }
@@ -42,6 +46,7 @@ class OrganizationProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @organization_profile.update(organization_profile_params)
+        authorize @organization_profile
         format.html { redirect_to @organization_profile, notice: 'Organization profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @organization_profile }
       else
@@ -55,6 +60,7 @@ class OrganizationProfilesController < ApplicationController
   # DELETE /organization_profiles/1.json
   def destroy
     @organization_profile.destroy
+    authorize @organization_profile
     respond_to do |format|
       format.html { redirect_to organization_profiles_url, notice: 'Organization profile was successfully destroyed.' }
       format.json { head :no_content }

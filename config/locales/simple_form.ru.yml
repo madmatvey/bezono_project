@@ -13,6 +13,7 @@ ru:
     # Labels and hints examples
     labels:
       defaults:
+       name: 'Имя'
        email: 'Электронная почта'
        password: 'Пароль'
       user:

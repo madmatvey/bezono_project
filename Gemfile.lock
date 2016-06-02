@@ -82,6 +82,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.13)
+      capybara (>= 1.0, < 3)
+      launchy
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.1)
@@ -285,6 +288,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara
+  capybara-screenshot
   coffee-rails (~> 4.1.0)
   database_cleaner
   datetimepicker-rails!

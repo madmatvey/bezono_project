@@ -14,9 +14,8 @@ class  Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @organization_account = OrganizationAccount.find_by(name: Rails.application.secrets.demo_account)
     @user = User.new(sign_up_params)
-    @user.organization_account = @organization_account
+
     build_resource(sign_up_params)
 
     resource.save
