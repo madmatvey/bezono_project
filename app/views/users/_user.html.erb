@@ -1,18 +1,21 @@
 <td>
+  <%= link_to user.name, user %>
+</td>
+<td>
   <%= link_to user.email, user %>
 </td>
 <td>
   <%= form_for(user) do |f| %>
     <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-    <%= f.submit 'Change Role', :class => 'button-xs' %>
+    <%= f.submit 'Change Role', :class => 'button-xs btn-primary' %>
   <% end %>
 </td>
 <td>
   <%= form_for(user) do |f| %>
     <%= f.collection_select(:organization_account_id, OrganizationAccount.all, :id, :name, prompt: true) %>
-    <%= f.submit 'Set Organization Account', :class => 'button-xs' %>
+    <%= f.submit 'Set Account', :class => 'button-xs btn-primary' %>
   <% end %>
 </td>
 <td>
-  <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
+  <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs btn-danger') unless user == current_user %>
 </td>

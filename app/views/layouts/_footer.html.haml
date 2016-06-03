@@ -1,0 +1,16 @@
+%footer.footer
+  .container
+    .table-responsive
+      %table.table
+        %tbody
+          %tr
+            %td
+              = Time.now.year
+              %span.glyphicon.glyphicon-copyright-mark
+              = link_to t('home'), root_path
+            %td
+              %span.glyphicon.glyphicon-earphone
+              8 (800) 775-62-17
+            %td
+              %span.glyphicon.glyphicon-envelope
+              %a{:href => "mailto:#"} info@24tender.ru
