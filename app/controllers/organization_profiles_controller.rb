@@ -59,8 +59,8 @@ class OrganizationProfilesController < ApplicationController
   # DELETE /organization_profiles/1
   # DELETE /organization_profiles/1.json
   def destroy
-    @organization_profile.destroy
     authorize @organization_profile
+    @organization_profile.destroy
     respond_to do |format|
       format.html { redirect_to organization_profiles_url, notice: 'Organization profile was successfully destroyed.' }
       format.json { head :no_content }

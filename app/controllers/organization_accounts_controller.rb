@@ -61,8 +61,8 @@ class OrganizationAccountsController < ApplicationController
   # DELETE /organization_accounts/1
   # DELETE /organization_accounts/1.json
   def destroy
-    @organization_account.destroy
     authorize @organization_account
+    @organization_account.destroy
     respond_to do |format|
       format.html { redirect_to organization_accounts_url, notice: 'Organization account was successfully destroyed.' }
       format.json { head :no_content }
