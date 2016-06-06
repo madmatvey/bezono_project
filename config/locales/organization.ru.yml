@@ -1,0 +1,11 @@
+ru:
+  organization:
+    index: "Список Огранизаций"
+    profile:
+      name_short: "Название кратко"
+      inn: "Номер ИНН"
+      account: "Аккаунт"
+      state_actuality_date: "Данные актуальны"
+      state_registration_date: "Дата регистрации"
+      state_liquidation_date: "Дата ликвидации"
+      org_type: "Тип организации"

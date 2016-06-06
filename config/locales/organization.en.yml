@@ -1,0 +1,11 @@
+en:
+  organization:
+    index: "Organizations List"
+    profile:
+      name_short: "Short Name"
+      inn: "INN Number"
+      account: "Account"
+      state_actuality_date: "Info Actuality Date"
+      state_registration_date: "State Registration Date"
+      state_liquidation_date: "Liquidation Date"
+      org_type: "Organization Type"

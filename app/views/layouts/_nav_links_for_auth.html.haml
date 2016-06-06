@@ -11,7 +11,7 @@
       %li= link_to current_user.email, edit_user_registration_path
       %li= link_to current_user.name, user_path(id: current_user.id)
       %li.divider
-      %li= link_to current_user.organization_account.organization_profile.name_short, organization_profile_path(id: current_user.organization_account.organization_profile.id)
+      %li= link_to current_user.organization_account.name, organization_profiles_path
       %li.divider
       %li
         = link_to t("devise.button.sign_out"), destroy_user_session_path, :method=>'delete'

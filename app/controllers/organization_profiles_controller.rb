@@ -4,8 +4,8 @@ class OrganizationProfilesController < ApplicationController
   # GET /organization_profiles
   # GET /organization_profiles.json
   def index
-    @organization_profiles = OrganizationProfile.all
-      authorize OrganizationProfile
+    @organization_profiles = policy_scope(OrganizationProfile).all
+    authorize User
   end
 
   # GET /organization_profiles/1
