@@ -31,7 +31,6 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'html2haml'
-  gem 'therubyracer'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
 end
