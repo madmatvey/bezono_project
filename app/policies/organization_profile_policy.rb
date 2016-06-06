@@ -10,7 +10,7 @@ class OrganizationProfilePolicy
     end
 
     def resolve
-      if user.admin?
+      if user.try(:admin?)
         scope.all
       else
         scope.where(user: user)
@@ -35,7 +35,7 @@ class OrganizationProfilePolicy
   end
 
   def show?
-    @current_user.try(:admin?) or @org_acc == @current_user.organization_account.organization_profile
+    @current_user.try(:admin?) or @org_acc == @current_user.organization_account.organization_profile if @current_user != nil
   end
 
   def edit?
@@ -43,7 +43,7 @@ class OrganizationProfilePolicy
   end
 
   def update?
-    @current_user.try(:admin?) or @org_acc == @current_user.organization_account.organization_profile
+    @current_user.try(:admin?) or @org_acc == @current_user.organization_account.organization_profile if @current_user != nil
   end
 
   def destroy?

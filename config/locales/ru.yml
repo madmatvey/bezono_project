@@ -3,6 +3,8 @@ ru:
   project_name: "Bezono Project"
   users: "Пользователи"
   about: "О Проекте"
+  edit: "Редактировать"
+  destroy: "Удалить"
   activerecord:
     errors:
       messages:

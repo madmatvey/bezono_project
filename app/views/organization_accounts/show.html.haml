@@ -1,0 +1,28 @@
+.container
+  %p#notice= notice
+  %p
+    %h3= "#{I18n.t('organization.profile.account')}: #{@organization_account.name}"
+
+    %h4= "Have #{@users.count} users"
+
+    -if @profiles.count > 0
+      %h5= "#{I18n.t('organization.index')} @ #{@organization_account.name}"
+      .table-responsive
+        %table.table
+          %thead
+            %tr
+              %th= I18n.t('organization.profile.name_short')
+              %th= I18n.t('organization.profile.inn')
+              %th= I18n.t('organization.profile.account')
+              %th= I18n.t('organization.profile.state_actuality_date')
+              %th= I18n.t('organization.profile.state_registration_date')
+              %th= I18n.t('organization.profile.state_liquidation_date')
+              %th= I18n.t('organization.profile.org_type')
+            = render @profiles
+    -else
+      .well
+        "There are No One Organization at this account"
+
+  = link_to t('edit'), edit_organization_account_path(@organization_account)
+  \|
+  = link_to t('organization.account.index'), organization_accounts_path

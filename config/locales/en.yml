@@ -3,6 +3,8 @@ en:
   project_name: "Bezono Project"
   users: "Users"
   about: "About"
+  edit: "Edit"
+  destroy: "Destroy"
   time:
     formats:
       long: "%B %d, %Y"

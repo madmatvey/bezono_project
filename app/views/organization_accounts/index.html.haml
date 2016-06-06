@@ -1,0 +1,25 @@
+%h3= I18n.t('organization.account.index')
+
+.container
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th= I18n.t('organization.account.name')
+          %th= I18n.t('organization.account.count_org_profs')
+          %th= I18n.t('organization.account.count_users')
+          %th
+          %th
+
+      %tbody
+        - @organization_accounts.each do |organization_account|
+          %tr
+            %td= link_to organization_account.name, organization_account
+            %td= organization_account.organization_profile.count
+            %td= organization_account.users.count
+            %td= link_to I18n.t('edit'), edit_organization_account_path(organization_account), :class => "btn btn-warning btn-xs"
+            %td= link_to I18n.t('destroy'), organization_account, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger  btn-xs"
+
+%br
+
+= link_to I18n.t('organization.account.new'), new_organization_account_path

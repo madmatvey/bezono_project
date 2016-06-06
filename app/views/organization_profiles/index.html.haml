@@ -1,8 +1,8 @@
-%h1= I18n.t('organization.index')
+%h3= I18n.t('organization.index')
 
 .container
   .table-responsive
-    %table.table
+    %table.table.table-striped
       %thead
         %tr
           %th= I18n.t('organization.profile.name_short')
@@ -17,13 +17,13 @@
       %tbody
         - policy_scope(@organization_profiles).each do |organization_profile|
           %tr
+            %td= link_to organization_profile.name_short_with_opf, organization_profile
             -if organization_profile.state_status == 'ACTIVE'
-              %td= link_to organization_profile.name_short_with_opf, organization_profile, :class => 'btn btn-success  btn-xs'
+              %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-success  btn-xs'
             -if organization_profile.state_status == 'LIQUIDATING'
-              %td= link_to organization_profile.name_short_with_opf, organization_profile, :class => 'btn btn-warning  btn-xs'
+              %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-warning  btn-xs'
             -if organization_profile.state_status == 'LIQUIDATED'
-              %td= link_to organization_profile.name_short_with_opf, organization_profile, :class => 'btn btn-danger  btn-xs'
-            %td= organization_profile.inn
+              %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-danger  btn-xs'
             %td= organization_profile.organization_account.name
             %td= organization_profile.state_actuality_date.strftime(I18n.t('date.formats.default'))
             %td= organization_profile.state_registration_date.strftime(I18n.t('date.formats.default'))

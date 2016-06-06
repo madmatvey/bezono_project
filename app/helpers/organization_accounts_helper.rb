@@ -1,0 +1,2 @@
+module OrganizationAccountsHelper
+end

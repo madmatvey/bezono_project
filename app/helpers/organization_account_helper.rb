@@ -1,2 +1,0 @@
-module OrganizationAccountHelper
-end

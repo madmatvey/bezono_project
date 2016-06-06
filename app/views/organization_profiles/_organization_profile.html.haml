@@ -1,0 +1,19 @@
+%tr
+  %td= link_to organization_profile.name_short_with_opf, organization_profile
+  -if organization_profile.state_status == 'ACTIVE'
+    %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-success  btn-xs'
+  -if organization_profile.state_status == 'LIQUIDATING'
+    %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-warning  btn-xs'
+  -if organization_profile.state_status == 'LIQUIDATED'
+    %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-danger  btn-xs'
+  %td= organization_profile.state_actuality_date.strftime(I18n.t('date.formats.default'))
+  %td= organization_profile.state_registration_date.strftime(I18n.t('date.formats.default'))
+  -if organization_profile.state_liquidation_date != nil
+    %td= organization_profile.state_liquidation_date.strftime(I18n.t('date.formats.default'))
+  -else
+    %td= ' - '
+  %td= organization_profile.org_type
+  -# -if policy_scope(organization_profile).edit?
+  %td= link_to 'Edit', edit_organization_profile_path(organization_profile), :class => "btn btn-warning btn-xs"
+  -# -if policy_scope(organization_profile).destroy?
+  %td= link_to 'Destroy', organization_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger  btn-xs"

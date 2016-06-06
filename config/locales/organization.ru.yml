@@ -9,3 +9,9 @@ ru:
       state_registration_date: "Дата регистрации"
       state_liquidation_date: "Дата ликвидации"
       org_type: "Тип организации"
+    account:
+      name: "Название аккаунта"
+      count_org_profs: "Количество организаций"
+      count_users: "Количество Пользователей"
+      index: "Список Аккаунтов"
+      new: "Создать Новый Аккаунт"

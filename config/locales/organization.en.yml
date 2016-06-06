@@ -9,3 +9,9 @@ en:
       state_registration_date: "State Registration Date"
       state_liquidation_date: "Liquidation Date"
       org_type: "Organization Type"
+    account:
+      name: "Account Name"
+      count_org_profs: "Organization Count"
+      count_users: "Users Count"
+      index: "Accounts List"
+      new: "New Organization account"

@@ -8,6 +8,7 @@
     %ul.dropdown-menu{:role => "menu"}
       - if current_user.try(:admin?)
         %li= link_to t("users"), users_path
+        %li= link_to t('organization.account.index'), organization_accounts_path
       %li= link_to current_user.email, edit_user_registration_path
       %li= link_to current_user.name, user_path(id: current_user.id)
       %li.divider
