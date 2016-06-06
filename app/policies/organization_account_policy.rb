@@ -37,7 +37,7 @@ class OrganizationAccountPolicy
 
 
   def show?
-    @current_user.try(:admin?) or @org_acc == @current_user.organization_account if @current_user != nil
+    @current_user.try(:admin?) or @org_acc == @current_user.organization_account
   end
 
   def edit?
@@ -45,7 +45,7 @@ class OrganizationAccountPolicy
   end
 
   def update?
-  @current_user.try(:admin?) or @org_acc == @current_user.organization_account if @current_user != nil
+  @current_user.try(:admin?)
   end
 
   def destroy?

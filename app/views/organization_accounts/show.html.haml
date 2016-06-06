@@ -22,6 +22,8 @@
       .well
         "There are No One Organization at this account"
 
-  = link_to t('edit'), edit_organization_account_path(@organization_account)
-  \|
-  = link_to t('organization.account.index'), organization_accounts_path
+  -if policy(@organization_account).update?
+    = link_to t('edit'), edit_organization_account_path(@organization_account)
+    \|
+  =if policy(@organization_account).index?
+    = link_to t('organization.account.index'), organization_accounts_path

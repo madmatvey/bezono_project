@@ -14,6 +14,8 @@
     %td= ' - '
   %td= organization_profile.org_type
   -# -if policy_scope(organization_profile).edit?
-  %td= link_to 'Edit', edit_organization_profile_path(organization_profile), :class => "btn btn-warning btn-xs"
+  -if policy(organization_profile).update?
+    %td= link_to 'Edit', edit_organization_profile_path(organization_profile), :class => "btn btn-warning btn-xs"
   -# -if policy_scope(organization_profile).destroy?
-  %td= link_to 'Destroy', organization_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger  btn-xs"
+  -if policy(organization_profile).destroy?
+    %td= link_to 'Destroy', organization_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger  btn-xs"
