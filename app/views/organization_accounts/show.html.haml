@@ -14,7 +14,8 @@
             %th= I18n.t('organization.profile.state_registration_date')
             %th= I18n.t('organization.profile.state_liquidation_date')
             %th= I18n.t('organization.profile.org_type')
-          = render @organization_account.organization_profile.all
+        %tbody
+          = render @profiles
   -else
     .well
       "There are No One Organization at this account"

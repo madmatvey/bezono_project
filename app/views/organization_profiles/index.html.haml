@@ -24,7 +24,7 @@
               %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-warning  btn-xs'
             -if organization_profile.state_status == 'LIQUIDATED'
               %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-danger  btn-xs'
-            %td= organization_profile.organization_account.name
+            %td= link_to organization_profile.organization_account.name, organization_profile.organization_account
             %td= organization_profile.state_actuality_date.strftime(I18n.t('date.formats.default'))
             %td= organization_profile.state_registration_date.strftime(I18n.t('date.formats.default'))
             -if organization_profile.state_liquidation_date != nil

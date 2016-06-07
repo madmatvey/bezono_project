@@ -11,7 +11,7 @@ class OrganizationAccountsController < ApplicationController
   # GET /organization_accounts/1
   # GET /organization_accounts/1.json
   def show
-    @profiles = @organization_account.organization_profile.all
+    @profiles = @organization_account.organization_profiles.all
     @users = @organization_account.users.all
     authorize @organization_account
   end
@@ -77,6 +77,6 @@ class OrganizationAccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_account_params
-      params.fetch(:organization_account, {})
+      params.require(:organization_account).permit(:name)
     end
 end
