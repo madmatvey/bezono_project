@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: {scope: :organization_account_id}
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, password_length: 8..128
-  validates :name, :presence => true, :length => { :minimum => 3 }
+  validates :name, :presence => true, :length => { :minimum => 2 }
 
   def set_default_role
     self.role ||= :user

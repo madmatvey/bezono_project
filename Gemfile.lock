@@ -20,6 +20,13 @@ GIT
     datetimepicker-rails (4.7.16)
       momentjs-rails (>= 2.9.0)
 
+GIT
+  remote: https://github.com/elabs/pundit.git
+  revision: 58eda659d44a2e9d5e022fd23cc0f65bad7f7d82
+  specs:
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -60,7 +67,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
-    autoprefixer-rails (6.3.6.1)
+    autoprefixer-rails (6.3.6.2)
       execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -73,7 +80,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
-    byebug (9.0.4)
+    byebug (9.0.5)
     callsite (0.0.11)
     capybara (2.7.1)
       addressable
@@ -133,7 +140,7 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.7.0)
-    jbuilder (2.4.1)
+    jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jquery-rails (4.1.1)
@@ -153,18 +160,18 @@ GEM
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
       railties (>= 3.0.0, < 5.1.0)
-    mime-types (3.0)
+    mime-types (3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0221)
-    mini_portile2 (2.0.0)
+    mime-types-data (3.2016.0521)
+    mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
     pg (0.18.4)
-    pundit (1.1.0)
-      activesupport (>= 3.0.0)
+    pkg-config (1.1.7)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -259,7 +266,7 @@ GEM
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.4)
+    tilt (2.0.5)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -306,7 +313,7 @@ DEPENDENCIES
   meta_request
   momentjs-rails (~> 2.9)!
   pg
-  pundit
+  pundit!
   quiet_assets
   rails (= 4.2.6)
   rails_12factor

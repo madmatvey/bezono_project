@@ -20,5 +20,6 @@ FactoryGirl.define do
     state_liquidation_date  "Invalid date" #Дата ликвидации
     state_status "ACTIVE" # Статус организации ACTIVE — действующая; LIQUIDATING — ликвидируется; LIQUIDATED — ликвидирована.
     # org_type "LEGAL"#Тип орг
+    organization_account
   end
 end

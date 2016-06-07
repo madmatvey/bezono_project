@@ -25,7 +25,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'haml-rails'
 gem 'high_voltage'
-gem 'pundit'
+gem 'pundit', :git => 'https://github.com/elabs/pundit.git'
 gem 'simple_form'
 group :development do
   gem 'quiet_assets'
