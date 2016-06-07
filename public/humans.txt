@@ -12,8 +12,12 @@
   github: https://github.com/madmatvey
   Location: Samara, RU
 
+  Sale Account Manager: Andrey Mihailov
+  Contact: a_mihailov [at] 24tender.ru
+  Location: Samara, RU
+
 /* THANKS */
-  
+
   Daniel Kehoe (@rails_apps) for the RailsApps project
 
 /* SITE */
