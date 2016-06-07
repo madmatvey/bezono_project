@@ -12,7 +12,7 @@ feature 'Sign Up', :devise do
     sign_up_with('Test Name', 'te44st@example.com', 'qwerty123456789', 'qwerty123456789')
     # txts = [I18n.t( 'devise.registrations.signed_up'), I18n.t( 'devise.registrations.signed_up_but_unconfirmed')]
     # expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
-    expect(page).to have_content "#{I18n.t( 'devise.registrations.signed_up')}"
+    expect(page).to have_content "#{I18n.t('devise.registrations.signed_up')}"
   end
 
   # Scenario: Visitor cannot sign up with invalid email address
