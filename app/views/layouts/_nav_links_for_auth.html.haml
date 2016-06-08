@@ -12,7 +12,10 @@
       %li= link_to current_user.email, edit_user_registration_path
       %li= link_to current_user.name, user_path(id: current_user.id)
       %li.divider
-      %li= link_to current_user.organization_account.name, organization_account_path(current_user.organization_account_id)
+      -if current_user.organization_account != nil
+        %li= link_to current_user.organization_account.name, organization_account_path(current_user.organization_account_id)
+      -else
+        NIL ACCOUNT! ERROR!
       %li.divider
       %li
         = link_to t("devise.button.sign_out"), destroy_user_session_path, :method=>'delete'
