@@ -7,8 +7,9 @@
       = f.input :name, required: true, class: 'form-control'
       = f.input :email, required: true, autofocus: true, class: 'form-control'
       .form-group
-        = f.label :organization_account
-        = f.select( :organization_account_id, OrganizationAccount.pluck(:name, :id), {}, required: true, class: 'form-control')
+        = f.simple_fields_for :organization_account do |acc|
+          = acc.label :organization_account
+          = acc.select(:id, OrganizationAccount.pluck(:name, :id), {}, required: true, class: 'form-control')
       = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), class: 'form-control'
       = f.input :password_confirmation, required: true, class: 'form-control'
     .form-actions

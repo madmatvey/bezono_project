@@ -18,4 +18,5 @@
 //= require moment/ru
 //= require bootstrap-datetimepicker
 //= require pickers
+//= require jquery.suggestions.js
 //= require_tree .

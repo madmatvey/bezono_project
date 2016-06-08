@@ -10,9 +10,9 @@ feature 'Sign Up', :devise do
   #   Then I see a successful sign up message
   scenario 'visitor can sign up with valid email address and password' do
     sign_up_with('Test Name', 'te44st@example.com', 'qwerty123456789', 'qwerty123456789')
-    # txts = [I18n.t( 'devise.registrations.signed_up'), I18n.t( 'devise.registrations.signed_up_but_unconfirmed')]
-    # expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
-    expect(page).to have_content "#{I18n.t('devise.registrations.signed_up')}"
+    txts = [I18n.t( 'devise.registrations.signed_up'), I18n.t( 'devise.registrations.signed_up_but_unconfirmed')]
+    expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
+    # expect(page).to have_content "#{I18n.t('devise.registrations.signed_up')}"
   end
 
   # Scenario: Visitor cannot sign up with invalid email address
@@ -38,9 +38,9 @@ feature 'Sign Up', :devise do
   #   When I sign up with a short password
   #   Then I see a 'too short password' message
   scenario 'visitor cannot sign up with a short password' do
-    skip 'skip a test with i18n interpolation strings'
     sign_up_with('Test Name', 'test@example.com', 'please', 'please')
-    expect(page).to have_content "#{I18n.t("simple_form.labels.defaults.password")}#{I18n.t("errors.messages.too_short.one")}"
+    txts = [I18n.t("simple_form.labels.defaults.password"), I18n.t("errors.messages.too_short.one")]
+    expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
   end
 
   # Scenario: Visitor cannot sign up without password confirmation
@@ -48,9 +48,9 @@ feature 'Sign Up', :devise do
   #   When I sign up without a password confirmation
   #   Then I see a missing password confirmation message
   scenario 'visitor cannot sign up without password confirmation' do
-    skip 'skip a test with i18n interpolation strings'
     sign_up_with('Test Name', 'test@example.com', 'please123', '')
-    expect(page).to have_content "#{I18n.t("simple_form.labels.defaults.password")}#{I18n.t("errors.messages.confirmation")}"
+    txts = [I18n.t("simple_form.labels.defaults.password"), I18n.t("errors.messages.confirmation")]
+    expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
   end
 
   # Scenario: Visitor cannot sign up with mismatched password and confirmation
@@ -58,9 +58,9 @@ feature 'Sign Up', :devise do
   #   When I sign up with a mismatched password confirmation
   #   Then I should see a mismatched password message
   scenario 'visitor cannot sign up with mismatched password and confirmation' do
-    skip 'skip a test with i18n interpolation strings'
     sign_up_with('Test Name', 'test@example.com', 'please123', 'mismatch')
-    expect(page).to have_content "#{I18n.t("simple_form.labels.defaults.password")}#{I18n.t("errors.messages.confirmation")}"
+    txts = [I18n.t("simple_form.labels.defaults.password"),I18n.t("errors.messages.confirmation")]
+    expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
   end
 
 end
