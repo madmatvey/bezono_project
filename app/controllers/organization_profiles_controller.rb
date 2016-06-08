@@ -28,7 +28,8 @@ class OrganizationProfilesController < ApplicationController
   # POST /organization_profiles
   # POST /organization_profiles.json
   def create
-    @organization_profile = current_user.organization_account.organization_profile.build(organization_profile_params)
+    @organization_profile = OrganizationProfile.new(organization_profile_params)
+    current_user.organization_account.organization_profiles << @organization_profile 
     authorize @organization_profile
     respond_to do |format|
       if @organization_profile.save
