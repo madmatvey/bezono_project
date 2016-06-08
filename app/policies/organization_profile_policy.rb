@@ -20,7 +20,7 @@ class OrganizationProfilePolicy
 
   def initialize(current_user, organization_profile)
     @current_user = current_user
-    @org_acc = organization_profile
+    @org_prof = organization_profile
   end
   def index?
     @current_user.try(:admin?)
@@ -35,7 +35,7 @@ class OrganizationProfilePolicy
   end
 
   def show?
-    @current_user.try(:admin?) or @org_acc == @current_user.organization_account.organization_profile if @current_user != nil
+    @current_user.try(:admin?) or @current_user.organization_account.organization_profiles.include?(@org_prof) if @current_user != nil
   end
 
   def edit?
@@ -43,7 +43,7 @@ class OrganizationProfilePolicy
   end
 
   def update?
-    @current_user.try(:admin?) or @org_acc == @current_user.organization_account.organization_profile if @current_user != nil
+    @current_user.try(:admin?) or @current_user.organization_account.organization_profiles.include?(@org_prof) if @current_user != nil
   end
 
   def destroy?
