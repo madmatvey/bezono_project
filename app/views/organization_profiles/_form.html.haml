@@ -1,26 +1,26 @@
 = simple_form_for(@organization_profile) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :inn
-    = f.input :address_value
-    = f.input :kpp
-    = f.input :management_name
-    = f.input :management_post
-    = f.input :name_full_with_opf #Полное наименование с ОПФ
-    = f.input :name_short_with_opf #Краткое наименование с ОПФ
-    = f.input :name_latin #Наименование на латинице
-    = f.input :name_full #Полное наименование
-    = f.input :name_short #Краткое наименование
-    = f.input :ogrn #ОГРН
-    = f.input :okved #Код ОКВЭД
-    = f.input :opf_code #Код ОКОПФ
-    = f.input :opf_full #Полное название ОПФ
-    = f.input :opf_short # Краткое название ОПФ
-    = f.input :state_actuality_date, :as => :date_picker
-    = f.input :state_registration_date, :as => :date_picker #Дата регистрации
-    = f.input :state_liquidation_date, :as => :date_picker #Дата ликвидации
-    = f.input :state_status # Статус организации ACTIVE — действующая; LIQUIDATING — ликвидируется; LIQUIDATED — ликвидирована.
-    = f.input :org_type #Тип орг
+    = f.input :inn, label: t('organization.profile.inn'), hint: t('organization.profile.new_hint')
+    = f.input :address_value, label: t('organization.profile.address_value')
+    = f.input :kpp, label: t('organization.profile.kpp')
+    = f.input :management_name, label: t('organization.profile.management_name')
+    = f.input :management_post,label: t('organization.profile.management_post')
+    = f.input :name_full_with_opf,label: t('organization.profile.name_full_with_opf') #Полное наименование с ОПФ
+    = f.input :name_short_with_opf,label: t('organization.profile.name_short_with_opf') #Краткое наименование с ОПФ
+    = f.input :name_latin,label: t('organization.profile.name_latin') #Наименование на латинице
+    = f.input :name_full,label: t('organization.profile.name_full') #Полное наименование
+    = f.input :name_short,label: t('organization.profile.name_short') #Краткое наименование
+    = f.input :ogrn,label: t('organization.profile.ogrn') #ОГРН
+    = f.input :okved,label: t('organization.profile.okved') #Код ОКВЭД
+    = f.input :opf_code,label: t('organization.profile.opf_code') #Код ОКОПФ
+    = f.input :opf_full,label: t('organization.profile.opf_full') #Полное название ОПФ
+    = f.input :opf_short,label: t('organization.profile.opf_short') # Краткое название ОПФ
+    = f.input :state_actuality_date,label: t('organization.profile.state_actuality_date'), :as => :date_picker
+    = f.input :state_registration_date,label: t('organization.profile.state_registration_date'), :as => :date_picker #Дата регистрации
+    = f.input :state_liquidation_date,label: t('organization.profile.state_liquidation_date'), :as => :date_picker #Дата ликвидации
+    = f.input :state_status,label: t('organization.profile.state_status') # Статус организации ACTIVE — действующая; LIQUIDATING — ликвидируется; LIQUIDATED — ликвидирована.
+    = f.input :org_type,label: t('organization.profile.org_type') #Тип орг
 
     :javascript
       $("#organization_profile_inn").suggestions({

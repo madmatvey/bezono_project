@@ -18,7 +18,7 @@
           = render @profiles
   -else
     .well
-      "There are No One Organization at this account"
+      = link_to t('organization.profile.new'), new_organization_profile_path
   -if policy(@organization_account).update?
     = link_to t('edit'), edit_organization_account_path(@organization_account)
     \|

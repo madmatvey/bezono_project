@@ -1,63 +1,64 @@
-%p#notice= notice
+.container
+  %p#notice= notice
 
-%p
-  %b INN:
-  = @organization_profile.inn
-%p
-  %b address_value:
-  = @organization_profile.address_value
-%p
-  %b management_name:
-  = @organization_profile.management_name
-%p
-  %b management_post:
-  = @organization_profile.management_post
-%p
-  %b name_full_with_opf:
-  = @organization_profile.name_full_with_opf
-%p
-  %b name_short_with_opf:
-  = @organization_profile.name_short_with_opf
-%p
-  %b name_latin:
-  = @organization_profile.name_latin
-%p
-  %b name_full:
-  = @organization_profile.name_full
-%p
-  %b name_short:
-  = @organization_profile.name_short
-%p
-  %b ogrn:
-  = @organization_profile.ogrn
-%p
-  %b okved:
-  = @organization_profile.okved
-%p
-  %b opf_code:
-  = @organization_profile.opf_code
-%p
-  %b opf_full:
-  = @organization_profile.opf_full
-%p
-  %b opf_short:
-  = @organization_profile.opf_short
-%p
-  %b state_actuality_date:
-  = @organization_profile.state_actuality_date
-%p
-  %b state_registration_date:
-  = @organization_profile.state_registration_date
-%p
-  %b state_liquidation_date:
-  = @organization_profile.state_liquidation_date
-%p
-  %b state_status:
-  = @organization_profile.state_status
-%p
-  %b org_type:
-  = @organization_profile.org_type
+  %p
+    %b INN:
+    = @organization_profile.inn
+  %p
+    %b address_value:
+    = @organization_profile.address_value
+  %p
+    %b management_name:
+    = @organization_profile.management_name
+  %p
+    %b management_post:
+    = @organization_profile.management_post
+  %p
+    %b name_full_with_opf:
+    = @organization_profile.name_full_with_opf
+  %p
+    %b name_short_with_opf:
+    = @organization_profile.name_short_with_opf
+  %p
+    %b name_latin:
+    = @organization_profile.name_latin
+  %p
+    %b name_full:
+    = @organization_profile.name_full
+  %p
+    %b name_short:
+    = @organization_profile.name_short
+  %p
+    %b ogrn:
+    = @organization_profile.ogrn
+  %p
+    %b okved:
+    = @organization_profile.okved
+  %p
+    %b opf_code:
+    = @organization_profile.opf_code
+  %p
+    %b opf_full:
+    = @organization_profile.opf_full
+  %p
+    %b opf_short:
+    = @organization_profile.opf_short
+  %p
+    %b state_actuality_date:
+    = @organization_profile.state_actuality_date
+  %p
+    %b state_registration_date:
+    = @organization_profile.state_registration_date
+  %p
+    %b state_liquidation_date:
+    = @organization_profile.state_liquidation_date
+  %p
+    %b state_status:
+    = @organization_profile.state_status
+  %p
+    %b org_type:
+    = @organization_profile.org_type
 
-= link_to 'Edit', edit_organization_profile_path(@organization_profile)
-\|
-= link_to 'Back', organization_profiles_path
+  = link_to 'Edit', edit_organization_profile_path(@organization_profile)
+  \|
+  = link_to 'Back', organization_profiles_path
