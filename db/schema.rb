@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527101919) do
+ActiveRecord::Schema.define(version: 20160609123120) do
+
+  create_table "accreditations", force: :cascade do |t|
+    t.integer  "state"
+    t.integer  "organization_profile_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "accreditations", ["organization_profile_id"], name: "index_accreditations_on_organization_profile_id"
 
   create_table "organization_accounts", force: :cascade do |t|
     t.string   "name"
