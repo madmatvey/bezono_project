@@ -70,7 +70,10 @@
                   %td= t('organization.profile.org_type')
                   %td= @organization_profile.org_type
 
-
-  = link_to 'Edit this profile', edit_organization_profile_path(@organization_profile)
-  \|
-  = link_to 'All organization profiles', organization_profiles_path
+  -if policy(@organization_profile).edit?
+    = link_to 'Edit this profile', edit_organization_profile_path(@organization_profile)
+    \|
+  -if policy(@organization_profile).index?
+    = link_to 'All organization profiles', organization_profiles_path
+  -else
+    = link_to "Back to: " + current_user.organization_account.name, current_user.organization_account
