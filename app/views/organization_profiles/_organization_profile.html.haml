@@ -6,8 +6,21 @@
     %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-warning  btn-xs'
   -if organization_profile.state_status == 'LIQUIDATED'
     %td= link_to organization_profile.inn, organization_profile, :class => 'btn btn-danger  btn-xs'
+
+  %td
+    -if organization_profile.accreditation.zero?
+      %span.btn.btn-danger.btn-xs= "НЕ АККРЕДИТОВАН"
+    -if organization_profile.accreditation.supplier?
+      %span.btn.btn-info.btn-xs= "ПОСТАВЩИК"
+    -if organization_profile.accreditation.customer?
+      %span.btn.btn-success.btn-xs= "ЗАКАЗЧИК"
+    -if organization_profile.accreditation.partner?
+      %span.btn.btn-primary.btn-xs= "ПАРТНЕР"
+
   %td= organization_profile.state_actuality_date.strftime(I18n.t('date.formats.default'))
+
   %td= organization_profile.state_registration_date.strftime(I18n.t('date.formats.default'))
+
   -if organization_profile.state_liquidation_date != nil
     %td= organization_profile.state_liquidation_date.strftime(I18n.t('date.formats.default'))
   -else

@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/elabs/pundit.git
-  revision: 58eda659d44a2e9d5e022fd23cc0f65bad7f7d82
+  revision: c3f2d09a0e67e868449e4d53301dfdc819004032
   specs:
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -30,7 +30,9 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    aasm (4.10.1)
+    aasm (3.4.0)
+    aasm_history (0.1.1)
+      aasm (~> 3.3)
     actionmailer (4.2.6)
       actionpack (= 4.2.6)
       actionview (= 4.2.6)
@@ -293,6 +295,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  aasm_history
   better_errors
   bootstrap-sass
   byebug
