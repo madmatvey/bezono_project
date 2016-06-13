@@ -1,6 +1,7 @@
 class Accreditation < ActiveRecord::Base
 
   belongs_to :organization_profile
+  # accepts_nested_attributes_for :organization_profile
 
   include AASM
 
@@ -35,4 +36,38 @@ class Accreditation < ActiveRecord::Base
   end
 
   has_state_history
+
+  # attr_writer :current_step
+  #
+  # def current_step
+  #   @current_step || steps.first
+  # end
+  #
+  # def steps
+  #   %w[first second confirmation]
+  # end
+  #
+  # def next_step
+  #   self.current_step = steps[steps.index(current_step)+1]
+  # end
+  #
+  # def previous_step
+  #   self.current_step = steps[steps.index(current_step)-1]
+  # end
+  #
+  # def first_step?
+  #   current_step == steps.first
+  # end
+  #
+  # def last_step?
+  #   current_step == steps.last
+  # end
+  #
+  # def all_valid?
+  #   steps.all? do |step|
+  #     self.current_step = step
+  #     valid?
+  #   end
+  # end
+
 end

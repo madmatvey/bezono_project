@@ -9,7 +9,7 @@
 
   %td
     -if organization_profile.accreditation.zero?
-      %span.btn.btn-danger.btn-xs= "НЕ АККРЕДИТОВАН"
+      =link_to "НЕ АККРЕДИТОВАН", accreditation_build_path(id: 'step1', accreditation_id: organization_profile.accreditation.id), :class => "btn btn-danger btn-xs"
     -if organization_profile.accreditation.supplier?
       %span.btn.btn-info.btn-xs= "ПОСТАВЩИК"
     -if organization_profile.accreditation.customer?

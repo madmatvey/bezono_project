@@ -1,0 +1,6 @@
+<% form_for @accreditation url: wizard_path, method: :put do |f| %>
+  <%= f.error_messages %>
+  <%= render "#{@accreditation.current_step}_step", :f => f %>
+  <p><%= f.submit "Continue" %></p>
+  <p><%= f.submit "Back", :name => "back_button" unless @accreditation.first_step? %></p>
+<% end %>

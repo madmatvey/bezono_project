@@ -6,6 +6,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-script-source', '1.10.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -14,6 +15,8 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
 gem 'aasm'
 gem 'aasm_history'
+gem 'enum_help'
+gem 'wicked'
 
 group :development, :test do
   gem 'byebug'

@@ -30,7 +30,7 @@ en:
       state_liquidation_date: "Liquidation date"
       state_status: "Status of company state_status"
       org_type”: "Type of company"
-
+      accreditation: "Accreditation"
     account:
       name: "Account Name"
       count_org_profs: "Organization Count"

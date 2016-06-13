@@ -1,0 +1,19 @@
+.container
+  %h1= t('organization.profile.accreditation')
+  .progress
+    .one.success-color
+    .two.success-color
+    .three.success-color
+    .progress-bar.progress-bar-success{:style => "width: 33%"}
+
+  .well
+    %b
+      Первый Шаг
+    %br
+    Выберите тип аккредитации:
+    = render 'form'
+    %br
+    [документы, подтверждения и вот это все]
+    %br
+
+  =link_to "Следующее действие", next_wizard_path, :class => "btn-xl btn btn-primary"

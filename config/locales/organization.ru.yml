@@ -30,6 +30,7 @@ ru:
       state_liquidation_date: "Дата ликвидации"
       state_status: "Статус организации"
       org_type: "Тип организации"
+      accreditation: "Аккредитация"
     account:
       name: "Название аккаунта"
       count_org_profs: "Количество организаций"

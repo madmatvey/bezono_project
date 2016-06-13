@@ -1,0 +1,17 @@
+.container
+  %h1= t('organization.profile.accreditation')
+  .progress
+    .one.success-color
+    .two.success-color
+    .three.success-color
+    .progress-bar.progress-bar-success{:style => "width: 66%"}
+
+  .well
+    %b
+      Второй Шаг
+    %br
+    ответы из реестров получены - требуются дополнения или уточенения
+    %br
+    или все хорошо => ВПЕРЕД!
+
+  =link_to "Следующее действие", next_wizard_path, :class => "btn-xl btn btn-primary"

@@ -1,0 +1,17 @@
+.container
+  %h1= t('organization.profile.accreditation')
+  .progress
+    .one.success-color
+    .two.success-color
+    .three.success-color
+    .progress-bar.progress-bar-success{:style => "width: 100%"}
+
+  .well
+    %b
+      Третий Шаг
+    %br
+    все подтверждено
+    %br
+    вы прошли аккредитацию
+
+  =link_to "В Аккаунт", next_wizard_path, :class => "btn-xl btn btn-primary"
