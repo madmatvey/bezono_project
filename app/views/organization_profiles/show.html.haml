@@ -15,6 +15,17 @@
                   %td= t('organization.profile.inn')
                   %td= @organization_profile.inn
                 %tr
+                  %td= t('organization.profile.accreditation')
+                  %td
+                    -if @organization_profile.accreditation.zero?
+                      =link_to "НЕ АККРЕДИТОВАН", accreditation_build_path(id: 'step1', accreditation_id: @organization_profile.accreditation.id), :class => "btn btn-danger btn-xs"
+                    -if @organization_profile.accreditation.supplier?
+                      =link_to "ПОСТАВЩИК", '#', :class => "btn btn-info btn-xs"
+                    -if @organization_profile.accreditation.customer?
+                      =link_to "ЗАКАЗЧИК", '#', :class => "btn btn-success btn-xs"
+                    -if @organization_profile.accreditation.partner?
+                      =link_to "ПАРТНЕР", '#', :class => "btn btn-primary btn-xs"
+                %tr
                   %td= t('organization.profile.address_value')
                   %td= @organization_profile.address_value
                 %tr

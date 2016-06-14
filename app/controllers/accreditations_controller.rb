@@ -11,7 +11,7 @@ class AccreditationsController < ApplicationController
   end
 
   def show
-    @accreditation = Accreditation.find(secure_params)
+    @accreditation = Accreditation.find(accreditation_params)
   end
 
 
