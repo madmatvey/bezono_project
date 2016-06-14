@@ -14,4 +14,4 @@
     %br
     вы прошли аккредитацию
 
-  =link_to "В Аккаунт", next_wizard_path, :class => "btn-xl btn btn-primary"
+  =link_to current_user.organization_account.name, current_user.organization_account, :class => "btn-xl btn btn-primary"

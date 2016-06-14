@@ -11,7 +11,18 @@
       Первый Шаг
     %br
     Выберите тип аккредитации:
-    = render 'form'
+    .row
+      .col-xs-6.col-sm-3
+        = simple_form_for @accreditation, url: wizard_path, method: :put do |f|
+          = f.error_notification
+
+          .form-inputs
+            = f.input :state, :as => :select, collection: Accreditation.states.find_all{ |key, value| value > 0 && value < 100 },       |
+              selected: Accreditation.states[:supplier],                        |
+              input_html: { autocomplete: 'off' }                            |
+
+          .form-actions
+            = f.button :submit
     %br
     [документы, подтверждения и вот это все]
     %br
