@@ -12,8 +12,7 @@ class Accreditations::BuildController < ApplicationController
   def update
     @accreditation = find_accreditation
     if @accreditation.update_attributes(accreditation_params)
-      flash[:success] = "Accreditation updated!"
-      render_wizard @accreditation
+      render_wizard @accreditation, notice: "Accreditation updated!"
     else
       render :action => "edit"
     end
