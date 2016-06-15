@@ -20,8 +20,7 @@ class AccreditationsController < ApplicationController
     @accreditation = find_accreditation
 
     if @accreditation.update_attributes(accreditation_params)
-      flash[:success] = "Accreditation updated!"
-      redirect_to ([@accreditation.organization_profile, @accreditation])
+      redirect_to ([@accreditation.organization_profile, @accreditation]), notice: "Accreditation updated!"
     else
       render :action => "edit"
     end
