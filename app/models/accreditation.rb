@@ -1,5 +1,5 @@
 class Accreditation < ActiveRecord::Base
-
+  scope :verified,  -> { where(verified: Accreditation.verified) }
   belongs_to :organization_profile
   # accepts_nested_attributes_for :organization_profile
 
@@ -45,5 +45,15 @@ class Accreditation < ActiveRecord::Base
     end
   end
 
+  def verified?
+    if self[:state] > 0 && self[:state] < 666
+      true
+    else
+      false
+    end
+  end
 
+  def self.verified
+    Accreditation.select {|accr| accr.verified?}
+  end
 end
