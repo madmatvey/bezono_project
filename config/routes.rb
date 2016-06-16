@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :demands
   resources :accreditations do
     resources :build, controller: 'accreditations/build'
   end

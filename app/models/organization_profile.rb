@@ -4,6 +4,7 @@ class OrganizationProfile < ActiveRecord::Base
   after_initialize :set_default_accreditation, :if => :new_record?
   validates :inn, presence: true, uniqueness: true
   scope :accreditated,  -> { where(accreditated: OrganizationProfile.accreditated) }
+  scope :customers, -> {where(customers: true)}
 
   def set_default_accreditation
     self.accreditation ||= Accreditation.create
@@ -19,6 +20,10 @@ class OrganizationProfile < ActiveRecord::Base
 
   def self.accreditated
     OrganizationProfile.select {|profile| profile.accreditated?}
+  end
+
+  def self.customers
+    OrganizationProfile.select {|profile| profile.accreditation.customer?}
   end
 
 end

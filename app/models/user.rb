@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
     self.active_profile_id = organization_profile.id
   end
 
+  def profiles
+    self.organization_account.organization_profiles
+  end
+
 end

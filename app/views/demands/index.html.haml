@@ -1,0 +1,28 @@
+.container
+  %h1 Listing demands
+
+
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Description
+          %th Organization profile
+          %th
+          %th
+          %th
+
+      %tbody
+        - @demands.each do |demand|
+          %tr
+            %td= demand.name
+            %td= demand.description
+            %td= demand.organization_profile.name_short_with_opf
+            %td= link_to 'Show', demand
+            %td= link_to 'Edit', edit_demand_path(demand)
+            %td= link_to 'Destroy', demand, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Demand', new_demand_path

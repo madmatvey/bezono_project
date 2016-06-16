@@ -49,7 +49,6 @@ class OrganizationAccountPolicy
   end
 
   def destroy?
-    # return false if @current_user == @user
     @current_user.try(:admin?)
   end
 

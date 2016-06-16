@@ -1,0 +1,16 @@
+.container
+  %p#notice= notice
+
+  %p
+    %b Name:
+    = @demand.name
+  %p
+    %b Description:
+    = @demand.description
+  %p
+    %b Organization profile:
+    = @demand.organization_profile.name_short_with_opf
+
+  = link_to 'Edit', edit_demand_path(@demand)
+  \|
+  = link_to 'Back', demands_path

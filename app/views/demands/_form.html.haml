@@ -1,0 +1,10 @@
+= simple_form_for(@demand) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.select :organization_profile_id, current_user.profiles.customers.map {|pr| [pr.name_short, pr.id] }
+
+  .form-actions
+    = f.button :submit
