@@ -20,13 +20,17 @@
   %td
     -if organization_profile.accreditated?
       -if current_user.active_profile == organization_profile
-        %span.btn.btn-success.btn-xs= ">> * <<"
+        %span.btn.btn-success.btn-xs
+          %span.glyphicon.glyphicon-ok
       -else
-        =link_to "Выбрать", user_path(current_user, user: {active_profile_id: organization_profile.id}), |
-            method: :put, class: "btn btn-info btn-xs"
+        = link_to user_path(current_user, user: {active_profile_id: organization_profile.id}), |
+            method: :put, class: "btn btn-info btn-xs" do
+          %i.glyphicon.glyphicon.glyphicon-play
     -else
-      =link_to "-------", accreditation_build_path(id: 'step1', |
-            accreditation_id: organization_profile.accreditation.id), :class => "btn btn-danger btn-xs"
+      = link_to accreditation_build_path(id: 'step1', |
+            accreditation_id: organization_profile.accreditation.id), |
+            class: "btn-danger btn-xs" do
+        %i.glyphicon.glyphicon-remove
   %td= organization_profile.state_actuality_date.strftime(I18n.t('date.formats.default'))
 
   %td= organization_profile.state_registration_date.strftime(I18n.t('date.formats.default'))

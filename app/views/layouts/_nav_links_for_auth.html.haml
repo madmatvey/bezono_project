@@ -3,7 +3,11 @@
     -if current_user.active_profile != nil
       = link_to current_user.active_profile.name_short_with_opf, organization_account_path(current_user.organization_account_id)
     -else
-      =link_to "Выберите активный профиль!", organization_account_path(current_user.organization_account_id), :class => "btn btn-warning btn-xs"
+      =link_to organization_account_path(current_user.organization_account_id), |
+               :class => "btn btn-warning btn-xs" do
+        Выберите активный профиль!
+        %span.btn.btn-success.btn-xs
+          %span.glyphicon.glyphicon-play
   %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
       =current_user.name
