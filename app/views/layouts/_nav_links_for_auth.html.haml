@@ -1,4 +1,9 @@
 - if user_signed_in?
+  %li
+    -if current_user.active_profile != nil
+      = link_to current_user.active_profile.name_short_with_opf, organization_account_path(current_user.organization_account_id)
+    -else
+      =link_to "Пройдите Аккредитацию!", organization_account_path(current_user.organization_account_id)
   %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
       =current_user.name

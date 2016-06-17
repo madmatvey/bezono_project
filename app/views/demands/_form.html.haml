@@ -1,10 +1,13 @@
-= simple_form_for(@demand) do |f|
-  = f.error_notification
+.row
+  .col-xs-9.col-sm-6
+    = simple_form_for(@demand) do |f|
+      = f.error_notification
 
-  .form-inputs
-    = f.input :name
-    = f.input :description
-    = f.select :organization_profile_id, current_user.profiles.customers.map {|pr| [pr.name_short, pr.id] }
-
-  .form-actions
-    = f.button :submit
+      .form-inputs
+        = f.input :name, class: 'form-control', required: true
+        = f.input :description, class: 'form-control', required: true
+        = f.input :organization_profile_id, as: :select, label: "Для нужд предприятия", |
+                  collection: current_user.profiles.customers.map {|pr| [pr.name_short_with_opf, pr.id] }, |
+                  required: true, include_blank: false, class: "form-control"
+      .form-actions
+        = f.button :submit, "Сохранить Потребность",:class => 'btn-xl btn btn-primary left'

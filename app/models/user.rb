@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :set_default_account, :if => :new_record?
   belongs_to :organization_account
   accepts_nested_attributes_for :organization_account
+  belongs_to :active_profile, class_name: "OrganizationProfile",
+                        foreign_key: "active_profile_id"
 
 
   # Include default devise modules. Others available are:
@@ -20,27 +22,27 @@ class User < ActiveRecord::Base
     self.organization_account ||= OrganizationAccount.find_or_create_by(name: Rails.application.secrets.demo_account)
   end
 
-  def active_profile
-    if self.active_profile_id && self.organization_account == OrganizationProfile.find(self.active_profile_id).organization_account
-      return OrganizationProfile.find(self.active_profile_id)
-    else
-      profiles = self.organization_account.organization_profiles.accreditated
-      count = profiles.count
-      if count == 0
-        return nil
-      else #if self.active_profile_id == nil
-        self.active_profile = profiles.first
-        self.save
-        return profiles.first
-      # else
-      #   return nil
-      end
-    end
-  end
+  # def active_profile
+  #   if self.active_profile_id && self.organization_account == OrganizationProfile.find(self.active_profile_id).organization_account
+  #     return OrganizationProfile.find(self.active_profile_id)
+  #   else
+  #     profiles = self.organization_account.organization_profiles.accreditated
+  #     count = profiles.count
+  #     if count == 0
+  #       return nil
+  #     else #if self.active_profile_id == nil
+  #       self.active_profile = profiles.first
+  #       self.save
+  #       return profiles.first
+  #     # else
+  #     #   return nil
+  #     end
+  #   end
+  # end
 
-  def active_profile= (organization_profile)
-    self.active_profile_id = organization_profile.id
-  end
+  # def active_profile= (organization_profile)
+  #   self.active_profile_id = organization_profile.id
+  # end
 
   def profiles
     self.organization_account.organization_profiles

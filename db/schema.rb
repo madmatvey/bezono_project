@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616134217) do
+ActiveRecord::Schema.define(version: 20160617063905) do
 
   create_table "accreditations", force: :cascade do |t|
     t.integer  "state"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160616134217) do
     t.integer  "active_profile_id"
   end
 
+  add_index "users", ["active_profile_id"], name: "index_users_on_active_profile_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["organization_account_id"], name: "index_users_on_organization_account_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -17,7 +17,11 @@ class UsersController < ApplicationController
     authorize @user
     @organization_account = @user.organization_account(params[:organization_account])
     if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
+      if secure_params[:active_profile_id] != nil
+        redirect_to :back
+      else
+        redirect_to users_path, :notice => "User updated."
+      end
     else
       redirect_to users_path, :alert => "Unable to update user."
     end
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:name, :role, :organization_account_id, :organization_account_name)
+    params.require(:user).permit(:name, :role, :organization_account_id, :organization_account_name, :active_profile_id)
   end
 
 end
