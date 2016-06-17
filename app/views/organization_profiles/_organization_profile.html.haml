@@ -1,5 +1,5 @@
 %tr{:class => ("info" if organization_profile == current_user.active_profile)}
-  %td{:align => "center;"}
+  %td
     -if organization_profile.accreditated?
       -if current_user.active_profile == organization_profile
         =icon('check-square', class: 'fa-lg')
