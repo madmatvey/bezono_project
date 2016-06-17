@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :organization_account
   belongs_to :active_profile, class_name: "OrganizationProfile",
                         foreign_key: "active_profile_id"
-
+  before_save :nullify_active_profile, if: :organization_account_id_changed?
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -46,6 +46,11 @@ class User < ActiveRecord::Base
 
   def profiles
     self.organization_account.organization_profiles
+  end
+
+  private
+  def nullify_active_profile
+    self.active_profile = nil
   end
 
 end
