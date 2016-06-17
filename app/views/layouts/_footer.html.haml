@@ -5,12 +5,15 @@
         %tbody
           %tr
             %td
-              = Time.now.year
-              %span.glyphicon.glyphicon-copyright-mark
-              = link_to t('home'), root_path
+              .h4
+                = Time.now.year
+                = icon('copyright')
+                = link_to t('home'), root_path
             %td
-              %span.glyphicon.glyphicon-earphone
-              8 (800) 775-62-17
+              .h4
+                = icon('phone-square')
+                8 (800) 775-62-17
             %td
-              %span.glyphicon.glyphicon-envelope
-              %a{:href => "mailto:#"} info@24tender.ru
+              .h4
+                = icon('envelope')
+                %a{:href => "mailto:#"} info@24tender.ru
