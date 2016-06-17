@@ -24,19 +24,27 @@ class DemandPolicy
   end
 
   def index?
-   @current_user != nil
+    @current_user.try(:admin?) || @current_user.active_profile != nil if @current_user != nil
   end
 
   def show?
-    @current_user != nil
+    @current_user.active_profile != nil if @current_user != nil
+  end
+
+  def new?
+    @current_user.try(:admin?) or @current_user.active_profile.accreditation.state == "customer" if @current_user != nil && @current_user.active_profile != nil
+  end
+
+  def create?
+    @current_user.try(:admin?) or @current_user.active_profile.accreditation.state == "customer" if @current_user != nil && @current_user.active_profile != nil
   end
 
   def edit?
-      @current_user.try(:admin?) or @current_user.profiles.include?(@demand.organization_profile) if @current_user != nil
+    @current_user.try(:admin?) or @current_user.active_profile == @demand.organization_profile if @current_user != nil
   end
 
   def update?
-    @current_user.try(:admin?) or @current_user.profiles.include?(@demand.organization_profile) if @current_user != nil
+    @current_user.try(:admin?) or @current_user.active_profile == @demand.organization_profile if @current_user != nil
   end
 
   def destroy?

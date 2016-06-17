@@ -27,6 +27,7 @@ group :development do
   gem 'spring'
 end
 gem 'bootstrap-sass'
+gem 'font-awesome-sass', '~> 4.6.2'
 gem 'devise'
 gem 'haml-rails'
 gem 'high_voltage'

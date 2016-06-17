@@ -1,28 +1,27 @@
 .container
-  %h1 Listing demands
-
-
+  %h1 Потребности
   .table-responsive
     %table.table
       %thead
         %tr
-          %th Name
-          %th Description
-          %th Organization profile
-          %th
+          %th Кратко
+          %th Подробно
+          %th Организация
           %th
           %th
 
       %tbody
         - @demands.each do |demand|
           %tr
-            %td= demand.name
+            %td= link_to demand.name, demand
             %td= demand.description
             %td= demand.organization_profile.name_short_with_opf
-            %td= link_to 'Show', demand
-            %td= link_to 'Edit', edit_demand_path(demand)
-            %td= link_to 'Destroy', demand, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            -if policy(demand).update?
+              %td= link_to 'Edit', edit_demand_path(demand)
+            -if policy(demand).destroy?
+              %td= link_to 'Destroy', demand, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   %br
 
-  = link_to 'New Demand', new_demand_path
+  -if policy(@demands).new?
+    = link_to 'New Demand', new_demand_path

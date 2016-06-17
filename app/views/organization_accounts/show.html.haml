@@ -8,15 +8,13 @@
       %table.table
         %thead
           %tr
+            %th Выбрать
             %th= t('organization.profile.name_short')
             %th= t('organization.profile.inn')
             %th= t('organization.profile.accreditation')
-            %th
-              %span.btn.btn-success.btn-xs
-                %span.glyphicon.glyphicon-play
             %th= t('organization.profile.state_actuality_date')
             %th= t('organization.profile.state_registration_date')
-            %th= t('organization.profile.state_liquidation_date')
+            -# %th= t('organization.profile.state_liquidation_date')
             %th= t('organization.profile.org_type')
         %tbody
           = render @profiles

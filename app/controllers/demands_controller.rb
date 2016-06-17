@@ -5,13 +5,13 @@ class DemandsController < ApplicationController
   # GET /demands.json
   def index
     @demands = Demand.all
-    authorize User
+    authorize @demands
   end
 
   # GET /demands/1
   # GET /demands/1.json
   def show
-    authorize User
+    authorize @demand
   end
 
   # GET /demands/new
