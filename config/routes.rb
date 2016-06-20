@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  
-  resources :demands
+
+  resources :demands, shallow: true do
+    resources :explanations #, except: [:index]
+  end
+
   resources :accreditations do
     resources :build, controller: 'accreditations/build'
   end

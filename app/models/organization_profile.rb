@@ -5,6 +5,7 @@ class OrganizationProfile < ActiveRecord::Base
   has_many :active_users, class_name: "User",
             foreign_key: "active_profile_id",
             dependent: :nullify
+  has_many :explanations, :dependent => :destroy
 
   validates :inn, presence: true, uniqueness: true
   scope :accreditated,  -> { where(accreditated: OrganizationProfile.accreditated) }

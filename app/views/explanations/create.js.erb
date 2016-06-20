@@ -1,0 +1,4 @@
+var explanations_list = $('#explanations-list');
+explanations_list.append('<%= escape_javascript(render partial: @explanation) %>');
+explanations_list.find('ul:last-child').addClass('last-explanations');
+$('#explanations_messege').val("");

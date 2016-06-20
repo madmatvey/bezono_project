@@ -1,0 +1,11 @@
+= simple_form_for [@demand, @demand.explanations.build] do |f|  #, :url => demand_explanations_path, method: :post
+  = f.error_notification
+
+  .form-inputs
+    = f.input :message
+    = f.input :user_id, as: :hidden, input_html: { value: current_user.id}
+    = f.input :demand_id, as: :hidden, input_html: { value: @demand.id}
+    = f.input :organization_profile_id, as: :hidden, input_html: { value: :organization_profile_id}
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'

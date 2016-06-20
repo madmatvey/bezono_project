@@ -5,8 +5,8 @@
       %thead
         %tr
           %th Кратко
-          %th Подробно
           %th Организация
+          %th Разъяснения
           %th
           %th
 
@@ -14,8 +14,8 @@
         - @demands.each do |demand|
           %tr
             %td= link_to demand.name, demand
-            %td= demand.description
             %td= demand.organization_profile.name_short_with_opf
+            %td= demand.explanations.count
             -if policy(demand).update?
               %td= link_to 'Edit', edit_demand_path(demand)
             -if policy(demand).destroy?

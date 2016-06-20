@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617063905) do
+ActiveRecord::Schema.define(version: 20160620072313) do
 
   create_table "accreditations", force: :cascade do |t|
     t.integer  "state"
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20160617063905) do
   end
 
   add_index "demands", ["organization_profile_id"], name: "index_demands_on_organization_profile_id"
+
+  create_table "explanations", force: :cascade do |t|
+    t.text     "message"
+    t.integer  "user_id"
+    t.integer  "demand_id"
+    t.integer  "organization_profile_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "explanations", ["demand_id"], name: "index_explanations_on_demand_id"
+  add_index "explanations", ["organization_profile_id"], name: "index_explanations_on_organization_profile_id"
+  add_index "explanations", ["user_id"], name: "index_explanations_on_user_id"
 
   create_table "organization_accounts", force: :cascade do |t|
     t.string   "name"

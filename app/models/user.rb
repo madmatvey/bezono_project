@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
                         foreign_key: "active_profile_id"
   before_save :nullify_active_profile, if: :organization_account_id_changed?
 
+  has_many :explanations
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

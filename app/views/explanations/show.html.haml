@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Message:
+  = @explanation.message
+%p
+  %b User:
+  = @explanation.user
+%p
+  %b Demand:
+  = @explanation.demand
+%p
+  %b Organization profile:
+  = @explanation.organization_profile
+
+= link_to 'Edit', edit_explanation_path(@explanation)
+\|
+= link_to 'Back', explanations_path
