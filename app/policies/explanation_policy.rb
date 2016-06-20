@@ -5,7 +5,7 @@ class ExplanationPolicy
     attr_reader :user, :scope
 
     def initialize(user, scope)
-       @demand = explanation
+       @user = user
        @scope = scope
     end
 
@@ -13,7 +13,7 @@ class ExplanationPolicy
       if user.try(:admin?)
         scope.all
       else
-        scope.where(explanation: explanation)
+        scope.where(user: user)
       end
     end
   end
@@ -36,7 +36,7 @@ class ExplanationPolicy
   end
 
   def create?
-    @current_user.active_profile.accreditation.state == "supplier" if @current_user != nil && @current_user.active_profile != nil
+  #   @current_user.active_profile.accreditation.state == "supplier" && @current_user.organization_account != @explanation.organization_account if @current_user != nil && @current_user.active_profile != nil
   end
 
   def edit?

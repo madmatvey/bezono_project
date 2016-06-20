@@ -22,7 +22,7 @@
         -else
           Что бы просмотреть запросы разъяснений,
           =link_to 'авторизуйтесь', login_path
-        -if policy(@demand.explanations).new?
+        -if policy(@demand).create_explanations?
           = render template: '/explanations/_form', locals: {demand: @demand, organization_profile_id: @demand.organization_profile.id, user: current_user.id}
         -else
           .well Запрос разъяснений могут сформировать поставщики.

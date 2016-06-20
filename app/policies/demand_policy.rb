@@ -5,7 +5,7 @@ class DemandPolicy
     attr_reader :user, :scope
 
     def initialize(user, scope)
-       @demand = demand
+       @user = user
        @scope = scope
     end
 
@@ -13,7 +13,7 @@ class DemandPolicy
       if user.try(:admin?)
         scope.all
       else
-        scope.where(demand: demand)
+        scope.where(user: user)
       end
     end
   end
@@ -37,6 +37,10 @@ class DemandPolicy
 
   def create?
     @current_user.active_profile.accreditation.state == "customer" if @current_user != nil && @current_user.active_profile != nil
+  end
+
+  def create_explanations?
+    @current_user.active_profile.accreditation.state == "supplier" && @current_user.organization_account != @demand.organization_profile.organization_account if @current_user != nil && @current_user.active_profile != nil
   end
 
   def edit?
