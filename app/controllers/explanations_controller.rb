@@ -7,22 +7,26 @@ class ExplanationsController < ApplicationController
     @demand = Demand.find(params[:demand_id])
     @explanations = @demand.explanations
     @explanation = @demand.explanations.build
+    authorize @explanations
   end
 
   # GET /explanations/1
   # GET /explanations/1.json
   def show
     @explanation = @demand.explanations.find(params[:id])
+    authorize @explanation
   end
 
   # GET /explanations/new
   def new
     @demand = Demand.find(params[:demand_id])
     @explanation = @demand.explanations.build
+    authorize @explanation
   end
 
   # GET /explanations/1/edit
   def edit
+    authorize @explanation
   end
 
   # POST /explanations
@@ -31,7 +35,7 @@ class ExplanationsController < ApplicationController
 
     @demand = Demand.find(params[:demand_id])
     @explanation = @demand.explanations.build(explanation_params)
-
+    authorize @explanation
     respond_to do |format|
       if @explanation.save
         format.html { redirect_to demand_path(id: params[:demand_id]), notice: 'Explanation was successfully created.' }
@@ -47,6 +51,7 @@ class ExplanationsController < ApplicationController
   # PATCH/PUT /explanations/1
   # PATCH/PUT /explanations/1.json
   def update
+    authorize @explanation
     respond_to do |format|
       if @explanation.update(explanation_params)
         format.html { redirect_to @explanation, notice: 'Explanation was successfully updated.' }
@@ -61,6 +66,7 @@ class ExplanationsController < ApplicationController
   # DELETE /explanations/1
   # DELETE /explanations/1.json
   def destroy
+    authorize @explanation
     @explanation.destroy
     respond_to do |format|
       format.html { redirect_to explanations_url, notice: 'Explanation was successfully destroyed.' }

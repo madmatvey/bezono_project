@@ -32,11 +32,11 @@ class ExplanationPolicy
   end
 
   def new?
-    @current_user.try(:admin?) or @current_user.active_profile.accreditation.state == "supplier" if @current_user != nil && @current_user.active_profile != nil
+    @current_user.active_profile.accreditation.state == "supplier" if @current_user != nil && @current_user.active_profile != nil
   end
 
   def create?
-    @current_user.try(:admin?) or @current_user.active_profile.accreditation.state == "supplier" if @current_user != nil && @current_user.active_profile != nil
+    @current_user.active_profile.accreditation.state == "supplier" if @current_user != nil && @current_user.active_profile != nil
   end
 
   def edit?
