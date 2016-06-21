@@ -40,14 +40,17 @@ class DemandPolicy
   end
 
   def create_explanations?
-    @current_user.active_profile.accreditation.state == "supplier" && @current_user.organization_account != @demand.organization_profile.organization_account if @current_user != nil && @current_user.active_profile != nil
+    true
+    #@current_user.active_profile.accreditation.state == "supplier" && @current_user.organization_account != @demand.organization_profile.organization_account if @current_user != nil && @current_user.active_profile != nil
   end
 
   def edit?
-    @current_user.try(:admin?) or @current_user.active_profile == @demand.organization_profile if @current_user != nil
+    true
+    #@current_user.try(:admin?) or @current_user.active_profile == @demand.organization_profile if @current_user != nil
   end
 
   def update?
+    true
     @current_user.try(:admin?) or @current_user.active_profile == @demand.organization_profile if @current_user != nil
   end
 

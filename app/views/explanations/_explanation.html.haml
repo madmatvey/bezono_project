@@ -1,8 +1,8 @@
 .li
   .well
     = explanation.message
-    -if current_user.try(:admin?)
-      .p.text-right
-        = explanation.user.name
-      .p.text-right.b
-        = explanation.organization_profile.name_short_with_opf
+    -# -if current_user.try(:admin?)
+    .p.text-right
+      = explanation.user.name
+    .p.text-right.b
+      = explanation.organization_profile.name_short_with_opf

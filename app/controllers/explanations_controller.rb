@@ -32,7 +32,6 @@ class ExplanationsController < ApplicationController
   # POST /explanations
   # POST /explanations.json
   def create
-
     @demand = Demand.find(params[:demand_id])
     @explanation = @demand.explanations.build(explanation_params)
     authorize @demand.organization_profile
@@ -82,6 +81,6 @@ class ExplanationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def explanation_params
-      params.require(:explanation).permit(:message, :user_id, :demand_id, :organization_profile_id)
+      params.require(:explanation).permit(:message, :user_id, :demand_id, :organization_profile_id, :question_id)
     end
 end

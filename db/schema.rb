@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620072313) do
+ActiveRecord::Schema.define(version: 20160620195253) do
 
   create_table "accreditations", force: :cascade do |t|
     t.integer  "state"
@@ -39,10 +39,12 @@ ActiveRecord::Schema.define(version: 20160620072313) do
     t.integer  "organization_profile_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "question_id"
   end
 
   add_index "explanations", ["demand_id"], name: "index_explanations_on_demand_id"
   add_index "explanations", ["organization_profile_id"], name: "index_explanations_on_organization_profile_id"
+  add_index "explanations", ["question_id"], name: "index_explanations_on_question_id"
   add_index "explanations", ["user_id"], name: "index_explanations_on_user_id"
 
   create_table "organization_accounts", force: :cascade do |t|

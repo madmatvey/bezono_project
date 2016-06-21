@@ -19,10 +19,31 @@
       .ul#explanations-list
         -if policy(@demand.explanations).index?
           = render @demand.explanations
-        -else
-          Что бы просмотреть запросы разъяснений,
-          =link_to 'авторизуйтесь', login_path
-        -if policy(@demand).create_explanations?
-          = render template: '/explanations/_form', locals: {demand: @demand, organization_profile_id: @demand.organization_profile.id, user: current_user.id}
-        -else
-          .well Запрос разъяснений могут сформировать поставщики.
+        -# -else
+        -#   Что бы просмотреть запросы разъяснений,
+        -#   =link_to 'авторизуйтесь', login_path
+
+        -if current_user.supplier?
+          -cnt = current_user.active_profile.explanations.where(demand_id: @demand.id).count
+          -if cnt == 0
+            = render template: '/explanations/_form', |
+                  locals: { demand: @demand, organization_profile_id: @demand.organization_profile.id,|
+                            user: current_user.id, question_id: nil }
+          -elsif cnt.even?
+            = render template: '/explanations/_form', |
+                  locals: { demand: @demand, organization_profile_id: @demand.organization_profile.id,|
+                            user: current_user.id, question_id: nil }
+
+
+
+        -if current_user.customer? && current_user.active_profile == @demand.organization_profile |
+              && @demand.count_of_explanations_without_answers > 0
+            =render template: '/explanations/_form', |
+                  locals: { demand: @demand, organization_profile_id: @demand.organization_profile.id,|
+                            user: current_user.id, question_id: @demand.explanations.answered.first }
+
+        -#
+        -# -if policy(@demand).create_explanations?
+        -#   = render template: '/explanations/_form', locals: {demand: @demand, organization_profile_id: @demand.organization_profile.id, user: current_user.id}
+        -# -else
+        -#   .well Запрос разъяснений могут формировать поставщики.

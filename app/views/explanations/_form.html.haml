@@ -7,5 +7,11 @@
     = f.input :demand_id, as: :hidden, input_html: { value: @demand.id}
     = f.input :organization_profile_id, as: :hidden, input_html: { value: current_user.active_profile.id}
 
+
+    -if current_user.active_profile.explanations.where(demand_id: @demand.id).count == 0
+      = f.input :question_id, as: :hidden, input_html: { value: nil }
+    -else
+      = f.input :question_id, as: :hidden, input_html: { value: @demand.explanations.last.id }
+
   .form-actions
     = f.button :submit, class: 'btn btn-primary'

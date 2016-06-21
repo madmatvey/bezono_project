@@ -24,30 +24,16 @@ class User < ActiveRecord::Base
     self.organization_account ||= OrganizationAccount.find_or_create_by(name: Rails.application.secrets.demo_account)
   end
 
-  # def active_profile
-  #   if self.active_profile_id && self.organization_account == OrganizationProfile.find(self.active_profile_id).organization_account
-  #     return OrganizationProfile.find(self.active_profile_id)
-  #   else
-  #     profiles = self.organization_account.organization_profiles.accreditated
-  #     count = profiles.count
-  #     if count == 0
-  #       return nil
-  #     else #if self.active_profile_id == nil
-  #       self.active_profile = profiles.first
-  #       self.save
-  #       return profiles.first
-  #     # else
-  #     #   return nil
-  #     end
-  #   end
-  # end
-
-  # def active_profile= (organization_profile)
-  #   self.active_profile_id = organization_profile.id
-  # end
-
   def profiles
     self.organization_account.organization_profiles
+  end
+
+  def supplier?
+    self.active_profile.accreditation.state == 'supplier'
+  end
+
+  def customer?
+    self.active_profile.accreditation.state == 'customer'
   end
 
   private

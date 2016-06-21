@@ -32,10 +32,4 @@ class OrganizationProfile < ActiveRecord::Base
     OrganizationProfile.select {|profile| profile.accreditation.customer?}
   end
 
-  private
-
-    def check_and_nullify_active_profiles_at_user
-
-    end
-
 end
