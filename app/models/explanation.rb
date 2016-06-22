@@ -24,4 +24,11 @@ class Explanation < ActiveRecord::Base
     Explanation.select {|expl| expl.answered?}
   end
 
+  def from_supplier?
+    self.organization_profile.accreditation.state == "supplier"
+  end
+
+  def from_customer?
+    self.organization_profile.accreditation.state == "customer"
+  end
 end

@@ -1,5 +1,12 @@
 .li
   .well
+    -if explanation.from_supplier?
+      %b= "запрос от поставщика (№#{explanation.id})"
+    -if explanation.from_customer?
+      %b= "Ответ от заказчика (№#{explanation.id})"
+    -if explanation.question_id != nil
+      = " на запрос №#{explanation.question_id}"
+    %br
     = explanation.message
     -# -if current_user.try(:admin?)
     .p.text-right
