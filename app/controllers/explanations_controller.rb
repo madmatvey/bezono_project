@@ -34,7 +34,7 @@ class ExplanationsController < ApplicationController
   def create
     @demand = Demand.find(params[:demand_id])
     @explanation = @demand.explanations.build(explanation_params)
-    authorize @demand.organization_profile
+    # authorize @demand.organization_profile
     respond_to do |format|
       if @explanation.save
         format.html { redirect_to demand_path(id: params[:demand_id]), notice: 'Explanation was successfully created.' }
