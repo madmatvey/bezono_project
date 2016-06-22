@@ -51,7 +51,7 @@ class DemandPolicy
 
   def update?
     true
-    @current_user.try(:admin?) or @current_user.active_profile == @demand.organization_profile if @current_user != nil
+    # @current_user.try(:admin?) or @current_user.active_profile == @demand.organization_profile if @current_user != nil
   end
 
   def destroy?
