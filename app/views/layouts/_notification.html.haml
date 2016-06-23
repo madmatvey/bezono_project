@@ -1,6 +1,6 @@
 %li.dropdown.dropdown-notifications
   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#notifications-panel"}
-    %i.glyphicon.glyphicon-bell.notification-icon{"data-count" => UserNotif::Notif.count}
+    %i.glyphicon.glyphicon-bell.notification-icon{"data-count" => UserNotif::Notif.unread.count}
   .dropdown-container
     .dropdown-toolbar
       .dropdown-toolbar-actions

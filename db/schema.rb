@@ -47,24 +47,6 @@ ActiveRecord::Schema.define(version: 20160623113206) do
   add_index "explanations", ["question_id"], name: "index_explanations_on_question_id"
   add_index "explanations", ["user_id"], name: "index_explanations_on_user_id"
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer  "user_id",            null: false
-    t.integer  "actor_id"
-    t.string   "notify_type",        null: false
-    t.string   "target_type"
-    t.integer  "target_id"
-    t.string   "second_target_type"
-    t.integer  "second_target_id"
-    t.string   "third_target_type"
-    t.integer  "third_target_id"
-    t.datetime "read_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  add_index "notifications", ["user_id", "notify_type"], name: "index_notifications_on_user_id_and_notify_type"
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
-
   create_table "notifs", force: :cascade do |t|
     t.integer  "target_id",                   null: false
     t.string   "target_type",                 null: false

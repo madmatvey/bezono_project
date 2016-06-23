@@ -11,7 +11,7 @@ class NewExplanationNotif < UserNotif::Notif
   def email_options
     # TODO: Add this I18n key in your yml and add options or delete the method if you want to keep default values
     super({
-        subject: I18n.t('notif.new_explanation.subject')
+        subject: "Уведомление о новом сообщении"   #I18n.t('notif.new_explanation.subject')
       })
   end
 

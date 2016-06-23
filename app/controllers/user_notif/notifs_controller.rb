@@ -19,7 +19,7 @@ module UserNotif
 
     def authorized?
       # This method assumes you are using Devise. You can change it to use your custom logic.
-      raise ActiveRecord::RecordNotFound.new('Not Found') unless @notif.owner == current_user
+      raise ActiveRecord::RecordNotFound.new('Not Found') unless @notif.user_id == current_user.id
     end
   end
 end
