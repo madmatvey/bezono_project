@@ -17,6 +17,7 @@ gem 'aasm'
 gem 'aasm_history'
 gem 'enum_help'
 gem 'wicked'
+gem 'user_notif'
 
 group :development, :test do
   gem 'byebug'

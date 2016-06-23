@@ -1,0 +1,4 @@
+fr:
+  notif:
+    generic:
+      subject: 'Nouvelle notification de %{app_name} !'

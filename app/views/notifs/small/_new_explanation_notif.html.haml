@@ -1,0 +1,6 @@
+%div{:class => "small-user-notif mark-as-read #{'unread' if @notif.unread}", "data-url" => read_user_notif_path(id: @notif.id)}
+  .notif-body
+    .notif-title
+      New small #{@notif.type} !
+    .notif-content
+      This notif is the #{@notif.id.ordinalize}

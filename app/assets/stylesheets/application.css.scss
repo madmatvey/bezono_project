@@ -11,8 +11,10 @@
  * file per style scope.
  *
  *= require bootstrap-datetimepicker.min
+ *= require bootstrap-notifications.min
  *= require sticky-footer
  *= require jquery.suggestions
+ *= require user_notif
  *= require_tree .
  *= require_self
  */

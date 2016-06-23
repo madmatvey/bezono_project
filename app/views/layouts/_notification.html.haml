@@ -1,0 +1,12 @@
+%li.dropdown.dropdown-notifications
+  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#notifications-panel"}
+    %i.glyphicon.glyphicon-bell.notification-icon{"data-count" => UserNotif::Notif.count}
+  .dropdown-container
+    .dropdown-toolbar
+      .dropdown-toolbar-actions
+        %a{:href => "#"} Mark all as read
+      %h3.dropdown-toolbar-title= "Notifications (#{UserNotif::Notif.count})"
+    %ul.dropdown-menu
+      = list_user_notifs(UserNotif::Notif.all)
+    .dropdown-footer.text-center
+      %a{:href => "#"} View All

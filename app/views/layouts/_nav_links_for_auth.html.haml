@@ -2,6 +2,7 @@
   %li
     -if current_user.active_profile != nil
       = link_to current_user.active_profile.name_short_with_opf, organization_account_path(current_user.organization_account_id)
+      %li= render 'layouts/notification'
       %li= link_to "Потребности", demands_path
     -else
       =link_to organization_account_path(current_user.organization_account_id), |

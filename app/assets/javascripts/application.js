@@ -19,4 +19,5 @@
 //= require bootstrap-datetimepicker
 //= require pickers
 //= require jquery.suggestions.js
+//= require user_notif
 //= require_tree .

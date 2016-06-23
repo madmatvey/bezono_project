@@ -31,4 +31,9 @@ class Explanation < ActiveRecord::Base
   def from_customer?
     self.organization_profile.accreditation.state == "customer"
   end
+
+  after_commit :create_notifications, on: [:create]
+  def create_notifications
+    NewExplanationNotif.create(target: self, user: self.user)
+  end
 end
