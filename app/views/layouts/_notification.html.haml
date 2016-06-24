@@ -1,6 +1,10 @@
 %li.dropdown.dropdown-notifications
   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#notifications-panel"}
-    %i.glyphicon.glyphicon-bell.notification-icon{"data-count" => UserNotif::Notif.where(user_id: current_user.id).unread.count}
+    - unread_count = UserNotif::Notif.where(user_id: current_user.id).unread.count
+    - if unread_count > 0
+      %i.glyphicon.glyphicon-bell.notification-icon{"data-count" => unread_count}
+    - else
+      %i.glyphicon.glyphicon-bell
   .dropdown-container
     .dropdown-toolbar
       .dropdown-toolbar-actions
