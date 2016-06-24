@@ -1,4 +1,5 @@
 class NewExplanationNotif < UserNotif::Notif
+
   def email?
     # Override or delete (default: true)
     false

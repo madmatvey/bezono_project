@@ -1,12 +1,12 @@
 %li.dropdown.dropdown-notifications
   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#notifications-panel"}
-    %i.glyphicon.glyphicon-bell.notification-icon{"data-count" => UserNotif::Notif.unread.count}
+    %i.glyphicon.glyphicon-bell.notification-icon{"data-count" => UserNotif::Notif.where(user_id: current_user.id).unread.count}
   .dropdown-container
     .dropdown-toolbar
       .dropdown-toolbar-actions
         %a{:href => "#"} Mark all as read
-      %h3.dropdown-toolbar-title= "Notifications (#{UserNotif::Notif.count})"
+      %h3.dropdown-toolbar-title= "Notifications (#{UserNotif::Notif.where(user_id: current_user.id).count})"
     %ul.dropdown-menu
-      = list_user_notifs(UserNotif::Notif.all)
+      = list_user_notifs(UserNotif::Notif.where(user_id: current_user.id))
     .dropdown-footer.text-center
       %a{:href => "#"} View All

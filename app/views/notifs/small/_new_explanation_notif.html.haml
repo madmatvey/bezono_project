@@ -1,7 +1,7 @@
 %div{:class => "small-user-notif mark-as-read #{'unread' if @notif.unread}", "data-url" => read_user_notif_path(id: @notif.id)}
   .notif-body
     .notif-title
-      = link_to @notif.target.message.split[0...5].join(' '), demands_path(@notif.target.demand)
+      = link_to "#{@notif.target.message.split[0...3].join(' ')}...", demand_path(@notif.target.demand)
       by
       = @notif.target.organization_profile.name_short_with_opf
       @
