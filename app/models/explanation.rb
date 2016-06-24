@@ -37,7 +37,7 @@ class Explanation < ActiveRecord::Base
   def create_notifications
     active_organizations = self.demand.explanations.map {|expl| expl.organization_profile}
     active_organizations.push(self.demand.organization_profile)
-    act_users = active_organizations.map { |org| org.active_users }.flatten.uniq
+    act_users = active_organizations.map { |org| org.active_users }.flatten.uniq - [self.user]
     act_users.map { |act_user| NewExplanationNotif.create(target: self, user: act_user) }
   end
 end
