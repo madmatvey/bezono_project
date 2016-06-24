@@ -5,6 +5,7 @@ class Explanation < ActiveRecord::Base
 
   belongs_to :question, class_name: 'Explanation', foreign_key: 'question_id'
   has_one :answer, class_name: 'Explanation', foreign_key: 'question_id'
+  has_many :new_explanation_notif, as: :target, dependent: :destroy
 
   scope :answered,  -> { where(verified: Explanation.answered) }
 
@@ -13,7 +14,7 @@ class Explanation < ActiveRecord::Base
   end
 
   def answered?
-    if self.question != nil
+    if self.answer != nil
       true
     else
       false

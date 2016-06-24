@@ -21,3 +21,10 @@
  // import bootstrap-sprockets before bootstrap if using bootstrap >= 3.2
  @import "font-awesome-sprockets";
  @import "font-awesome";
+
+
+ .rounded {
+   border-radius: 7px;
+   min-height: 20px;
+   padding: 19px;
+ }

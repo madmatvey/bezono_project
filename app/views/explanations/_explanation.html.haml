@@ -1,15 +1,25 @@
 .li
-  .well
+  - if explanation != nil
     -if explanation.from_supplier?
-      %b= "запрос от поставщика (№#{explanation.id})"
-    -if explanation.from_customer?
-      %b= "Ответ от заказчика (№#{explanation.id})"
-    -if explanation.question_id != nil
-      = " на запрос №#{explanation.question_id}"
-    %br
-    = explanation.message
+      .well.rounded
+        %b= "запрос от поставщика (№#{explanation.id})"
+        %br
+        = explanation.message
+        .p.text-right
+          = explanation.user.name
+        .p.text-right.b
+          = explanation.organization_profile.name_short_with_opf
+        -if explanation.answered?
+          .bg-success.rounded
+            %b= "Ответ от заказчика (№#{explanation.answer.id})"
+            = " на запрос №#{explanation.id}"
+            %br
+            = explanation.answer.message
+            .p.text-right
+              = explanation.answer.user.name
+            .p.text-right.b
+              = explanation.answer.organization_profile.name_short_with_opf
+
+
+
     -# -if current_user.try(:admin?)
-    .p.text-right
-      = explanation.user.name
-    .p.text-right.b
-      = explanation.organization_profile.name_short_with_opf
