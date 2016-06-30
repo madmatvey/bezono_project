@@ -5,21 +5,25 @@ class CompetencesController < ApplicationController
   # GET /competences.json
   def index
     @competences = Competence.all
+    authorize @competences
   end
 
   # GET /competences/1
   # GET /competences/1.json
   def show
+    authorize @competence
   end
 
   # GET /competences/new
   def new
     @competence = Competence.new
+    authorize @competence
   end
 
   # GET /competences/1/edit
   def edit
     @competence = Competence.find(params[:id])
+    authorize @competence
   end
 
   # POST /competences
@@ -27,7 +31,7 @@ class CompetencesController < ApplicationController
   def create
     @competences = Competence.all
     @competence = Competence.new(competence_params)
-
+    authorize @competence
     respond_to do |format|
       if @competence.save
         format.html { redirect_to @competence, notice: 'Competence was successfully created.' }
@@ -43,7 +47,7 @@ class CompetencesController < ApplicationController
   # PATCH/PUT /competences/1.json
   def update
     @competences = Competence.all
-
+    authorize @competence
     respond_to do |format|
       if @competence.update(competence_params)
         format.html { redirect_to @competence, notice: 'Competence was successfully updated.' }
@@ -59,6 +63,7 @@ class CompetencesController < ApplicationController
   # DELETE /competences/1.json
   def destroy
     @competences = Competence.all
+    authorize @competence
     @competence.destroy
     respond_to do |format|
       format.html { redirect_to competences_url, notice: 'Competence was successfully destroyed.' }
