@@ -1,0 +1,14 @@
+$("#proof_form_#{@competence.id}").html("#{escape_javascript(render('state'))}")
+
+
+-# $("ul.errors").html("")
+-# - if @proof.errors.any?
+-#   - @proof.errors.full_messages.each do |message|
+-#     $("ul.errors").append($("
+-#     %li>/
+-#     ").html("#{message.html_safe}"))
+-# - else
+-#   $(".competence-index").html("#{escape_javascript(render 'index')}")
+-#   $("#competence-modal").modal("hide")
+-#
+-#

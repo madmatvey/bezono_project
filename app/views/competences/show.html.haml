@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Tag:
+  = @competence.tag
+
+= link_to 'Edit', edit_competence_path(@competence)
+\|
+= link_to 'Back', competences_path

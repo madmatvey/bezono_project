@@ -2,6 +2,7 @@ class Demand < ActiveRecord::Base
   belongs_to :organization_profile
   has_many :explanations, :dependent => :destroy
   accepts_nested_attributes_for :explanations
+  has_and_belongs_to_many :competences
 
 
   def have_explanations_without_answer?

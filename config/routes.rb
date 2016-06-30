@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :competences do
+    member do
+      get :organization_profiles
+    end
+  end
   put '/user_notif/:id', to: 'user_notif/notifs#read', as: :read_user_notif
   resources :demands, shallow: true do
     resources :explanations #, except: [:index]
@@ -10,7 +15,12 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { registrations: 'users/registrations'}
   resources :organization_accounts
-  resources :organization_profiles
+  resources :proofs, only: [:show, :create, :update, :destroy]
+  resources :organization_profiles do
+    member do
+      get :competences
+    end
+  end
   root to: 'visitors#index'
   resources :users
 end

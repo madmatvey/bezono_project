@@ -6,6 +6,8 @@ class OrganizationProfile < ActiveRecord::Base
             foreign_key: "active_profile_id",
             dependent: :nullify
   has_many :explanations, :dependent => :destroy
+  has_many :proofs, dependent: :destroy
+  has_many :competences, through: :proofs
 
   validates :inn, presence: true, uniqueness: true
   scope :accreditated,  -> { where(accreditated: OrganizationProfile.accreditated) }
@@ -30,6 +32,14 @@ class OrganizationProfile < ActiveRecord::Base
 
   def self.customers
     OrganizationProfile.select {|profile| profile.accreditation.customer?}
+  end
+
+  def have_competence?(competence)
+    proofs.find_by(competence_id: competence.id)
+  end
+
+  def set_competence!(competence)
+    proofs.create!(competence_id: competence.id)
   end
 
 end

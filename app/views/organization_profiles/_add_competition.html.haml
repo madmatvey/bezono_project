@@ -1,0 +1,3 @@
+= simple_form_for(current_user.active_profile.proofs.build(competence_id: @competence.id)) do |f| |
+  = f.input :competence_id, as: :hidden, input_html: { value: @competence.id }
+  = f.submit "ADD Competence!", class: "btn btn-primary"

@@ -1,0 +1,5 @@
+- proof = current_user.active_profile.have_competence?(comp)
+= render partial: "shared/proof_wonnabe", locals: {comp: comp}
+.btn.btn-default.btn-sm{id: "competence_#{comp.id}"}
+  = comp.tag
+  %span.badge{:id => "org_count_#{comp.id}"}= comp.organization_profiles.count + 1

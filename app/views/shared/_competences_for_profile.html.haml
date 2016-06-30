@@ -1,0 +1,5 @@
+- @organization_profile ||= current_user.active_profile
+.competences
+  %a{:href => competences_organization_profile_path(@organization_profile)}
+    %strong#competences.stat
+      = @organization_profile.competences.count

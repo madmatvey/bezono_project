@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623113206) do
+ActiveRecord::Schema.define(version: 20160629064233) do
 
   create_table "accreditations", force: :cascade do |t|
     t.integer  "state"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 20160623113206) do
   end
 
   add_index "accreditations", ["organization_profile_id"], name: "index_accreditations_on_organization_profile_id"
+
+  create_table "competences", force: :cascade do |t|
+    t.string   "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "competences_demands", id: false, force: :cascade do |t|
+    t.integer "competence_id"
+    t.integer "demand_id"
+  end
+
+  add_index "competences_demands", ["competence_id"], name: "index_competences_demands_on_competence_id"
+  add_index "competences_demands", ["demand_id"], name: "index_competences_demands_on_demand_id"
 
   create_table "demands", force: :cascade do |t|
     t.string   "name"
@@ -46,6 +60,24 @@ ActiveRecord::Schema.define(version: 20160623113206) do
   add_index "explanations", ["organization_profile_id"], name: "index_explanations_on_organization_profile_id"
   add_index "explanations", ["question_id"], name: "index_explanations_on_question_id"
   add_index "explanations", ["user_id"], name: "index_explanations_on_user_id"
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id",            null: false
+    t.integer  "actor_id"
+    t.string   "notify_type",        null: false
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.string   "second_target_type"
+    t.integer  "second_target_id"
+    t.string   "third_target_type"
+    t.integer  "third_target_id"
+    t.datetime "read_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "notifications", ["user_id", "notify_type"], name: "index_notifications_on_user_id_and_notify_type"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "notifs", force: :cascade do |t|
     t.integer  "target_id",                   null: false
@@ -95,6 +127,18 @@ ActiveRecord::Schema.define(version: 20160623113206) do
   end
 
   add_index "organization_profiles", ["organization_account_id"], name: "index_organization_profiles_on_organization_account_id"
+
+  create_table "proofs", force: :cascade do |t|
+    t.integer  "state"
+    t.integer  "organization_profile_id"
+    t.integer  "competence_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "proofs", ["competence_id"], name: "index_proofs_on_competence_id"
+  add_index "proofs", ["organization_profile_id", "competence_id"], name: "index_proofs_on_organization_profile_id_and_competence_id", unique: true
+  add_index "proofs", ["organization_profile_id"], name: "index_proofs_on_organization_profile_id"
 
   create_table "state_histories", force: :cascade do |t|
     t.string   "state"

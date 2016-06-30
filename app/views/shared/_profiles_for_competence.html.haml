@@ -1,0 +1,6 @@
+- @competence
+.competences
+  %a{:href => organizations_competence_path(@competence)}
+    %strong#competences.stat
+      = @competence.organization_profiles.count
+    organizations

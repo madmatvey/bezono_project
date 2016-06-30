@@ -1,0 +1,12 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      %h3 Delete Competence
+    .modal-body
+      %ul.errors
+      Are you sure you wish to delete
+      = succeed "?" do
+        %b= @competence.tag
+    .modal-footer
+      = link_to "Yes, Delete This Product", competence_path(@competence), method: :delete, remote: true, class: "btn btn-danger"
+      = link_to "No, Please Don't", "#", class: "btn btn-default", data: { dismiss: "modal" }

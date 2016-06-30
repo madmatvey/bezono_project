@@ -1,0 +1,9 @@
+$("ul.errors").html("")
+- if @competence.errors.any?
+  - @competence.errors.full_messages.each do |message|
+    $("ul.errors").append($("
+    %li>/
+    ").html("#{message.html_safe}"))
+- else
+  $(".competence-index").html("#{escape_javascript(render 'index')}")
+  $("#competence-modal").modal("hide")

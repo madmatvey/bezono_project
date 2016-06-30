@@ -30,6 +30,8 @@
       =link_to "не аккредитован", accreditation_build_path(id: 'step1', |
                 accreditation_id: organization_profile.accreditation.id), |
                 :class => "btn btn-danger btn-xs"
+  %td= organization_profile.competences.count 
+
   %td= organization_profile.state_actuality_date.strftime(I18n.t('date.formats.default'))
 
   %td= organization_profile.state_registration_date.strftime(I18n.t('date.formats.default'))

@@ -1,0 +1,12 @@
+.modal-dialog
+  .modal-content
+    = simple_form_for(@competence, remote: true, html: { style: "display:inline;" }) do |f|
+      .modal-body
+        %ul.errors= f.error_notification
+        .form-inputs
+          = f.input :tag
+          -# = f.input :organization_profile_id, as: :hidden, input_html: { value: current_user.active_profile.id }
+      .modal-footer
+        .form-actions
+          = f.button :submit, class: "btn btn-primary"
+          = link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"}

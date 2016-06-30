@@ -1,0 +1,32 @@
+- proof = current_user.active_profile.have_competence?(comp)
+- if proof != nil
+  - if proof.state == "wonnabe"
+    = render partial: "shared/proof_wonnabe", locals: {comp: comp}
+  - elsif proof.state == "approved"
+    = render partial: "shared/proof_approved", locals: {comp: comp}
+  - else
+    = render partial: "shared/proof_danger", locals: {comp: comp}
+- else
+  .btn.btn-info.btn-sm{id: "proof_form_#{comp.id}"}
+    +
+  :coffee
+    $("#proof_form_#{comp.id}").click (e) ->
+      e.preventDefault()
+      console.log 'click detected'
+      $.ajax
+        url: "#{proofs_path}"
+        type: "POST"
+        data: { proof: {competence_id: "#{comp.id}"} }
+        success: ->
+          console.log 'success'
+          this.html("#{escape_javascript(render partial: 'shared/proof_wonnabe', locals: {comp: comp})}")
+
+          return
+      return
+
+
+
+-# = simple_form_for(current_user.active_profile.proofs.build(competence_id: comp.id), remote: true, |
+-#     html: { id: "proof_form_#{comp.id}"} ) do |f|
+-#   = f.input :competence_id, as: :hidden, input_html: { value: comp.id }
+-#   = f.submit "+", class: "btn btn-primary"
