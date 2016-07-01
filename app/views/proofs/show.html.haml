@@ -1,36 +1,37 @@
 .container
-  %br
-  .well
-    = @proof.organization_profile.name_short_with_opf
+  .col-md-6.col-md-offset-3
+    %br
+    .well
+      = @proof.organization_profile.name_short_with_opf
+      - if @proof.state == "wonnabe"
+        претендует на
+      - if @proof.state == "approved"
+        подтвердили
+      компетенцию
+      %b= @proof.competence.tag
+
+    %br
     - if @proof.state == "wonnabe"
-      претендует на
+      .p.text-center
+        тут мы попросим приложить сканы, подтверждающие компетенцию, Но пока что можно просто нажать кнопку
+        %br
+        Компетенцию можно будет так же подтвердить автоматически, участвуя в развитии потребностей и сделках.
+        %br
+        %br
+        = simple_form_for(@proof) do |f|
+          = f.error_notification
+          .form-inputs
+            = f.input :state, as: :hidden, input_html: { value: "approved" }
+
+          .form-actions
+            = f.button :submit, "Сохранить Подтверждение",:class => 'btn-lg btn btn-success text-center'
     - if @proof.state == "approved"
-      подтвердили
-    компетенцию
-    %b= @proof.competence.tag
+      .p.text-center
+        .btn-lg.btn.btn-success
+          = icon('check', class: 'fa-6')
+          ПОДТВЕРЖДЕНО!
 
-  %br
-  - if @proof.state == "wonnabe"
-    .p.text-center
-      тут мы попросим приложить сканы, подтверждающие компетенцию, Но пока что можно просто нажать кнопку
-      %br
-      Компетенцию можно будет так же подтвердить автоматически, участвуя в развитии потребностей и сделках.
-      %br
-      %br
-      = simple_form_for(@proof) do |f|
-        = f.error_notification
-        .form-inputs
-          = f.input :state, as: :hidden, input_html: { value: "approved" }
-
-        .form-actions
-          = f.button :submit, "Сохранить Подтверждение",:class => 'btn-lg btn btn-success text-center'
-  - if @proof.state == "approved"
-    .p.text-center
-      .btn-lg.btn.btn-success
-        = icon('check', class: 'fa-6')
-        ПОДТВЕРЖДЕНО!
-
-  %br
-  %br
-  .well
-    = link_to "Все Компетенции", competences_path
+    %br
+    %br
+    .well
+      = link_to "Все Компетенции", competences_path
