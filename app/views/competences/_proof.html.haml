@@ -8,7 +8,7 @@
     = render partial: "shared/proof_danger", locals: {comp: comp}
 - else
   .btn.btn-info.btn-sm{id: "proof_form_#{comp.id}"}
-    +
+    = icon('plus', class: 'fa-lg')
   :coffee
     $("#proof_form_#{comp.id}").click (e) ->
       e.preventDefault()

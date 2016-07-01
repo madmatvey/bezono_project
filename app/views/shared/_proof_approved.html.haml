@@ -1,2 +1,3 @@
-.btn.btn-success.btn-sm{id: "competence_proof_#{comp.id}"}
-  = icon('check-square', class: 'fa-lg')
+= link_to url_for(current_user.active_profile.proofs.where(competence_id: comp.id).first) do
+  .btn.btn-success.btn-sm{id: "competence_proof_#{comp.id}"}
+    = icon('check-square', class: 'fa-lg')
