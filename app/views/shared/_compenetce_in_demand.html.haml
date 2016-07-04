@@ -1,8 +1,8 @@
 Выбраные компетенции:
-.choosed-compenences
+.well#choosed-compenences
   - @demand.competences.each do |competence|
     .btn-group{style: "box-sizing: border-box; padding: 10px;", id: "group_#{competence.id}"}
-      .btn.btn-info.btn-sm{id: "delete_competence_#{competence.id}"}
+      .btn.btn-success.btn-sm{id: "delete_competence_#{competence.id}"}
         = icon('check', class: 'fa-lg')
       :coffee
         $("#delete_competence_#{competence.id}").click (e) ->
@@ -10,34 +10,37 @@
           console.log 'click detected'
           array_val = []
           value = $("#demand_competence_ids").val()
-          if value.length == 0
+          if value.length > 0
             array_val.pop("#{competence.id}")
-            $("#demand_competence_ids").val(array_val)
+          $("#demand_competence_ids").val(array_val)
+          $("#group_#{competence.id}").empty()
+          $("#not-choosed-compenences").append("#{escape_javascript(render partial: 'shared/non_choosed_competense', locals: {competence: competence})}")
           return
       .btn.btn-default.btn-sm{id: "competence_#{competence.id}"}
         = competence.tag
         %span.badge{:id => "org_count_#{competence.id}"}= competence.organization_profiles.count
-%br
-%hr
-%br
-.not-choosed-compenences
-- @competences.each do |competence|
 
-  .btn-group{style: "box-sizing: border-box; padding: 10px;", id: "group_#{competence.id}"}
-    .btn.btn-info.btn-sm{id: "add_competence_#{competence.id}"}
-      = icon('plus', class: 'fa-lg')
-    :coffee
-      $("#add_competence_#{competence.id}").click (e) ->
-        e.preventDefault()
-        console.log 'click detected'
-        array_val = []
-        value = $("#demand_competence_ids").val()
-        if value.length > 0
-          array_val.push(value)
-        array_val.push("#{competence.id}")
-        $("#demand_competence_ids").val(array_val)
-        return
+Другие компетенции:
+.well#not-choosed-compenences
+  - @competences.each do |competence|
 
-    .btn.btn-default.btn-sm{id: "competence_#{competence.id}"}
-      = competence.tag
-      %span.badge{:id => "org_count_#{competence.id}"}= competence.organization_profiles.count
+    .btn-group{style: "box-sizing: border-box; padding: 10px;", id: "group_#{competence.id}"}
+      .btn.btn-info.btn-sm{id: "add_competence_#{competence.id}"}
+        = icon('plus', class: 'fa-lg')
+      :coffee
+        $("#add_competence_#{competence.id}").click (e) ->
+          e.preventDefault()
+          console.log 'click detected'
+          array_val = []
+          value = $("#demand_competence_ids").val()
+          if value.length > 0
+            array_val.push(value)
+          array_val.push("#{competence.id}")
+          $("#demand_competence_ids").val(array_val)
+          $("#group_#{competence.id}").empty()
+          $("#choosed-compenences").append("#{escape_javascript(render partial: 'shared/choosed_competense', locals: {competence: competence})}")
+          return
+
+      .btn.btn-default.btn-sm{id: "competence_#{competence.id}"}
+        = competence.tag
+        %span.badge{:id => "org_count_#{competence.id}"}= competence.organization_profiles.count

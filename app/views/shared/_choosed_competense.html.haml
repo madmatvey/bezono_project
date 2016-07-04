@@ -1,0 +1,20 @@
+.btn-group{style: "box-sizing: border-box; padding: 10px;", id: "group_#{competence.id}"}
+  .btn.btn-success.btn-sm{id: "delete_competence_#{competence.id}"}
+    = icon('check', class: 'fa-lg')
+  :coffee
+    $("#delete_competence_#{competence.id}").click (e) ->
+      e.preventDefault()
+      console.log 'click detected'
+      array_val = []
+      value = $("#demand_competence_ids").val()
+      if value.length > 0
+        array_val.push(value)
+      array_val.push("#{competence.id}")
+      $("#demand_competence_ids").val(array_val)
+      $("#group_#{competence.id}").empty()
+      
+      return
+
+  .btn.btn-default.btn-sm{id: "competence_#{competence.id}"}
+    = competence.tag
+    %span.badge{:id => "org_count_#{competence.id}"}= competence.organization_profiles.count

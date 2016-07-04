@@ -17,23 +17,26 @@ class DemandsController < ApplicationController
   # GET /demands/new
   def new
     @demand = Demand.new
-    @competences = Competence.all
+    @competences = Competence.all - @demand.competences
     authorize @demand
   end
 
   # GET /demands/1/edit
   def edit
     authorize @demand
-    @competences = Competence.all
+    @competences = Competence.all - @demand.competences
   end
 
   # POST /demands
   # POST /demands.json
   def create
     @demand = Demand.new(demand_params)
+    # byebug
     authorize @demand
+    # @demand.competences.build(demand_params[:competence_ids])
     respond_to do |format|
       if @demand.save
+        @demand.competence_ids = params[:demand][:competence_ids].split(',')
         format.html { redirect_to @demand, notice: 'Demand was successfully created.' }
         format.json { render :show, status: :created, location: @demand }
         format.js
@@ -48,9 +51,13 @@ class DemandsController < ApplicationController
   # PATCH/PUT /demands/1
   # PATCH/PUT /demands/1.json
   def update
+    # byebug
     authorize @demand
+    # @demand.competence_ids = params[:demand][:competence_ids].split(',')
+    # @demand.competences.build()
     respond_to do |format|
       if @demand.update(demand_params)
+        @demand.competence_ids = params[:demand][:competence_ids].split(',')
         format.html { redirect_to @demand, notice: 'Demand was successfully updated.' }
         format.json { render :show, status: :ok, location: @demand }
         format.js
