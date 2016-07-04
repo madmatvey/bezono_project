@@ -17,12 +17,14 @@ class DemandsController < ApplicationController
   # GET /demands/new
   def new
     @demand = Demand.new
+    @competences = Competence.all
     authorize @demand
   end
 
   # GET /demands/1/edit
   def edit
     authorize @demand
+    @competences = Competence.all
   end
 
   # POST /demands
@@ -34,9 +36,11 @@ class DemandsController < ApplicationController
       if @demand.save
         format.html { redirect_to @demand, notice: 'Demand was successfully created.' }
         format.json { render :show, status: :created, location: @demand }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @demand.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -49,9 +53,11 @@ class DemandsController < ApplicationController
       if @demand.update(demand_params)
         format.html { redirect_to @demand, notice: 'Demand was successfully updated.' }
         format.json { render :show, status: :ok, location: @demand }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @demand.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -75,6 +81,6 @@ class DemandsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def demand_params
-      params.require(:demand).permit(:name, :description, :organization_profile_id)
+      params.require(:demand).permit(:name, :description, :organization_profile_id, :competence_ids => {} )
     end
 end

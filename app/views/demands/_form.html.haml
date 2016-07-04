@@ -1,5 +1,7 @@
 .row
   .col-xs-9.col-sm-6
+    %br
+    %br
     = simple_form_for(@demand) do |f|
       = f.error_notification
 
@@ -12,5 +14,8 @@
                   required: true, include_blank: false, class: "form-control"
         - else
           = f.input :organization_profile_id, as: :hidden, input_html: { value: current_user.active_profile.id }
+        = f.input :competence_ids, as: :hidden, input_html: { value: [nil] }
       .form-actions
         = f.button :submit, "Сохранить Потребность",:class => 'btn-xl btn btn-primary left'
+  .col-xs-9.col-sm-6
+    = render partial: "shared/compenetce_in_demand"
