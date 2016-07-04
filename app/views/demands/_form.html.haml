@@ -6,8 +6,11 @@
       .form-inputs
         = f.input :name, class: 'form-control', required: true
         = f.input :description, class: 'form-control', required: true
-        = f.input :organization_profile_id, as: :select, label: "Для нужд предприятия", |
+        - if current_user.try(:admin?)
+          = f.input :organization_profile_id, as: :select, label: "Для нужд предприятия", |
                   collection: current_user.profiles.customers.map {|pr| [pr.name_short_with_opf, pr.id] }, |
                   required: true, include_blank: false, class: "form-control"
+        - else
+          = f.input :organization_profile_id, as: :hidden, input_html: { value: current_user.active_profile.id }
       .form-actions
         = f.button :submit, "Сохранить Потребность",:class => 'btn-xl btn btn-primary left'

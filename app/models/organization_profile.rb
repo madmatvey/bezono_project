@@ -5,6 +5,7 @@ class OrganizationProfile < ActiveRecord::Base
   has_many :active_users, class_name: "User",
             foreign_key: "active_profile_id",
             dependent: :nullify
+  has_many :demands, :dependent => :destroy
   has_many :explanations, :dependent => :destroy
   has_many :proofs, dependent: :destroy
   has_many :competences, through: :proofs
