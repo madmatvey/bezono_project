@@ -20666,6 +20666,7 @@ $(document).on('ready page:change', function() {
         value = $("#demand_competence_ids").val();
         array_val = value.split(",");
         array_val.push(comp_id);
+        jQuery.unique(array_val);
         $("#demand_competence_ids").val(array_val);
         $('#group_' + comp_id).detach().prependTo('#choosed-compenences');
         $('#add_competence_' + comp_id).replaceWith("<div class='btn btn-success btn-sm' id='delete_competence_" + comp_id + "'><i class='fa fa-check fa-lg'></i></div>");
@@ -20679,6 +20680,7 @@ $(document).on('ready page:change', function() {
         value = $("#demand_competence_ids").val();
         array_val = value.split(",");
         array_val.pop(comp_id);
+        jQuery.unique(array_val);
         $("#demand_competence_ids").val(array_val);
         $('#group_' + comp_id).detach().prependTo('#not-choosed-compenences');
         $('#delete_competence_' + comp_id).replaceWith("<div class='btn btn-info btn-sm' id='add_competence_" + comp_id + "'><i class='fa fa-plus fa-lg'></i></div>");
