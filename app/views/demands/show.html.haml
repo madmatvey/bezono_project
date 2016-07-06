@@ -11,7 +11,8 @@
         = @demand.description
 
       .well
-        Требуемые компетенции поставщиков:
+        %h5 Требуемые компетенции поставщиков:
+        %br
         .choosed-compenences
           - @demand.competences.each do |competence|
             .btn.btn-default.btn-sm{id: "competence_#{competence.id}"}
