@@ -3,6 +3,7 @@
   .row
     .col-md-6
       %h3
+        Потребность:
         = @demand.name
       .p.text-right
         = @demand.organization_profile.name_short_with_opf
@@ -10,12 +11,12 @@
         = @demand.description
 
       .well
-        Выбраные компетенции:
+        Требуемые компетенции поставщиков:
         .choosed-compenences
           - @demand.competences.each do |competence|
             .btn.btn-default.btn-sm{id: "competence_#{competence.id}"}
               = competence.tag
-              %span.badge{:id => "org_count_#{competence.id}"}= competence.organization_profiles.count  
+              %span.badge{:id => "org_count_#{competence.id}"}= competence.organization_profiles.count
 
       -if policy(@demand).edit?
         = link_to 'Edit', edit_demand_path(@demand)

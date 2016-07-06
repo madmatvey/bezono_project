@@ -25,6 +25,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'meta_request'
   gem 'spring'
+  gem "rails-erd"
 end
 gem 'bootstrap-sass'
 gem 'font-awesome-sass', '~> 4.6.2'

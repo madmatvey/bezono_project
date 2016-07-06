@@ -1,4 +1,4 @@
-Выбраные компетенции:
+Требуемые компетенции поставщиков:
 .well#choosed-compenences
   - @demand.competences.each do |competence|
     .btn-group{style: "box-sizing: border-box; padding: 10px;", id: "group_#{competence.id}"}
@@ -8,7 +8,7 @@
         = competence.tag
         %span.badge{:id => "org_count_#{competence.id}"}= competence.organization_profiles.count
 
-Другие компетенции:
+Добавить требуемые компетенции:
 .well#not-choosed-compenences
   - @competences.each do |competence|
 
