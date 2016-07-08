@@ -2,24 +2,22 @@
   - if explanation != nil
     -if explanation.from_supplier?
       .well.rounded
-        %b= "запрос от поставщика (№#{explanation.id})"
+        %b= "Запрос (№#{explanation.id}) от поставщика"
         %br
         = explanation.message
-        .p.text-right
-          = explanation.user.name
-        .p.text-right.b
-          = explanation.organization_profile.name_short_with_opf
+        -if current_user.try(:admin?)
+          .p.text-right
+            = explanation.user.name
+          .p.text-right.b
+            = explanation.organization_profile.name_short_with_opf
         -if explanation.answered?
           .bg-success.rounded
-            %b= "Ответ от заказчика (№#{explanation.answer.id})"
-            = " на запрос №#{explanation.id}"
+            %b= "Ответ (№#{explanation.answer.id}) "
+            = "на запрос №#{explanation.id}"
             %br
             = explanation.answer.message
-            .p.text-right
-              = explanation.answer.user.name
-            .p.text-right.b
-              = explanation.answer.organization_profile.name_short_with_opf
-
-
-
-    -# -if current_user.try(:admin?)
+            -if current_user.try(:admin?)
+              .p.text-right
+                = explanation.answer.user.name
+              .p.text-right.b
+                = explanation.answer.organization_profile.name_short_with_opf
