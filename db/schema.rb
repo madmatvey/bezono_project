@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714080022) do
+ActiveRecord::Schema.define(version: 20160829115232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20160714080022) do
 
   add_index "competences_demands", ["competence_id"], name: "index_competences_demands_on_competence_id", using: :btree
   add_index "competences_demands", ["demand_id"], name: "index_competences_demands_on_demand_id", using: :btree
+
+  create_table "criterions", force: :cascade do |t|
+    t.string   "name",                null: false
+    t.integer  "demand_id"
+    t.integer  "master_criterion_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "criterions", ["demand_id"], name: "index_criterions_on_demand_id", using: :btree
+  add_index "criterions", ["master_criterion_id"], name: "index_criterions_on_master_criterion_id", using: :btree
 
   create_table "demands", force: :cascade do |t|
     t.string   "name"
@@ -181,6 +192,7 @@ ActiveRecord::Schema.define(version: 20160714080022) do
   add_index "users", ["organization_account_id"], name: "index_users_on_organization_account_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "criterions", "demands"
   add_foreign_key "demands", "organization_profiles"
   add_foreign_key "explanations", "demands"
   add_foreign_key "explanations", "organization_profiles"

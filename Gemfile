@@ -18,6 +18,8 @@ gem 'enum_help'
 gem 'wicked'
 gem 'user_notif'
 
+gem 'ahprocess'
+
 group :development, :test do
   gem 'byebug'
 end
