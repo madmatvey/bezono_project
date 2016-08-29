@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629064233) do
+ActiveRecord::Schema.define(version: 20160714080022) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "accreditations", force: :cascade do |t|
     t.integer  "state"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160629064233) do
     t.datetime "updated_at",              null: false
   end
 
-  add_index "accreditations", ["organization_profile_id"], name: "index_accreditations_on_organization_profile_id"
+  add_index "accreditations", ["organization_profile_id"], name: "index_accreditations_on_organization_profile_id", using: :btree
 
   create_table "competences", force: :cascade do |t|
     t.string   "tag"
@@ -33,8 +36,8 @@ ActiveRecord::Schema.define(version: 20160629064233) do
     t.integer "demand_id"
   end
 
-  add_index "competences_demands", ["competence_id"], name: "index_competences_demands_on_competence_id"
-  add_index "competences_demands", ["demand_id"], name: "index_competences_demands_on_demand_id"
+  add_index "competences_demands", ["competence_id"], name: "index_competences_demands_on_competence_id", using: :btree
+  add_index "competences_demands", ["demand_id"], name: "index_competences_demands_on_demand_id", using: :btree
 
   create_table "demands", force: :cascade do |t|
     t.string   "name"
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160629064233) do
     t.datetime "updated_at",              null: false
   end
 
-  add_index "demands", ["organization_profile_id"], name: "index_demands_on_organization_profile_id"
+  add_index "demands", ["organization_profile_id"], name: "index_demands_on_organization_profile_id", using: :btree
 
   create_table "explanations", force: :cascade do |t|
     t.text     "message"
@@ -56,28 +59,23 @@ ActiveRecord::Schema.define(version: 20160629064233) do
     t.integer  "question_id"
   end
 
-  add_index "explanations", ["demand_id"], name: "index_explanations_on_demand_id"
-  add_index "explanations", ["organization_profile_id"], name: "index_explanations_on_organization_profile_id"
-  add_index "explanations", ["question_id"], name: "index_explanations_on_question_id"
-  add_index "explanations", ["user_id"], name: "index_explanations_on_user_id"
+  add_index "explanations", ["demand_id"], name: "index_explanations_on_demand_id", using: :btree
+  add_index "explanations", ["organization_profile_id"], name: "index_explanations_on_organization_profile_id", using: :btree
+  add_index "explanations", ["question_id"], name: "index_explanations_on_question_id", using: :btree
+  add_index "explanations", ["user_id"], name: "index_explanations_on_user_id", using: :btree
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer  "user_id",            null: false
-    t.integer  "actor_id"
-    t.string   "notify_type",        null: false
-    t.string   "target_type"
-    t.integer  "target_id"
-    t.string   "second_target_type"
-    t.integer  "second_target_id"
-    t.string   "third_target_type"
-    t.integer  "third_target_id"
-    t.datetime "read_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+  create_table "formulations", force: :cascade do |t|
+    t.integer  "problem_id",              null: false
+    t.integer  "organization_profile_id", null: false
+    t.integer  "formulation_id"
+    t.text     "content"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "notifications", ["user_id", "notify_type"], name: "index_notifications_on_user_id_and_notify_type"
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
+  add_index "formulations", ["formulation_id"], name: "index_formulations_on_formulation_id", using: :btree
+  add_index "formulations", ["organization_profile_id"], name: "index_formulations_on_organization_profile_id", using: :btree
+  add_index "formulations", ["problem_id"], name: "index_formulations_on_problem_id", using: :btree
 
   create_table "notifs", force: :cascade do |t|
     t.integer  "target_id",                   null: false
@@ -90,9 +88,9 @@ ActiveRecord::Schema.define(version: 20160629064233) do
     t.datetime "updated_at"
   end
 
-  add_index "notifs", ["target_type", "target_id"], name: "index_notifs_on_target_type_and_target_id"
-  add_index "notifs", ["unread"], name: "index_notifs_on_unread"
-  add_index "notifs", ["user_id"], name: "index_notifs_on_user_id"
+  add_index "notifs", ["target_type", "target_id"], name: "index_notifs_on_target_type_and_target_id", using: :btree
+  add_index "notifs", ["unread"], name: "index_notifs_on_unread", using: :btree
+  add_index "notifs", ["user_id"], name: "index_notifs_on_user_id", using: :btree
 
   create_table "organization_accounts", force: :cascade do |t|
     t.string   "name"
@@ -126,7 +124,17 @@ ActiveRecord::Schema.define(version: 20160629064233) do
     t.datetime "updated_at",              null: false
   end
 
-  add_index "organization_profiles", ["organization_account_id"], name: "index_organization_profiles_on_organization_account_id"
+  add_index "organization_profiles", ["organization_account_id"], name: "index_organization_profiles_on_organization_account_id", using: :btree
+
+  create_table "problems", force: :cascade do |t|
+    t.integer  "demand_id"
+    t.integer  "organization_profile_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "problems", ["demand_id"], name: "index_problems_on_demand_id", using: :btree
+  add_index "problems", ["organization_profile_id"], name: "index_problems_on_organization_profile_id", using: :btree
 
   create_table "proofs", force: :cascade do |t|
     t.integer  "state"
@@ -136,9 +144,9 @@ ActiveRecord::Schema.define(version: 20160629064233) do
     t.datetime "updated_at",              null: false
   end
 
-  add_index "proofs", ["competence_id"], name: "index_proofs_on_competence_id"
-  add_index "proofs", ["organization_profile_id", "competence_id"], name: "index_proofs_on_organization_profile_id_and_competence_id", unique: true
-  add_index "proofs", ["organization_profile_id"], name: "index_proofs_on_organization_profile_id"
+  add_index "proofs", ["competence_id"], name: "index_proofs_on_competence_id", using: :btree
+  add_index "proofs", ["organization_profile_id", "competence_id"], name: "index_proofs_on_organization_profile_id_and_competence_id", unique: true, using: :btree
+  add_index "proofs", ["organization_profile_id"], name: "index_proofs_on_organization_profile_id", using: :btree
 
   create_table "state_histories", force: :cascade do |t|
     t.string   "state"
@@ -168,9 +176,20 @@ ActiveRecord::Schema.define(version: 20160629064233) do
     t.integer  "active_profile_id"
   end
 
-  add_index "users", ["active_profile_id"], name: "index_users_on_active_profile_id"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["organization_account_id"], name: "index_users_on_organization_account_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["active_profile_id"], name: "index_users_on_active_profile_id", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["organization_account_id"], name: "index_users_on_organization_account_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "demands", "organization_profiles"
+  add_foreign_key "explanations", "demands"
+  add_foreign_key "explanations", "organization_profiles"
+  add_foreign_key "explanations", "users"
+  add_foreign_key "formulations", "formulations"
+  add_foreign_key "formulations", "organization_profiles"
+  add_foreign_key "formulations", "problems"
+  add_foreign_key "problems", "demands"
+  add_foreign_key "problems", "organization_profiles"
+  add_foreign_key "proofs", "competences"
+  add_foreign_key "proofs", "organization_profiles"
 end
