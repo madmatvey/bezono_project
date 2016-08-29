@@ -7,7 +7,7 @@
 
       .form-inputs
         = f.input :name, class: 'form-control', required: true
-        = f.input :description, class: 'form-control', required: true, :input_html => {:rows => 10} 
+        = f.input :description, class: 'form-control', required: true, :input_html => {:rows => 10}
         - if current_user.try(:admin?)
           = f.input :organization_profile_id, as: :select, label: "Для нужд предприятия", |
                   collection: current_user.profiles.customers.map {|pr| [pr.name_short_with_opf, pr.id] }, |
@@ -15,7 +15,8 @@
         - else
           = f.input :organization_profile_id, as: :hidden, input_html: { value: current_user.active_profile.id }
         = f.input :competence_ids, as: :hidden, input_html: { value: @demand.competence_ids.join(',') }
+        = f.input :criterion_ids, as: :hidden, input_html: { value: @demand.criterion_ids.join(',') }
       .form-actions
         = f.button :submit, "Сохранить Потребность",:class => 'btn-xl btn btn-primary left'
   .col-xs-9.col-sm-6
-    = render partial: "shared/compenetce_in_demand"
+    = render partial: "shared/criterions_in_demand"

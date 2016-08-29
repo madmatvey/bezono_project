@@ -47,5 +47,56 @@
       $('#delete_competence_'+comp_id).replaceWith( "<div class='btn btn-info btn-sm' id='add_competence_"+comp_id+"'><i class='fa fa-plus fa-lg'></i></div>")
       $('#add_competence_'+comp_id).on('hover')
       return
+
+
+    # add criterions
+
+    $('#not-choosed-criterions').on 'click', '.btn.btn-info.btn-sm', (event) ->
+      div_id = this.id
+      arr = div_id.split('_')
+      item_id = arr[arr.length - 1]
+      array_val = []
+      value = $("#demand_criterion_ids").val()
+      array_val = value.split(",")
+      array_val.push(item_id)
+      jQuery.unique(array_val)
+      $("#demand_criterion_ids").val(array_val)
+      $('#criterion_group_'+item_id).detach().prependTo('#choosed-criterions')
+      $('#add_criterion_'+item_id).replaceWith("<div class='btn btn-success btn-sm' id='delete_criterion_"+item_id+"'><i class='fa fa-check fa-lg'></i></div>")
+      $('#delete_criterion_'+item_id).on('hover')
+      return
+
+
+    $('#choosed-criterions').on 'click', '.btn.btn-success.btn-sm', (event) ->
+      div_id = this.id
+      arr = div_id.split('_')
+      item_id = arr[arr.length - 1]
+      value = $("#demand_criterion_ids").val()
+      array_val = value.split(",")
+      array_val.pop(item_id)
+      jQuery.unique(array_val)
+      $("#demand_criterion_ids").val(array_val)
+      $('#criterion_group_'+item_id).detach().prependTo('#not-choosed-criterions')
+      $('#delete_criterion_'+item_id).replaceWith( "<div class='btn btn-info btn-sm' id='add_criterion_"+item_id+"'><i class='fa fa-plus fa-lg'></i></div>")
+      $('#add_criterion_'+item_id).on('hover')
+      return
+
+    $('#choosed-criterions').on 'click', '.btn.btn-default.btn-sm', (event) ->
+      div_id = this.id
+      arr = div_id.split('_')
+      item_id = arr[arr.length - 1]
+      console.log("Handle click on choosed-criterions item_id: "+item_id)
+      return
+
+    $('#not-choosed-criterions').on 'click', '.btn.btn-default.btn-sm', (event) ->
+      div_id = this.id
+      arr = div_id.split('_')
+      item_id = arr[arr.length - 1]
+      console.log("Handle click on NOT-choosed-criterions item_id: "+item_id)
+      return
+
+    $('[data-toggle="popover"]').popover html: 'true'
+    return
+
     return
 ) jQuery

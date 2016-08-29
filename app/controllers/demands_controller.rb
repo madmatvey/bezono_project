@@ -18,6 +18,7 @@ class DemandsController < ApplicationController
   def new
     @demand = Demand.new
     @competences = Competence.all - @demand.competences
+    @criterions = Criterion.all - @demand.criterions
     authorize @demand
   end
 
@@ -25,6 +26,7 @@ class DemandsController < ApplicationController
   def edit
     authorize @demand
     @competences = Competence.all - @demand.competences
+    @criterions = Criterion.all - @demand.criterions
   end
 
   # POST /demands
@@ -37,6 +39,7 @@ class DemandsController < ApplicationController
     respond_to do |format|
       if @demand.save
         @demand.competence_ids = params[:demand][:competence_ids].split(',')
+        @demand.criterion_ids = params[:demand][:criterion_ids].split(',')
         format.html { redirect_to @demand, notice: 'Demand was successfully created.' }
         format.json { render :show, status: :created, location: @demand }
         format.js
@@ -58,6 +61,7 @@ class DemandsController < ApplicationController
     respond_to do |format|
       if @demand.update(demand_params)
         @demand.competence_ids = params[:demand][:competence_ids].split(',')
+        @demand.criterion_ids = params[:demand][:criterion_ids].split(',')
         format.html { redirect_to @demand, notice: 'Demand was successfully updated.' }
         format.json { render :show, status: :ok, location: @demand }
         format.js
@@ -88,6 +92,6 @@ class DemandsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def demand_params
-      params.require(:demand).permit(:name, :description, :organization_profile_id, :competence_ids => {} )
+      params.require(:demand).permit(:name, :description, :organization_profile_id, :competence_ids => {} , :criterion_ids => {})
     end
 end
