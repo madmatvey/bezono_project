@@ -18,6 +18,8 @@ gem 'enum_help'
 gem 'wicked'
 gem 'user_notif'
 
+gem 'ahprocess'
+
 group :development, :test do
   gem 'byebug'
 end
@@ -47,8 +49,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
 end
+
+gem 'pg'
 group :production do
-  gem 'pg'
+
   gem 'rails_12factor'
   gem 'unicorn'
 end

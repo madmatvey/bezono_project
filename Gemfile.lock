@@ -69,6 +69,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    ahprocess (0.1.0)
     arel (6.0.3)
     autoprefixer-rails (6.3.6.2)
       execjs
@@ -313,6 +314,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   aasm_history
+  ahprocess
   better_errors
   bootstrap-sass
   byebug

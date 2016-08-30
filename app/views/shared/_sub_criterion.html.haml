@@ -1,0 +1,8 @@
+- crit.sub_criterions.each do |criterion|
+
+  .btn-group{style: "box-sizing: border-box; padding: 4px;", id: "sub_criterion_group_#{criterion.id}"}
+    .btn.btn-info.btn-sm.btn-space{id: "add_sub_criterion_#{criterion.id}"}
+      = icon('plus', class: 'fa-lg')
+    .btn.btn-default{id: "sub_criterion_#{criterion.id}"}
+      = criterion.name
+      -# %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
