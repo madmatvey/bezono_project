@@ -1,0 +1,10 @@
+= simple_form_for(@criterion, remote: request.xhr?, html: { data: { modal: true } }) do |f| #= simple_form_for(@criterion, remote: true, html: { style: "display:inline;" }) do |f|
+  .modal-body
+    %ul.errors= f.error_notification
+    .form-inputs
+      = f.input :name, label: "Название критерия"
+      = f.input :master_criterion_id, as: :hidden, input_html: { value: params[:master_criterion_id] }
+      = f.input :demand_id, as: :hidden, input_html: { value: params[:demand_id] }
+    .form-actions
+      = f.submit "Создать критерий", class: "btn btn-primary"
+      -# = link_to "Отмена", "#", class: "btn" #, data: {dismiss: "modal"}

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :explanations #, except: [:index]
   end
 
+  resources :criterions
+
   resources :accreditations do
     resources :build, controller: 'accreditations/build'
   end

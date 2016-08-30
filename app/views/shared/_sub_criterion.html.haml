@@ -6,3 +6,5 @@
     .btn.btn-default{id: "sub_criterion_#{criterion.id}"}
       = criterion.name
       -# %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
+
+= link_to "Добавить подкритерий", new_criterion_path(master_criterion_id: crit.id, demand_id: @demand.id), class: "btn btn-sm btn-info", data: { modal: true }

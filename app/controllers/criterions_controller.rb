@@ -1,6 +1,7 @@
 class CriterionsController < ApplicationController
   before_action :set_criterion, only: [:show, :edit, :update, :destroy]
 
+  respond_to :html, :xml, :json
   # GET /criterions
   # GET /criterions.json
   def index
@@ -18,6 +19,7 @@ class CriterionsController < ApplicationController
   def new
     @criterion = Criterion.new
     # authorize @criterion
+    respond_modal_with @criterion
   end
 
   # GET /criterions/1/edit
@@ -30,19 +32,20 @@ class CriterionsController < ApplicationController
   # POST /criterions.json
   def create
     @criterions = Criterion.all
-    @criterion = Criterion.new(criterion_params)
+    @criterion = Criterion.create(criterion_params)
     # authorize @criterion
-    respond_to do |format|
-      if @criterion.save
-        format.html { redirect_to @criterion, notice: 'Criterion was successfully created.' }
-        format.js
-        format.json { render :show, status: :created, location: @criterion }
-      else
-        format.html { render :new }
-        format.js
-        format.json { render json: @criterion.errors, status: :unprocessable_entity }
-      end
-    end
+    respond_modal_with @criterion, location: edit_demand_path(id: @criterion.demand.id)
+    # respond_to do |format|
+    #   if @criterion.save
+    #     format.html { redirect_to @criterion, notice: 'Criterion was successfully created.' }
+    #     format.js
+    #     format.json { render :show, status: :created, location: @criterion }
+    #   else
+    #     format.html { render :new }
+    #     format.js
+    #     format.json { render json: @criterion.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /criterions/1
@@ -83,6 +86,6 @@ class CriterionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def criterion_params
-      params.require(:criterion).permit(:name, :demand_id)
+      params.require(:criterion).permit(:name, :demand_id, :master_criterion_id)
     end
 end

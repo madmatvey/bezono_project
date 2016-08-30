@@ -20,3 +20,5 @@
         .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'shared/sub_criterion', locals: {crit: criterion}}"}
           = criterion.name
           %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
+
+= link_to "Добавить критерий", new_criterion_path(demand_id: @demand.id), class: "btn btn-sm btn-primary", data: { modal: true }

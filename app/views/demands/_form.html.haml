@@ -7,7 +7,7 @@
 
       .form-inputs
         = f.input :name, class: 'form-control', required: true
-        = f.input :description, class: 'form-control', required: true, :input_html => {:rows => 10}
+        = f.input :description, class: 'form-control', required: true, :input_html => {:rows => 3}
         - if current_user.try(:admin?)
           = f.input :organization_profile_id, as: :select, label: "Для нужд предприятия", |
                   collection: current_user.profiles.customers.map {|pr| [pr.name_short_with_opf, pr.id] }, |
