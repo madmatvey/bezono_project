@@ -62,7 +62,7 @@
       jQuery.unique(array_val)
       $("#demand_criterion_ids").val(array_val)
       $('#criterion_group_'+item_id).detach().prependTo('#choosed-criterions')
-      $('#add_criterion_'+item_id).replaceWith("<div class='btn btn-success btn-sm' id='delete_criterion_"+item_id+"'><i class='fa fa-check fa-lg'></i></div>")
+      $('#add_criterion_'+item_id).replaceWith("<div class='btn btn-success btn-sm btn-space' id='delete_criterion_"+item_id+"'><i class='fa fa-check fa-lg'></i></div>")
       $('#delete_criterion_'+item_id).on('hover')
       return
 
@@ -77,7 +77,7 @@
       jQuery.unique(array_val)
       $("#demand_criterion_ids").val(array_val)
       $('#criterion_group_'+item_id).detach().prependTo('#not-choosed-criterions')
-      $('#delete_criterion_'+item_id).replaceWith( "<div class='btn btn-info btn-sm' id='add_criterion_"+item_id+"'><i class='fa fa-plus fa-lg'></i></div>")
+      $('#delete_criterion_'+item_id).replaceWith( "<div class='btn btn-info btn-space btn-sm' id='add_criterion_"+item_id+"'><i class='fa fa-plus fa-lg'></i></div>")
       $('#add_criterion_'+item_id).on('hover')
       return
 
@@ -95,8 +95,7 @@
       console.log("Handle click on NOT-choosed-criterions item_id: "+item_id)
       return
 
-    $('[data-toggle="popover"]').popover html: 'true'
-    return
+    $('[data-toggle="popover"]').popover placement: 'bottom', html: 'true'
 
     return
 ) jQuery

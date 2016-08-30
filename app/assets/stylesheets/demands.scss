@@ -1,3 +1,22 @@
 // Place all the styles related to the demands controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.popover
+{
+ max-width: 600px;
+ width: auto;
+ min-width: 200px ! important;
+}
+
+.btn-group {
+  white-space: nowrap;
+  .btn {
+    float: none;
+    display: inline-block!important;
+  }
+
+}
+
+.btn-space {
+    margin-right: -5px;
+}
