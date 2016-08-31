@@ -4,7 +4,7 @@
     .form-inputs
       = f.input :name, label: "Название критерия"
       = f.input :master_criterion_id, as: :hidden, input_html: { value: params[:master_criterion_id] }
-      = f.input :demand_id, as: :hidden, input_html: { value: params[:demand_id] }
+      = f.input :demand_ids, as: :hidden, input_html: { value: params[:demand_id], name: "criterion[demand_ids][]"}
     .form-actions
       = f.submit "Создать критерий", class: "btn btn-primary"
       -# = link_to "Отмена", "#", class: "btn" #, data: {dismiss: "modal"}

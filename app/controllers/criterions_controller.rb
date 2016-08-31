@@ -34,7 +34,7 @@ class CriterionsController < ApplicationController
     @criterions = Criterion.all
     @criterion = Criterion.create(criterion_params)
     # authorize @criterion
-    respond_modal_with @criterion, location: edit_demand_path(id: @criterion.demand.id)
+    respond_modal_with @criterion, location: edit_demand_path(id: @criterion.demands.last.id)
     # respond_to do |format|
     #   if @criterion.save
     #     format.html { redirect_to @criterion, notice: 'Criterion was successfully created.' }
@@ -86,6 +86,6 @@ class CriterionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def criterion_params
-      params.require(:criterion).permit(:name, :demand_id, :master_criterion_id)
+      params.require(:criterion).permit(:name, :master_criterion_id, :demand_ids => [])
     end
 end
