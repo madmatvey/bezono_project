@@ -18,7 +18,7 @@
         console.log 'mouse out of choosed element with id: ' + comp_id
         return
 
-    $('#not-choosed-compenences').on 'click', '.btn.btn-info.btn-sm', (event) ->
+    $('#not-choosed-competences').on 'click', '.btn.btn-info.btn-sm', (event) ->
       div_id = this.id
       arr = div_id.split('_')
       comp_id = arr[arr.length - 1]
@@ -34,12 +34,12 @@
       return
 
 
-    $('#choosed-compenences').on 'click', '.btn.btn-success.btn-sm', (event) ->
+    $('#choosed-competences').on 'click', '.btn.btn-success.btn-sm', (event) ->
       div_id = this.id
       arr = div_id.split('_')
       comp_id = arr[arr.length - 1]
       value = $("#demand_competence_ids").val()
-      array_val = value.split(",")
+      array_val = value.split(',').filter(Boolean)
       array_val.pop(comp_id)
       jQuery.unique(array_val)
       $("#demand_competence_ids").val(array_val)
@@ -57,7 +57,7 @@
       item_id = arr[arr.length - 1]
       array_val = []
       value = $("#demand_criterion_ids").val()
-      array_val = value.split(",")
+      array_val = value.split(",").filter(Boolean)
       array_val.push(item_id)
       jQuery.unique(array_val)
       $("#demand_criterion_ids").val(array_val)
