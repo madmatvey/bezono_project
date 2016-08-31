@@ -11,13 +11,15 @@
         = @demand.description
 
       .well
-        %h5 Требуемые компетенции поставщиков:
-        %br
-        .choosed-compenences
-          - @demand.competences.each do |competence|
-            .btn.btn-default.btn-sm{id: "competence_#{competence.id}"}
-              = competence.tag
-              %span.badge{:id => "org_count_#{competence.id}"}= competence.organization_profiles.count
+        %h5 Критерии потребности:
+        .choosed-criterions
+          - @demand.criterions.each do |criterion|
+            -if criterion.master?
+              .btn-group{style: "box-sizing: border-box; padding: 10px;", id: "criterion_group_#{criterion.id}"}
+
+                .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'shared/sub_criterion', locals: {crit: criterion}}"}
+                  = criterion.name
+                  %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
 
       -if policy(@demand).edit?
         = link_to 'Edit', edit_demand_path(@demand)
