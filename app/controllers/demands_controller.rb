@@ -38,8 +38,8 @@ class DemandsController < ApplicationController
     # @demand.competences.build(demand_params[:competence_ids])
     respond_to do |format|
       if @demand.save
-        @demand.competence_ids = params[:demand][:competence_ids].split(',')
-        @demand.criterion_ids = params[:demand][:criterion_ids].split(',')
+        @demand.competence_ids = params[:demand][:competence_ids].first.split(',')
+        @demand.criterion_ids = params[:demand][:criterion_ids].first.split(',')
         format.html { redirect_to @demand, notice: 'Demand was successfully created.' }
         format.json { render :show, status: :created, location: @demand }
         format.js
@@ -56,12 +56,16 @@ class DemandsController < ApplicationController
   def update
     # byebug
     authorize @demand
-    # @demand.competence_ids = params[:demand][:competence_ids].split(',')
+
     # @demand.competences.build()
     respond_to do |format|
       if @demand.update(demand_params)
-        # @demand.competence_ids = params[:demand][:competence_ids].split(',')
-        # @demand.criterion_ids = params[:demand][:criterion_ids].split(',')
+        @demand.competence_ids = params[:demand][:competence_ids].first.split(',')
+        @demand.criterion_ids = params[:demand][:criterion_ids].first.split(',')
+        puts "
+        params[:demand][:criterion_ids]: #{params[:demand][:criterion_ids]}
+        @demand.criterion_ids: #{@demand.criterion_ids}
+        "
         format.html { redirect_to @demand, notice: 'Demand was successfully updated.' }
         format.json { render :show, status: :ok, location: @demand }
         format.js
