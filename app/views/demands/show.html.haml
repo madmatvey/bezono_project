@@ -17,7 +17,7 @@
             -if criterion.master?
               .btn-group{style: "box-sizing: border-box; padding: 10px;", id: "criterion_group_#{criterion.id}"}
 
-                .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'shared/sub_criterion', locals: {crit: criterion}}"}
+                .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'shared/sub_criterion_info', locals: {crit: criterion}}"}
                   = criterion.name
                   %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
 

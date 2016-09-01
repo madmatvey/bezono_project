@@ -3,6 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 (($) ->
   $ ->
+    $("body").on 'click', (e) ->
+      $('[data-toggle="popover"]').each ->
+        # hide any open popovers when the anywhere else in the body is clicked
+        if !$(this).is(e.target) and $(this).has(e.target).length == 0 and $('.popover').has(e.target).length == 0
+          $(this).popover 'hide'
+        return
+      return
+
     $(".btn-success").hover (->
       $(this).children().replaceWith("<i class='fa fa-minus fa-lg'>")
       div_id = this.id
@@ -96,6 +104,8 @@
       return
 
     $('[data-toggle="popover"]').popover placement: 'bottom', html: 'true'
-
     return
+
+
+
 ) jQuery

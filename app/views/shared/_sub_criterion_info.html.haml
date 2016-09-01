@@ -1,0 +1,5 @@
+- crit.sub_criterions.each do |criterion|
+
+  .btn-group{style: "box-sizing: border-box; padding: 4px;", id: "sub_criterion_group_#{criterion.id}"}
+    .btn.btn-default{id: "sub_criterion_#{criterion.id}"}
+      = criterion.name
