@@ -4,6 +4,26 @@
 (($) ->
   $ ->
     $("body").on 'click', (e) ->
+      # console.log("HANDLE CLICK TO ID:"+event.target.id+" CLASS:"+event.target)
+      element_id = event.target.id
+      arr_cmd = element_id.split('_')
+      cmd_element_id = arr_cmd[arr_cmd.length - 1]
+      arr_cmd.pop()
+      cmd = arr_cmd.join("_")
+
+      # console.log "COMMAND: " + cmd + " with ID: " + cmd_element_id
+
+      if cmd == 'add_sub_criterion'
+        value = $("#demand_criterion_ids").val()
+        array_val = value.split(",").filter(Boolean)
+        array_val.push(cmd_element_id)
+        jQuery.unique(array_val)
+        $("#demand_criterion_ids").val(array_val)
+        $('#add_sub_criterion_'+cmd_element_id).replaceWith("<div class='btn btn-success btn-sm btn-space' id='delete_criterion_"+cmd_element_id+"'><i class='fa fa-check fa-lg'></i></div>")
+        $('#delete_sub_criterion_'+cmd_element_id).on('hover')
+        return
+
+
       $('[data-toggle="popover"]').each ->
         # hide any open popovers when the anywhere else in the body is clicked
         if !$(this).is(e.target) and $(this).has(e.target).length == 0 and $('.popover').has(e.target).length == 0
@@ -16,14 +36,14 @@
       div_id = this.id
       arr = div_id.split('_')
       comp_id = arr[arr.length - 1]
-      console.log 'mouse on choosed element with id: ' + comp_id
+      # console.log 'mouse on choosed element with id: ' + comp_id
       return
       ), ->
         $(this).children().replaceWith("<i class='fa fa-check fa-lg'>")
         div_id = this.id
         arr = div_id.split('_')
         comp_id = arr[arr.length - 1]
-        console.log 'mouse out of choosed element with id: ' + comp_id
+        # console.log 'mouse out of choosed element with id: ' + comp_id
         return
 
     $('#not-choosed-competences').on 'click', '.btn.btn-info.btn-sm', (event) ->
@@ -106,6 +126,11 @@
     $('[data-toggle="popover"]').popover placement: 'bottom', html: 'true'
     return
 
-
+    $('[data-toggle="popover"]').on 'click', '.btn.btn-info.btn-sm.btn-space', (event) ->
+      div_id = this.id
+      arr = div_id.split('_')
+      item_id = arr[arr.length - 1]
+      console.log("Handle click on popover-content item_id: "+item_id)
+      return
 
 ) jQuery
