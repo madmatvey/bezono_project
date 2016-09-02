@@ -3,11 +3,14 @@
 
   .form-inputs
     = f.input :message, label: button_message
+    = render partial: 'shared/criterions_in_explanation', locals: {demand: @demand}
+    %br
+    %br
     = f.input :user_id, as: :hidden, input_html: { value: user }
     = f.input :demand_id, as: :hidden, input_html: { value: demand }
     = f.input :organization_profile_id, as: :hidden, input_html: { value: organization_profile_id }
     = f.input :question_id, as: :hidden, input_html: { value: question_id }
-
+    = f.input :criterion_ids, as: :hidden, input_html: { value: nil, name: "explanation[criterion_ids][]" }
   .form-actions
     = f.button :submit, class: 'btn btn-primary'
 -# - byebug

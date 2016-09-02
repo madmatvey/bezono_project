@@ -11,6 +11,8 @@ class DemandsController < ApplicationController
   # GET /demands/1
   # GET /demands/1.json
   def show
+    @competences = Competence.all - @demand.competences
+    @criterions = Criterion.all - @demand.criterions
     authorize @demand
   end
 

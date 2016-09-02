@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831095439) do
+ActiveRecord::Schema.define(version: 20160902091414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 20160831095439) do
 
   add_index "criterions_demands", ["criterion_id"], name: "index_criterions_demands_on_criterion_id", using: :btree
   add_index "criterions_demands", ["demand_id"], name: "index_criterions_demands_on_demand_id", using: :btree
+
+  create_table "criterions_explanations", id: false, force: :cascade do |t|
+    t.integer "criterion_id",   null: false
+    t.integer "explanation_id", null: false
+  end
+
+  add_index "criterions_explanations", ["criterion_id"], name: "index_criterions_explanations_on_criterion_id", using: :btree
+  add_index "criterions_explanations", ["explanation_id"], name: "index_criterions_explanations_on_explanation_id", using: :btree
 
   create_table "demands", force: :cascade do |t|
     t.string   "name"

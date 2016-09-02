@@ -6,6 +6,7 @@ class Explanation < ActiveRecord::Base
   belongs_to :question, class_name: 'Explanation', foreign_key: 'question_id'
   has_one :answer, class_name: 'Explanation', foreign_key: 'question_id'
   has_many :new_explanation_notif, as: :target, dependent: :destroy
+  has_and_belongs_to_many :criterions, autosave: true
 
   scope :answered,  -> { where(verified: Explanation.answered) }
 

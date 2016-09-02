@@ -1,0 +1,11 @@
+.well
+  #not-choosed-criterions
+    - @criterions.each do |criterion|
+      -if criterion.master?
+        .btn-group{style: "box-sizing: border-box; padding: 10px;", id: "criterion_group_#{criterion.id}"}
+          .btn.btn-info.btn-sm.btn-space{id: "add_criterion_#{criterion.id}"}
+            = icon('plus', class: 'fa-lg')
+          .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'sub_criterion', locals: {crit: criterion, dem: @demand}}"}
+            = criterion.name
+            %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
+  -# = link_to "Добавить критерий", new_criterion_path(demand_id: params[:demand_id]), class: "btn btn-sm btn-primary", data: { modal: true }

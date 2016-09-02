@@ -7,6 +7,7 @@ class CriterionsController < ApplicationController
   def index
     @criterions = Criterion.all
     # authorize @criterions
+    respond_modal_with @criterions, @demand
   end
 
   # GET /criterions/1
