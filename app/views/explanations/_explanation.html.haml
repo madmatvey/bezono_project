@@ -1,34 +1,40 @@
 .li
-  - if explanation != nil
-    -if explanation.from_supplier?
-      .well.rounded
-        %b= "Запрос (№#{explanation.id}) от поставщика"
-        %br
-        = explanation.message
-        -if explanation.criterions.size > 0
-          .p.text-left
-            - explanation.criterions.each do |criterion|
-              -if criterion.master?
-                .btn-group{style: "box-sizing: border-box; padding: 5px;", id: "criterion_group_#{criterion.id}"}
-                  .btn.btn-success.btn-sm.btn-space{id: "delete_criterion_#{criterion.id}"}
-                    = icon('check', class: 'fa-lg')
-                  .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'shared/sub_criterion', locals: {crit: criterion}}"}
-                    = criterion.name
-                    %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
-
-        -if current_user.try(:admin?)
-          .p.text-right
-            = explanation.user.name
-          .p.text-right.b
-            = explanation.organization_profile.name_short_with_opf
-        -if explanation.answered?
-          .bg-success.rounded
-            %b= "Ответ (№#{explanation.answer.id}) "
-            = "на запрос №#{explanation.id}"
-            %br
-            = explanation.answer.message
-            -if current_user.try(:admin?)
-              .p.text-right
-                = explanation.answer.user.name
-              .p.text-right.b
-                = explanation.answer.organization_profile.name_short_with_opf
+  = react_component 'Explanation', {explanation: explanation.as_json(only: [ :id,
+                                                                             :message,
+                                                                             :user_id,
+                                                                             :demand_id,
+                                                                             :organization_profile_id,
+                                                                             :question_id ])}
+  -# - if explanation != nil
+  -#   -if explanation.from_supplier?
+  -#     .well.rounded
+  -#       %b= "Запрос (№#{explanation.id}) от поставщика"
+  -#       %br
+  -#       = explanation.message
+  -#       -if explanation.criterions.size > 0
+  -#         .p.text-left
+  -#           - explanation.criterions.each do |criterion|
+  -#             -if criterion.master?
+  -#               .btn-group{style: "box-sizing: border-box; padding: 5px;", id: "criterion_group_#{criterion.id}"}
+  -#                 .btn.btn-success.btn-sm.btn-space{id: "delete_criterion_#{criterion.id}"}
+  -#                   = icon('check', class: 'fa-lg')
+  -#                 .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'shared/sub_criterion', locals: {crit: criterion}}"}
+  -#                   = criterion.name
+  -#                   %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
+  -#
+  -#       -if current_user.try(:admin?)
+  -#         .p.text-right
+  -#           = explanation.user.name
+  -#         .p.text-right.b
+  -#           = explanation.organization_profile.name_short_with_opf
+  -#       -if explanation.answered?
+  -#         .bg-success.rounded
+  -#           %b= "Ответ (№#{explanation.answer.id}) "
+  -#           = "на запрос №#{explanation.id}"
+  -#           %br
+  -#           = explanation.answer.message
+  -#           -if current_user.try(:admin?)
+  -#             .p.text-right
+  -#               = explanation.answer.user.name
+  -#             .p.text-right.b
+  -#               = explanation.answer.organization_profile.name_short_with_opf

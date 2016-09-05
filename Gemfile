@@ -20,6 +20,8 @@ gem 'user_notif'
 
 gem 'ahprocess'
 
+gem 'react-rails'
+
 group :development, :test do
   gem 'byebug'
 end
