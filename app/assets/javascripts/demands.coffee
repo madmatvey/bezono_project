@@ -11,7 +11,7 @@
       arr_cmd.pop()
       cmd = arr_cmd.join("_")
 
-      # console.log "COMMAND: " + cmd + " with ID: " + cmd_element_id
+      console.log "COMMAND: " + cmd + " with ID: " + cmd_element_id
 
       if cmd == 'add_sub_criterion'
         value = $("#demand_criterion_ids").val()
@@ -21,6 +21,16 @@
         $("#demand_criterion_ids").val(array_val)
         $('#add_sub_criterion_'+cmd_element_id).replaceWith("<div class='btn btn-success btn-sm btn-space' id='delete_criterion_"+cmd_element_id+"'><i class='fa fa-check fa-lg'></i></div>")
         $('#delete_sub_criterion_'+cmd_element_id).on('hover')
+        return
+
+      if cmd == 'add_criterion'
+        value = $("#explanation_criterion_ids").val()
+        array_val = value.split(",").filter(Boolean)
+        array_val.push(cmd_element_id)
+        jQuery.unique(array_val)
+        $("#explanation_criterion_ids").val(array_val)
+        $('#add_criterion_'+cmd_element_id).replaceWith("<div class='btn btn-success btn-sm btn-space' id='delete_criterion_"+cmd_element_id+"'><i class='fa fa-check fa-lg'></i></div>")
+        $('#delete_criterion_'+cmd_element_id).on('hover')
         return
 
 

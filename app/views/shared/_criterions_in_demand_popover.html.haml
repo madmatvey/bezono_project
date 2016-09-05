@@ -1,0 +1,24 @@
+Выбранные критерии:
+.well.well-sm#choosed-criterions
+  - @demand.criterions.each do |criterion|
+    -if criterion.master?
+      .btn-group{style: "box-sizing: border-box; padding: 5px;", id: "criterion_group_#{criterion.id}"}
+        .btn.btn-success.btn-sm.btn-space{id: "delete_criterion_#{criterion.id}"}
+          = icon('check', class: 'fa-lg')
+        .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'shared/sub_criterion', locals: {crit: criterion}}"}
+          = criterion.name
+          %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
+
+
+Возможные критерии:
+.well.well-sm#not-choosed-criterions
+  - @criterions.each do |criterion|
+    -if criterion.master?
+      .btn-group{style: "box-sizing: border-box; padding: 5px;", id: "criterion_group_#{criterion.id}"}
+        .btn.btn-info.btn-sm.btn-space{id: "add_criterion_#{criterion.id}"}
+          = icon('plus', class: 'fa-lg')
+        .btn.btn-default.btn-sm{id: "criterion_#{criterion.id}", 'data-toggle' => "popover", 'title' => "Подкритерии", 'data-content' => "#{render partial: 'shared/sub_criterion', locals: {crit: criterion}}"}
+          = criterion.name
+          %span.badge{:id => "sub_count_#{criterion.id}"}= criterion.sub_criterions.count
+
+= link_to "Добавить критерий", new_criterion_path(demand_id: @demand.id), class: "btn btn-sm btn-primary", data: { modal: true }

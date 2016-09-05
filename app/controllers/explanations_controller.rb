@@ -37,6 +37,7 @@ class ExplanationsController < ApplicationController
     # authorize @demand.organization_profile
     respond_to do |format|
       if @explanation.save
+        @explanation.criterion_ids = params[:explanation][:criterion_ids].first.split(',')
         format.html { redirect_to demand_path(id: params[:demand_id]), notice: 'Explanation was successfully created.' }
         format.json { render :show, status: :created, location: @explanation }
       else
@@ -53,6 +54,7 @@ class ExplanationsController < ApplicationController
     authorize @explanation
     respond_to do |format|
       if @explanation.update(explanation_params)
+        @explanation.criterion_ids = params[:explanation][:criterion_ids].first.split(',')
         format.html { redirect_to @explanation, notice: 'Explanation was successfully updated.' }
         format.json { render :show, status: :ok, location: @explanation }
       else
@@ -81,6 +83,6 @@ class ExplanationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def explanation_params
-      params.require(:explanation).permit(:message, :user_id, :demand_id, :organization_profile_id, :question_id)
+      params.require(:explanation).permit(:message, :user_id, :demand_id, :organization_profile_id, :question_id, :criterion_ids => [])
     end
 end
