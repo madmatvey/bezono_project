@@ -34,5 +34,13 @@ module BezonoProject
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.react.server_renderer_options = {
+      files: ["react-server.js", "alt_init.js", "routes_init.js", "prerender.js"], # files to load for prerendering
+      replay_console: true,                 # if true, console.* will be replayed client-side
+    }
+
+    #reactjs
+    config.react.addons = true
   end
 end
