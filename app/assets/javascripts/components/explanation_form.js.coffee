@@ -9,14 +9,14 @@
 
   handleSubmit: (e) ->
     e.preventDefault()
-    console.log "PROPS ON POST AJAX: " + @props.demand.id
+    # console.log "PROPS ON POST AJAX: " + @props.demand.id
     $.post "/demands/#{@props.demand.id}/explanations", { explanation: @state }, (data) =>
       @props.handleNewExplanation data
       @setState @getInitialState()
     , 'JSON'
 
   render: ->
-    console.log "PROPS ON RENDER FORM: " + @props.demand.id
+    # console.log "PROPS ON RENDER FORM: " + @props.demand.id
     React.DOM.form
       className: 'form-inline'
       onSubmit: @handleSubmit

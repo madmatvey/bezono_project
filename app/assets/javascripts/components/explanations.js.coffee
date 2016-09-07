@@ -2,6 +2,7 @@
   getInitialState: ->
     explanations: @props.explanations
     demand: @props.demand
+    current_user: @props.current_user
   getDefaultProps: ->
     explanations: []
   addExplanation: (explanation) ->

@@ -22,6 +22,22 @@ class Explanation < ActiveRecord::Base
     end
   end
 
+  def self.to_react(demand)
+    array = []
+    demand.explanations.each {|exp| array.push(exp.as_json(
+      only: [ # permitted data to react
+        :id,
+        :message,
+        :user_id,
+        :demand_id,
+        :organization_profile_id,
+        :question_id]
+        ).merge({  # permitted methods results to react
+          "from" => exp.organization_profile.accreditation.state
+          }))}
+    array
+  end
+
   def self.answered
     Explanation.select {|expl| expl.answered?}
   end

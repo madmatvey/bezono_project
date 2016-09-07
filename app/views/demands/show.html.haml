@@ -30,23 +30,18 @@
     .col-md-6
       #explanations-list
         -if policy(@demand.explanations).index?
-          = react_component 'Explanations', { explanations: @demand.explanations.as_json(only: [ :id,
-                                                                                     :message,
-                                                                                     :user_id,
-                                                                                     :demand_id,
-                                                                                     :organization_profile_id,
-                                                                                     :question_id ]),
+          = react_component 'Explanations', { explanations: Explanation.to_react(@demand),
                                                     demand: @demand.as_json(only: [ :id,
                                                                                     :description,
                                                                                     :name,
                                                                                     :organization_profile_id ]),
                                                     current_user: current_user.as_json(only: [ :id,
                                                                                               :active_profile_id,
-                                                                                              :organization_account_id ])}
+                                                                                              :organization_account_id ]).merge({"supplier" => current_user.supplier?})}
           -# = render @demand.explanations
-        -# -else
-        -#   Что бы просмотреть запросы разъяснений,
-        -#   =link_to 'авторизуйтесь', login_path
+        -else
+          Что бы просмотреть запросы разъяснений,
+          =link_to 'авторизуйтесь', login_path
         -# - cnt = @demand.explanations.count
         -# -# - byebug
         -# - if cnt == 0
