@@ -39,7 +39,18 @@ class ExplanationsController < ApplicationController
       if @explanation.save
         # @explanation.criterion_ids = params[:explanation][:criterion_ids].first.split(',')
         format.html { redirect_to demand_path(id: params[:demand_id]), notice: 'Explanation was successfully created.' }
-        format.json { render :show, status: :created, location: @explanation }
+        format.json { render :show, status: :created, location: @explanation.as_json(
+                                                            only: [ # permitted data to react
+                                                              :id,
+                                                              :message,
+                                                              :user_id,
+                                                              :demand_id,
+                                                              :organization_profile_id,
+                                                              :question_id]
+                                                              ).merge({  # permitted methods results to react
+                                                                "from" => @explanation.organization_profile.accreditation.state,
+                                                                "answer_id" => @explanation.answer.try(:id)
+                                                                }) }
       else
         format.html { render :new }
         format.json { render json: @explanation.errors, status: :unprocessable_entity }

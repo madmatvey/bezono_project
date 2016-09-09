@@ -8,6 +8,11 @@ class Explanation < ActiveRecord::Base
   has_many :new_explanation_notif, as: :target, dependent: :destroy
   has_and_belongs_to_many :criterions, autosave: true
 
+  validates :organization_profile_id, presence: true
+  validates :user_id, presence: true
+  validates :demand_id, presence: true
+  validates :message, presence: true
+
   scope :answered,  -> { where(verified: Explanation.answered) }
 
   def account
@@ -33,7 +38,8 @@ class Explanation < ActiveRecord::Base
         :organization_profile_id,
         :question_id]
         ).merge({  # permitted methods results to react
-          "from" => exp.organization_profile.accreditation.state
+          "from" => exp.organization_profile.accreditation.state,
+          "answer_id" => exp.answer.try(:id)
           }))}
     array
   end
