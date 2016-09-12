@@ -37,7 +37,7 @@
           React.DOM.div
             className: 'p text-right'
             "User ID: "
-            @props.explanation.user_id
+            @props.answer.user_id
 
       # React.DOM.p null, @props.explanation.demand_id
       # React.DOM.p null, @props.explanation.organization_profile_id
