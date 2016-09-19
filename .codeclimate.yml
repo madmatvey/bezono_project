@@ -12,6 +12,9 @@ engines:
     - dc0e043c56c03c2ada6c448f1958cfcb
   csslint:
     enabled: false
+    checks:
+      max_line_length:
+        enabled: false
   coffeelint:
     enabled: true
   duplication:

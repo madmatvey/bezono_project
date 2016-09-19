@@ -14,7 +14,7 @@
   addExplanation: (explanation) ->
     if explanation.question_id != null
       question = @state.explanations.filter((obj) ->
-          obj.id == explanation.question_id
+        obj.id == explanation.question_id
         )[0]
       question.answer_id = explanation.id
     explanations = @state.explanations.slice()
@@ -32,7 +32,7 @@
         for explanation in @state.explanations
           if explanation.question_id == null || typeof explanation.question_id == 'undefined'
             answer = @state.explanations.filter((obj) ->
-                obj.id == explanation.answer_id
+              obj.id == explanation.answer_id
               )[0]
             React.createElement Explanation, key: "explanation_#{explanation.id}", explanation: explanation, current_user: @props.current_user, demand: @props.demand, answer: answer, createExplanationPath: @props.createExplanationPath, handleNewExplanation: @addExplanation
 
