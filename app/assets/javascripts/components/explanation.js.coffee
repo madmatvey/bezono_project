@@ -1,43 +1,53 @@
 
 @Explanation = React.createClass
+  propTypes:
+    explanation: React.PropTypes.shape(
+      id: React.PropTypes.number.isRequired,
+      user_id: React.PropTypes.number.isRequired,
+      message: React.PropTypes.string.isRequired
+    )
   getInitialState: ->
-    explanation: @props.explanation
-    user_id: @props.explanation.user_id
     question_id: @props.explanation.question_id
-    current_user: @props.current_user
-    demand: @props.demand
     answer: @props.answer
-    createExplanationPath: @props.createExplanationPath
 
   # addAnswer: (explanation) ->
   #   @setState explanation: explanation
   #   # console.log explanations
 
   render: ->
+    explanation = @props.explanation
+    user_id = @props.explanation.user_id
+    question_id = @props.explanation.question_id
+    current_user = @props.current_user
+    demand = @props.demand
+    answer = @props.answer
+    createExplanationPath = @props.createExplanationPath
+
     React.DOM.div
       className: 'well rounded'
-      "Сообщение №#{@props.explanation.id}: "
-      @props.explanation.message
+      ref: "explanation_#{explanation.id}"
+      "Сообщение №#{explanation.id}: "
+      explanation.message
 
       React.DOM.div
         className: 'p text-right'
         "User ID: "
-        @props.explanation.user_id
+        explanation.user_id
 
 
-      if typeof @props.answer == 'undefined' && @props.current_user.active_profile_id == @props.demand.organization_profile_id
-        React.createElement ExplanationForm, handleNewExplanation: @props.handleNewExplanation, button_message: "Ответить на (№#{@props.explanation.id})", key: "answer_form_#{@props.explanation.id}", question_id: @props.explanation.id, demand: @props.demand, current_user: @props.current_user, createExplanationPath: @props.createExplanationPath
-      if typeof @props.answer != 'undefined' #!= null
+      if typeof answer == 'undefined' && current_user.active_profile_id == demand.organization_profile_id
+        React.createElement ExplanationForm, handleNewExplanation: @props.handleNewExplanation, button_message: "Ответить на (№#{explanation.id})", key: "answer_form_#{explanation.id}", question_id: explanation.id, demand: demand, current_user: current_user, createExplanationPath: createExplanationPath
+      if typeof answer != 'undefined' #!= null
         # console.log @props.answer
         React.DOM.div
           className: 'rounded bg-success'
-          key: "answer_#{@props.answer.id}"
-          "Ответ №#{@props.answer.id}: "
-          @props.answer.message
+          key: "answer_#{answer.id}"
+          "Ответ №#{answer.id}: "
+          answer.message
           React.DOM.div
             className: 'p text-right'
             "User ID: "
-            @props.answer.user_id
+            answer.user_id
 
       # React.DOM.p null, @props.explanation.demand_id
       # React.DOM.p null, @props.explanation.organization_profile_id

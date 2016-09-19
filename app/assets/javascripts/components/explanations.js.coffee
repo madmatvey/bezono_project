@@ -1,4 +1,9 @@
 @Explanations = React.createClass(
+  propTypes:
+    explanations: React.PropTypes.array,
+    createExplanationPath: React.PropTypes.string,
+    demand: React.PropTypes.object,
+    current_user: React.PropTypes.object
   getInitialState: ->
     explanations: @props.explanations
     demand: @props.demand
@@ -7,20 +12,14 @@
   getDefaultProps: ->
     explanations: []
   addExplanation: (explanation) ->
-    console.log "WHEN ADD: "
-    console.log explanation
-    explanations = @state.explanations.slice()
-
     if explanation.question_id != null
-      question = explanations.filter((obj) ->
+      question = @state.explanations.filter((obj) ->
           obj.id == explanation.question_id
         )[0]
       question.answer_id = explanation.id
-      console.log "QUESION IS"
-      console.log question
+    explanations = @state.explanations.slice()
     explanations.push explanation
     @setState explanations: explanations
-    console.log explanations
 
   render: ->
     React.DOM.div

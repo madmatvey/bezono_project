@@ -16,7 +16,7 @@
       @props.handleNewExplanation data
       @setState @getInitialState()
     , 'JSON'
-    
+
 
   render: ->
     React.DOM.form

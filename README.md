@@ -1,53 +1,77 @@
-Bezono Project
+# Bezono Project
 ================
+## Что это за проект?
+Bezono Project – проект по организации SaaS торговой площадки для коммерческих компаний.
+Мы находимся в стадии проверки некоторых гипотез продукта и ищем инвесторов для более быстрого развития.
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+## Что там про инвестиции?
 
-First template app was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+Если вы заинтересованы в более подробной инвест-презентации проекта, его финансовых расчетах, пишите в [telegram](https://telegram.me/madmatvey) или [на почту](mailto:info@24tender.ru)
 
-Rails Composer is supported by developers who purchase our RailsApps tutorials.
+## Я хотел бы попрактиковаться на реальном проекте или присоединиться к разработке
 
-Problems? Issues?
------------
+Мы планирем развиваться как open-source проект. Мы с радостью примем вашу помощь в разработке.
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
+### Как помочь с разработкой приложения?
 
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
+Если вы хотите внести свой вклад в приложение, проделайте следующие шаги:
 
-If the application doesn't work as expected, please [report an issue](https://github.com/madmatvey/bezono_project/issues/new)
-and include the diagnostics.
+1. Склонируйте репозиторий на свой компьютер:
 
-Ruby on Rails
--------------
+```
+git clone https://github.com/madmatvey/bezono_project.git
+```
 
-This application requires:
+2. Создайте новую ветку:
 
-- Ruby 2.2.4
-- Rails 4.2.6
+```
+cd bezono_project
+git checkout -b new_branch
+```
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+3. Внесите желаемые изменения. Убедитесь, что покрыли их тестами и эти тесты успешно проходят.
+Список текущих задач доступен в трекере [Taiga](https://tree.taiga.io/project/madmatvey-bezono-project/), если хотите присоединиться к команде ресурса и совершенствовать его постоянно, напишите об этом в телеграм [@madmatvey](https://telegram.me/madmatvey), обсудим доступ к организации проекта на Github.
 
-Getting Started
----------------
+4. При написании кода мы стараемся руководствоваться принципами [ruby style guide](https://github.com/arbox/ruby-style-guide/blob/master/README-ruRU.md)
 
-Documentation and Support
--------------------------
+5. Сделайте коммит. Напишите к нему краткое описание на английском языке не длиннее 72 символов, которое ёмко опишет внесенные изменения.
 
-Issues
--------------
+6. Обновите свою ветку:
 
-Similar Projects
-----------------
+```
+git fetch origin
+git rebase origin/master
+```
 
-Contributing
-------------
+7. Сделайте форк проекта:
 
-Credits
+```
+git remote add mine git@github.com:<your user name>/bezono_project.git
+
+```
+
+8. Отправьте ваш коммит в форк:
+
+```
+git push mine new_bezono_project_branch
+```
+
+9. Создайте pull request:
+
+ - Перейдите в репозиторий Bezono Project, в который вы только что отправили коммит (например https://github.com/your-user-name/bezono_project)
+ - Нажмите "Pull Request".
+ - Введите название ветки в соответствующее поле (по-умолчанию там написано "master")
+ - Нажмите "Update Commit Range".
+ - Убедитесь, что внесенные вами изменения содержатся во вкладке "Commits".
+ - Убедитесь, что "Files Changed" содержит все внесенные вами изменения.
+ - Более детально опишите внесенные вами изменения и не забудьте добавить осмысленный заголовок.
+ - Нажмите "Send pull request".
+
+10. С вниманием отнеситесь к оставленным к вашему коду комментариям. Не расстраивайтесь, если получите комментарии, содержащие предложения о внесении правок или указывающие на ошибки. Нам важно, чтобы в проекте был код, который можно было бы использовать в качестве наглядного пособия для новичков, а значит, он должен быть чистым и читаемым.
+
+
+## Конаткты
 -------
-Product owner: [Eugene Leontiev](https://github.com/madmatvey)
+Product owner: [Eugene Leontiev](https://telegram.me/madmatvey)
 Product CEO: Alexey Popov
 Product Sales: [Andrey Mikhailov](mailto:a_mihailov@24tender.ru)
-
-License
--------
