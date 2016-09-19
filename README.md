@@ -1,5 +1,7 @@
 # Bezono Project
 
+[![Build Status](https://travis-ci.org/madmatvey/bezono_project.svg?branch=master)](https://travis-ci.org/madmatvey/bezono_project)
+
 ## Что это за проект?
 Bezono Project – проект по организации SaaS торговой площадки для коммерческих компаний.
 Мы находимся в стадии проверки некоторых гипотез продукта и ищем инвесторов для более быстрого развития.
