@@ -11,7 +11,7 @@ engines:
     - cf57ca3c27caad6b61115dd37bc1fc02
     - dc0e043c56c03c2ada6c448f1958cfcb
   csslint:
-    enabled: true
+    enabled: false
   coffeelint:
     enabled: true
   duplication:
@@ -19,13 +19,11 @@ engines:
     config:
       languages:
       - ruby
-      - javascript
-      - python
-      - php
+      - coffeescript
   eslint:
-    enabled: true
+    enabled: false
   fixme:
-    enabled: true
+    enabled: false
   rubocop:
     enabled: true
 ratings:

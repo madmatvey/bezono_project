@@ -50,7 +50,5 @@ class OrganizationProfilePolicy
     # return false if @current_user == @user
     @current_user.try(:admin?)
   end
-  def update?
-    @current_user.try(:admin?)
-  end
+
 end
