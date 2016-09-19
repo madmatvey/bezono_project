@@ -4,6 +4,12 @@ engines:
     enabled: true
   bundler-audit:
     enabled: true
+    # ... CONFIG CONTENT ...
+    exclude_fingerprints:
+    - 46611a9dcdfbc97ed963594a822cf4b3
+    - 53af6b1590a0711e6b6d8204fef9c82f
+    - cf57ca3c27caad6b61115dd37bc1fc02
+    - dc0e043c56c03c2ada6c448f1958cfcb
   csslint:
     enabled: true
   coffeelint:
