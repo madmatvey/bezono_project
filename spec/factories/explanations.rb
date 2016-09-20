@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :explanation do
     message "MyText"
-    user nil
-    demand nil
-    organization_profile nil
+    user
+    demand
+    organization_profile 
   end
 end
