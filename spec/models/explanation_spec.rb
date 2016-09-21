@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Explanation, type: :model do
-  explanation = FactoryGirl.create(:explanation) 
+  explanation = FactoryGirl.create(:explanation)
 
 
   it "is valid with valid attributes" do
@@ -24,3 +24,17 @@ RSpec.describe Explanation, type: :model do
     expect(explanation).to_not be_valid
   end
 end
+
+describe Explanation, '#account' do
+  it 'returns organization account' do
+    explanation = FactoryGirl.create(:explanation)
+    expect(explanation.account).to be_an_instance_of(OrganizationAccount)
+  end
+end
+
+# describe Explanation, '#answered?' do
+#   it 'returns true if explanation have answer' do
+#     explanation = FactoryGirl.create(:explanation)
+#     expect(explanation.account).to be_an_instance_of(OrganizationAccount)
+#   end
+# end
