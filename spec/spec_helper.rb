@@ -1,4 +1,7 @@
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
+require 'factory_girl_rails'
+require 'support/factory_girl'
+
 CodeClimate::TestReporter.start
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'capybara/rspec'

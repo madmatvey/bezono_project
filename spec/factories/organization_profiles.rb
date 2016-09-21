@@ -1,8 +1,16 @@
 FactoryGirl.define do
+  sequence :inn do |n|
+    "#{Faker::Company.swedish_organisation_number}#{n}"
+  end
+
+  sequence :kpp do |n|
+    "#{n}#{Faker::Company.swedish_organisation_number}"
+  end
+
   factory :organization_profile do
-    inn "123654987"
+    inn { generate(:inn) }
     address_value "Test address_value"
-    kpp "test kpp"
+    kpp { generate(:kpp) }
     management_name "Test management_name"
     management_post "Test management_post"
     name_full_with_opf "test name_full_with_opf" #Полное наименование с ОПФ

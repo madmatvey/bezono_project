@@ -1,8 +1,12 @@
 FactoryGirl.define do
+  sequence :message do |n|
+    "#{Faker::Lorem.sentence} №#{n}"
+  end
+
   factory :explanation do
-    message "MyText"
+    message { generate(:message) }
     user
     demand
-    organization_profile 
+    organization_profile
   end
 end

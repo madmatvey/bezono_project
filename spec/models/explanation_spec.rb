@@ -1,30 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Explanation, type: :model do
+  explanation = FactoryGirl.create(:explanation) 
+
+
   it "is valid with valid attributes" do
-    expect(Explanation.new( message: "message",
-                            user_id: 1,
-                            organization_profile_id: 1,
-                            demand_id: 1)).to be_valid
+    expect(explanation).to be_valid
   end
   it "is not valid without a message" do
-    expect(Explanation.new( user_id: 1,
-                            organization_profile_id: 1,
-                            demand_id: 1)).to_not be_valid
+    explanation.message = nil
+    expect(explanation).to_not be_valid
   end
   it "is not valid without a user_id" do
-    expect(Explanation.new( message: "message",
-                            organization_profile_id: 1,
-                            demand_id: 1)).to_not be_valid
+    explanation.user_id = nil
+    expect(explanation).to_not be_valid
   end
   it "is not valid without a organization_profile_id" do
-    expect(Explanation.new( message: "message",
-                            user_id: 1,
-                            demand_id: 1)).to_not be_valid
+    explanation.organization_profile_id = nil
+    expect(explanation).to_not be_valid
   end
   it "is not valid without a demand_id" do
-    expect(Explanation.new( message: "message",
-                            user_id: 1,
-                            organization_profile_id: 1)).to_not be_valid
+    explanation.demand_id = nil
+    expect(explanation).to_not be_valid
   end
 end
