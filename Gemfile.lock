@@ -12,6 +12,16 @@ GIT
     jquery-dadata-rails (1.0.0)
 
 GIT
+  remote: git://github.com/raelgc/sprockets-coffee-react.git
+  revision: d0d221f60200f3a2e36adec319572a3f0adfe187
+  specs:
+    sprockets-coffee-react (4.0.0)
+      coffee-react (>= 3.4.0)
+      coffee-script
+      sprockets
+      tilt
+
+GIT
   remote: git://github.com/zpaulovics/datetimepicker-rails.git
   revision: 36d21cec5da7f5b214925804f60e63c61c747023
   branch: master
@@ -292,11 +302,6 @@ GEM
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-coffee-react (4.0.0)
-      coffee-react (>= 3.4.0)
-      coffee-script
-      sprockets
-      tilt
     sprockets-rails (3.2.0)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
@@ -381,7 +386,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-commands-rspec
-  sprockets-coffee-react
+  sprockets-coffee-react!
   sqlite3
   therubyracer
   uglifier (>= 1.3.0)

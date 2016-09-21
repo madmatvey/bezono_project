@@ -21,7 +21,7 @@ gem 'user_notif'
 gem 'ahprocess'
 
 gem 'react-rails'
-gem 'sprockets-coffee-react'
+gem 'sprockets-coffee-react', github: 'raelgc/sprockets-coffee-react'
 
 group :development, :test do
   gem 'byebug'

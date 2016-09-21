@@ -1,7 +1,7 @@
 # Bezono Project
 
 [![Build Status](https://travis-ci.org/madmatvey/bezono_project.svg?branch=master)](https://travis-ci.org/madmatvey/bezono_project) [![Code Climate](https://codeclimate.com/github/madmatvey/bezono_project/badges/gpa.svg)](https://codeclimate.com/github/madmatvey/bezono_project) [![Test Coverage](https://codeclimate.com/github/madmatvey/bezono_project/badges/coverage.svg)](https://codeclimate.com/github/madmatvey/bezono_project/coverage) [![Issue Count](https://codeclimate.com/github/madmatvey/bezono_project/badges/issue_count.svg)](https://codeclimate.com/github/madmatvey/bezono_project)
-[![Codeship Status for boennemann/badges](https://codeship.com/projects/c9979a60-6177-0134-f8df-1ebd69f68930/status?branch=master)](https://codeship.com/projects/174822/)
+[![Codeship Status for madmatvey/bezono_project](https://codeship.com/projects/c9979a60-6177-0134-f8df-1ebd69f68930/status?branch=master)](https://codeship.com/projects/174822)
 
 ## Что это за проект?
 Bezono Project – проект по организации SaaS торговой площадки для коммерческих компаний.
