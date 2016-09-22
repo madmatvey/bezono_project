@@ -29,5 +29,21 @@ FactoryGirl.define do
     state_status "ACTIVE" # Статус организации ACTIVE — действующая; LIQUIDATING — ликвидируется; LIQUIDATED — ликвидирована.
     # org_type "LEGAL"#Тип орг
     organization_account
+    trait :accreditation_zero do
+      association :accreditation, :factory => [:accreditation, :zero]
+    end
+    trait :accreditation_expired do
+      association :accreditation, :factory => [:accreditation, :expired]
+    end
+    trait :accreditation_supplier do
+      association :accreditation, :factory => [:accreditation, :supplier]
+    end
+    trait :accreditation_customer do
+      association :accreditation, :factory => [:accreditation, :customer]
+    end
+    trait :accreditation_partner do
+      association :accreditation, :factory => [:accreditation, :partner]
+    end
+
   end
 end

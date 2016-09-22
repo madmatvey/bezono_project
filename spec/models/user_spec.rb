@@ -21,5 +21,39 @@ describe User, '#profiles' do
     user = FactoryGirl.create(:user)
     expect(user.profiles[0]).to be_an_instance_of(OrganizationProfile)
   end
+end
 
+describe User, '#supplier?' do
+  it 'returns TRUE if user organization accreditation is supplier' do
+    user = FactoryGirl.create(:user)
+    profile = user.organization_account.organization_profiles.first
+    user.active_profile_id = profile.id
+    user.active_profile.accreditation.accept_as_supplier
+    expect(user.supplier?).to be_truthy
+  end
+  it 'returns FALSE if user organization accreditation is not supplier' do
+    user = FactoryGirl.create(:user)
+    profile = user.organization_account.organization_profiles.first
+    user.active_profile_id = profile.id
+    user.active_profile.set_default_accreditation
+    expect(user.supplier?).to be_falsey
+  end
+
+end
+
+describe User, '#customer?' do
+  it 'returns TRUE if user organization accreditation is customer' do
+    user = FactoryGirl.create(:user)
+    profile = user.organization_account.organization_profiles.first
+    user.active_profile_id = profile.id
+    user.active_profile.accreditation.accept_as_customer
+    expect(user.customer?).to be_truthy
+  end
+  it 'returns FALSE if user organization accreditation is not customer' do
+    user = FactoryGirl.create(:user)
+    profile = user.organization_account.organization_profiles.first
+    user.active_profile_id = profile.id
+    user.active_profile.set_default_accreditation
+    expect(user.customer?).to be_falsey
+  end
 end

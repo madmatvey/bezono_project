@@ -20,5 +20,6 @@ FactoryGirl.define do
       role 'admin'
     end
     association :organization_account, factory: :account_with_profiles
+
   end
 end
