@@ -19,6 +19,6 @@ FactoryGirl.define do
     trait :admin do
       role 'admin'
     end
-    organization_account
+    association :organization_account, factory: :account_with_profiles
   end
 end
