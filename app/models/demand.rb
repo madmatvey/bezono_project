@@ -8,9 +8,9 @@ class Demand < ActiveRecord::Base
 
   def have_explanations_without_answer?
     if self.explanations.map {|expl| expl.answered?}.any?
-      true
-    else
       false
+    else
+      true
     end
   end
 
