@@ -1,7 +1,8 @@
 FactoryGirl.define do
+  sequence :competence_tag do |n|
+      "#{Faker::Lorem.word} №#{n}"
+  end
   factory :competence do
-    tag "MyString"
-    state 1
-    organization_profile nil
+    tag { generate :competence_tag }
   end
 end

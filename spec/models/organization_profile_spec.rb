@@ -45,3 +45,22 @@ describe OrganizationProfile, '.customers' do
     expect(OrganizationProfile.customers).to match_array([profile2,profile4])
   end
 end
+
+describe OrganizationProfile, '#set_competence!(competence)' do
+  it 'set competence proof to profile' do
+    profile = FactoryGirl.create(:organization_profile)
+    competence = FactoryGirl.create(:competence)
+
+    profile.set_competence!(competence)
+    expect(profile.competences).to match_array([competence])
+  end
+end
+
+describe OrganizationProfile, '#have_competence?(competence)' do
+  it 'returns TRUE or competence instanse if YES' do
+    profile = FactoryGirl.create(:organization_profile)
+    competence = FactoryGirl.create(:competence)
+    profile.set_competence!(competence)
+    expect(have_competence?(competence)).to be_truthy
+  end
+end

@@ -1,6 +1,8 @@
 FactoryGirl.define do
+  sequence :criterion_name do |n|
+      "#{Faker::Lorem.word} №#{n}"
+  end
   factory :criterion do
-    name "MyString"
-    demand nil
+    name { generate :criterion_name }
   end
 end
