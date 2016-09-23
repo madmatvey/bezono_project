@@ -15,8 +15,6 @@ class Demand < ActiveRecord::Base
   end
 
   def count_of_explanations_without_answers
-    self.explanations.map {|expl| expl.answered?}.count(true)
+    self.explanations.map {|expl| expl.answered?}.count(false)
   end
-
-
 end

@@ -8,11 +8,10 @@ FactoryGirl.define do
     user
     demand
     organization_profile
-    question_id nil
 
-    # # trait :with_answer do
-    # #   answer_id 1
-    # # end
+    trait :with_answer do
+      association :answer, factory: :answer
+    end
     # trait :with_answer do
     #   create(:explanation, question_id: explanation.id)
     # end
@@ -20,5 +19,9 @@ FactoryGirl.define do
     # trait :without_answer do
     #   answer_id nil
     # end
+
+    trait :with_referrer do
+      association :referrer, factory: :user
+    end
   end
 end
