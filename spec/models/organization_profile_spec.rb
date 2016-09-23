@@ -61,6 +61,13 @@ describe OrganizationProfile, '#have_competence?(competence)' do
     profile = FactoryGirl.create(:organization_profile)
     competence = FactoryGirl.create(:competence)
     profile.set_competence!(competence)
-    expect(have_competence?(competence)).to be_truthy
+    expect(profile.have_competence?(competence)).to be_truthy
   end
+  it 'returns FALSE if NOT' do
+    profile = FactoryGirl.create(:organization_profile)
+    competence = FactoryGirl.create(:competence)
+    expect(profile.have_competence?(competence)).to be_falsey
+  end
+
+
 end
