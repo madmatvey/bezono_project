@@ -46,7 +46,7 @@ class Accreditation < ApplicationRecord
   end
 
   def verified?
-    if self[:state] > 0 && self[:state] < 666
+    if Accreditation.states[self.state] > 0 && Accreditation.states[self.state] < 666
       true
     else
       false

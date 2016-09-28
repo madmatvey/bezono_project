@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 ruby '2.2.4'
-gem 'rails', '5.0'
+gem 'rails', '< 5.1'
 gem 'sass-rails', '>= 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'execjs'
@@ -34,7 +34,8 @@ group :development do
 end
 gem 'bootstrap-sass'
 gem 'font-awesome-sass', '~> 4.6.2'
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+gem 'psych'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'pundit', :git => 'https://github.com/elabs/pundit.git'

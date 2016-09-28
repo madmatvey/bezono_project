@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -21,9 +20,8 @@ ActiveRecord::Schema.define(version: 20160902091414) do
     t.integer  "organization_profile_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["organization_profile_id"], name: "index_accreditations_on_organization_profile_id", using: :btree
   end
-
-  add_index "accreditations", ["organization_profile_id"], name: "index_accreditations_on_organization_profile_id", using: :btree
 
   create_table "competences", force: :cascade do |t|
     t.string   "tag"
@@ -34,35 +32,31 @@ ActiveRecord::Schema.define(version: 20160902091414) do
   create_table "competences_demands", id: false, force: :cascade do |t|
     t.integer "competence_id"
     t.integer "demand_id"
+    t.index ["competence_id"], name: "index_competences_demands_on_competence_id", using: :btree
+    t.index ["demand_id"], name: "index_competences_demands_on_demand_id", using: :btree
   end
-
-  add_index "competences_demands", ["competence_id"], name: "index_competences_demands_on_competence_id", using: :btree
-  add_index "competences_demands", ["demand_id"], name: "index_competences_demands_on_demand_id", using: :btree
 
   create_table "criterions", force: :cascade do |t|
     t.string   "name",                null: false
     t.integer  "master_criterion_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.index ["master_criterion_id"], name: "index_criterions_on_master_criterion_id", using: :btree
   end
-
-  add_index "criterions", ["master_criterion_id"], name: "index_criterions_on_master_criterion_id", using: :btree
 
   create_table "criterions_demands", id: false, force: :cascade do |t|
     t.integer "criterion_id", null: false
     t.integer "demand_id",    null: false
+    t.index ["criterion_id"], name: "index_criterions_demands_on_criterion_id", using: :btree
+    t.index ["demand_id"], name: "index_criterions_demands_on_demand_id", using: :btree
   end
-
-  add_index "criterions_demands", ["criterion_id"], name: "index_criterions_demands_on_criterion_id", using: :btree
-  add_index "criterions_demands", ["demand_id"], name: "index_criterions_demands_on_demand_id", using: :btree
 
   create_table "criterions_explanations", id: false, force: :cascade do |t|
     t.integer "criterion_id",   null: false
     t.integer "explanation_id", null: false
+    t.index ["criterion_id"], name: "index_criterions_explanations_on_criterion_id", using: :btree
+    t.index ["explanation_id"], name: "index_criterions_explanations_on_explanation_id", using: :btree
   end
-
-  add_index "criterions_explanations", ["criterion_id"], name: "index_criterions_explanations_on_criterion_id", using: :btree
-  add_index "criterions_explanations", ["explanation_id"], name: "index_criterions_explanations_on_explanation_id", using: :btree
 
   create_table "demands", force: :cascade do |t|
     t.string   "name"
@@ -70,9 +64,8 @@ ActiveRecord::Schema.define(version: 20160902091414) do
     t.integer  "organization_profile_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["organization_profile_id"], name: "index_demands_on_organization_profile_id", using: :btree
   end
-
-  add_index "demands", ["organization_profile_id"], name: "index_demands_on_organization_profile_id", using: :btree
 
   create_table "explanations", force: :cascade do |t|
     t.text     "message"
@@ -82,12 +75,11 @@ ActiveRecord::Schema.define(version: 20160902091414) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "question_id"
+    t.index ["demand_id"], name: "index_explanations_on_demand_id", using: :btree
+    t.index ["organization_profile_id"], name: "index_explanations_on_organization_profile_id", using: :btree
+    t.index ["question_id"], name: "index_explanations_on_question_id", using: :btree
+    t.index ["user_id"], name: "index_explanations_on_user_id", using: :btree
   end
-
-  add_index "explanations", ["demand_id"], name: "index_explanations_on_demand_id", using: :btree
-  add_index "explanations", ["organization_profile_id"], name: "index_explanations_on_organization_profile_id", using: :btree
-  add_index "explanations", ["question_id"], name: "index_explanations_on_question_id", using: :btree
-  add_index "explanations", ["user_id"], name: "index_explanations_on_user_id", using: :btree
 
   create_table "formulations", force: :cascade do |t|
     t.integer  "problem_id",              null: false
@@ -96,11 +88,10 @@ ActiveRecord::Schema.define(version: 20160902091414) do
     t.text     "content"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["formulation_id"], name: "index_formulations_on_formulation_id", using: :btree
+    t.index ["organization_profile_id"], name: "index_formulations_on_organization_profile_id", using: :btree
+    t.index ["problem_id"], name: "index_formulations_on_problem_id", using: :btree
   end
-
-  add_index "formulations", ["formulation_id"], name: "index_formulations_on_formulation_id", using: :btree
-  add_index "formulations", ["organization_profile_id"], name: "index_formulations_on_organization_profile_id", using: :btree
-  add_index "formulations", ["problem_id"], name: "index_formulations_on_problem_id", using: :btree
 
   create_table "notifs", force: :cascade do |t|
     t.integer  "target_id",                   null: false
@@ -111,11 +102,10 @@ ActiveRecord::Schema.define(version: 20160902091414) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["target_type", "target_id"], name: "index_notifs_on_target_type_and_target_id", using: :btree
+    t.index ["unread"], name: "index_notifs_on_unread", using: :btree
+    t.index ["user_id"], name: "index_notifs_on_user_id", using: :btree
   end
-
-  add_index "notifs", ["target_type", "target_id"], name: "index_notifs_on_target_type_and_target_id", using: :btree
-  add_index "notifs", ["unread"], name: "index_notifs_on_unread", using: :btree
-  add_index "notifs", ["user_id"], name: "index_notifs_on_user_id", using: :btree
 
   create_table "organization_accounts", force: :cascade do |t|
     t.string   "name"
@@ -147,19 +137,17 @@ ActiveRecord::Schema.define(version: 20160902091414) do
     t.integer  "organization_account_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["organization_account_id"], name: "index_organization_profiles_on_organization_account_id", using: :btree
   end
-
-  add_index "organization_profiles", ["organization_account_id"], name: "index_organization_profiles_on_organization_account_id", using: :btree
 
   create_table "problems", force: :cascade do |t|
     t.integer  "demand_id"
     t.integer  "organization_profile_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["demand_id"], name: "index_problems_on_demand_id", using: :btree
+    t.index ["organization_profile_id"], name: "index_problems_on_organization_profile_id", using: :btree
   end
-
-  add_index "problems", ["demand_id"], name: "index_problems_on_demand_id", using: :btree
-  add_index "problems", ["organization_profile_id"], name: "index_problems_on_organization_profile_id", using: :btree
 
   create_table "proofs", force: :cascade do |t|
     t.integer  "state"
@@ -167,11 +155,10 @@ ActiveRecord::Schema.define(version: 20160902091414) do
     t.integer  "competence_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["competence_id"], name: "index_proofs_on_competence_id", using: :btree
+    t.index ["organization_profile_id", "competence_id"], name: "index_proofs_on_organization_profile_id_and_competence_id", unique: true, using: :btree
+    t.index ["organization_profile_id"], name: "index_proofs_on_organization_profile_id", using: :btree
   end
-
-  add_index "proofs", ["competence_id"], name: "index_proofs_on_competence_id", using: :btree
-  add_index "proofs", ["organization_profile_id", "competence_id"], name: "index_proofs_on_organization_profile_id_and_competence_id", unique: true, using: :btree
-  add_index "proofs", ["organization_profile_id"], name: "index_proofs_on_organization_profile_id", using: :btree
 
   create_table "state_histories", force: :cascade do |t|
     t.string   "state"
@@ -199,12 +186,11 @@ ActiveRecord::Schema.define(version: 20160902091414) do
     t.integer  "role"
     t.integer  "organization_account_id"
     t.integer  "active_profile_id"
+    t.index ["active_profile_id"], name: "index_users_on_active_profile_id", using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["organization_account_id"], name: "index_users_on_organization_account_id", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["active_profile_id"], name: "index_users_on_active_profile_id", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["organization_account_id"], name: "index_users_on_organization_account_id", using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "demands", "organization_profiles"
   add_foreign_key "explanations", "demands"

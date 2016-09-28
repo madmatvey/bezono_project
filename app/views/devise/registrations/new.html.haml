@@ -10,7 +10,7 @@
       .form-group
         = f.input :organization_account_id, as: :select, |
                   collection: OrganizationAccount.pluck(:name, :id), |
-                  required: true, include_blank: false, class: "form-control"
+                  required: true, class: "form-control" #, include_blank: false
       = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), class: 'form-control'
       = f.input :password_confirmation, required: true, class: 'form-control'
     .form-actions
