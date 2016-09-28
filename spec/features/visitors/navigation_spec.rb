@@ -15,4 +15,8 @@ feature 'Navigation links', :devise do
     expect(page).to have_content I18n.t('devise.button.sign_up')
   end
 
+  # scenario 'do something denieds criminal' do
+  #   visit new_demand_path
+  #   expect(controller).to set_flash[:alert].to(/Access denied./).now
+  # end
 end
