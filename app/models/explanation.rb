@@ -1,4 +1,4 @@
-class Explanation < ActiveRecord::Base
+class Explanation < ApplicationRecord
   belongs_to :user
   belongs_to :demand
   belongs_to :organization_profile

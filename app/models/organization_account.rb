@@ -1,4 +1,4 @@
-class OrganizationAccount < ActiveRecord::Base
+class OrganizationAccount < ApplicationRecord
   validates :name, :presence => true,
                     :length => { :minimum => 3 },
                      uniqueness: true

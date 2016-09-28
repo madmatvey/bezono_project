@@ -1,4 +1,4 @@
-class Accreditation < ActiveRecord::Base
+class Accreditation < ApplicationRecord
   scope :verified,  -> { where(verified: Accreditation.verified) }
   belongs_to :organization_profile
   # accepts_nested_attributes_for :organization_profile

@@ -1,17 +1,17 @@
 source 'http://rubygems.org'
 ruby '2.2.4'
-gem 'rails', '4.2.7.1'
+gem 'rails', '5.0'
 gem 'sass-rails', '>= 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'#, '~> 4.1.0'
 gem 'coffee-script-source', '1.10.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'jquery-dadata-rails', github: 'gordienko/jquery-dadata-rails'
-gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
-gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
+gem 'jquery-dadata-rails', git: 'https://github.com/gordienko/jquery-dadata-rails.git'
+gem 'datetimepicker-rails', git: 'https://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
+gem 'momentjs-rails', '~> 2.9', git: 'https://github.com/derekprior/momentjs-rails.git'
 gem 'aasm'
 gem 'aasm_history'
 gem 'enum_help'
@@ -21,7 +21,7 @@ gem 'user_notif'
 gem 'ahprocess'
 
 gem 'react-rails'
-gem 'sprockets-coffee-react', github: 'raelgc/sprockets-coffee-react'
+gem 'sprockets-coffee-react' #, github: 'raelgc/sprockets-coffee-react'
 
 group :development, :test do
   gem 'byebug'
@@ -40,7 +40,7 @@ gem 'high_voltage'
 gem 'pundit', :git => 'https://github.com/elabs/pundit.git'
 gem 'simple_form'
 group :development do
-  gem 'quiet_assets'
+  # gem 'quiet_assets'
   gem 'better_errors'
   gem 'html2haml'
   gem 'rails_layout'

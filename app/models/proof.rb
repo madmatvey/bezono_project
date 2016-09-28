@@ -1,4 +1,4 @@
-class Proof < ActiveRecord::Base
+class Proof < ApplicationRecord
   belongs_to :organization_profile
   belongs_to :competence
   validates :competence_id, presence: true
