@@ -8,7 +8,7 @@ gem 'therubyracer', :platforms => :ruby
 gem 'coffee-rails'#, '~> 4.1.0'
 gem 'coffee-script-source', '1.10.0'
 gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 2.5'#, '~> 2.0'
 gem 'jquery-dadata-rails', git: 'https://github.com/gordienko/jquery-dadata-rails.git'
 gem 'datetimepicker-rails', git: 'https://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
 gem 'momentjs-rails', '~> 2.9', git: 'https://github.com/derekprior/momentjs-rails.git'
@@ -20,6 +20,12 @@ gem 'user_notif'
 
 gem 'ahprocess'
 
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 3.0'
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
 gem 'react-rails'
 gem 'sprockets-coffee-react' #, github: 'raelgc/sprockets-coffee-react'
 
@@ -30,7 +36,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'meta_request'
   gem 'spring'
-  gem "rails-erd"
+  gem 'rails-erd'
 end
 gem 'bootstrap-sass'
 gem 'font-awesome-sass', '~> 4.6.2'
