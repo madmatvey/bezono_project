@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 ruby '2.2.4'
 gem 'rails', '< 5.1'
 gem 'sass-rails', '>= 5.0.6'
@@ -20,14 +20,21 @@ gem 'user_notif'
 
 gem 'ahprocess'
 
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-gem 'react-rails'
-gem 'sprockets-coffee-react' #, github: 'raelgc/sprockets-coffee-react'
+# gem 'turbolinks', '~> 5'
+# react-rails isn't compatible yet with latest Sprockets.
+# https://github.com/reactjs/react-rails/pull/322
+gem 'react-rails' #, git: 'https://github.com/vipulnsward/react-rails', branch: 'sprockets-3-compat'
+# Add support to use es6 based on top of babel, instead of using coffeescript
+# gem 'sprockets-es6'
+gem 'sprockets-coffee-jsx'
+# DEPRECATED gem 'sprockets-coffee-react', git: 'https://github.com/raelgc/sprockets-coffee-react'
+#Use Redis adapter to run Action Cable in production
+gem 'redis', '~> 3.2'
 
 group :development, :test do
   gem 'byebug'

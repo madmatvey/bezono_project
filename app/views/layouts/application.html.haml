@@ -4,9 +4,10 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : t("project_name")
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : t("project_name")}"}
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
+    = javascript_include_tag 'application', 'data-turbolinks-track' => false
     = csrf_meta_tags
+    = action_cable_meta_tag
   %body
     %header
       = render 'layouts/navigation'

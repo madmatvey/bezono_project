@@ -1,3 +1,4 @@
+
 @Explanations = React.createClass(
   propTypes:
     explanations: React.PropTypes.array,
@@ -5,6 +6,8 @@
     demand: React.PropTypes.object,
     current_user: React.PropTypes.object
   getInitialState: ->
+    # explanations: JSON.parse(this.props.explanations)
+    # return {explanations: explanations}
     explanations: @props.explanations
     demand: @props.demand
     current_user: @props.current_user
@@ -20,6 +23,18 @@
     explanations = @state.explanations.slice()
     explanations.push explanation
     @setState explanations: explanations
+
+  #
+  # setupSubscription: ->
+  #   App.explanations = App.cable.subscriptions.create "ExplanationsChannel", explantion_id: @state.explantion.id
+  #     connected: ->
+  #       setTimeout(() => this.perform('follow', {explnation_id: this.explanation.id}), 1000 )
+  #
+  #     received: (data) ->
+  #       this.addExplanation(data.explanation)
+  #
+  # componentDidMount: ->
+  #   this.setupSubscription
 
   render: ->
     React.DOM.div

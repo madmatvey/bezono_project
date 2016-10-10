@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   end
   root to: 'visitors#index'
   resources :users
+
+  mount ActionCable.server => '/cable'
 end
