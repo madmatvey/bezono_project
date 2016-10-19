@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.4'
 gem 'rails', '< 5.1'
+gem 'puma'
 gem 'sass-rails', '>= 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'execjs'
@@ -9,6 +10,7 @@ gem 'coffee-rails'#, '~> 4.1.0'
 gem 'coffee-script-source', '1.10.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'#, '~> 2.0'
+gem 'react_webpack_rails'
 gem 'jquery-dadata-rails', git: 'https://github.com/gordienko/jquery-dadata-rails.git'
 gem 'datetimepicker-rails', git: 'https://github.com/zpaulovics/datetimepicker-rails.git', branch: 'master', submodules: true
 gem 'momentjs-rails', '~> 2.9', git: 'https://github.com/derekprior/momentjs-rails.git'
@@ -23,14 +25,14 @@ gem 'ahprocess'
 
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5'
 # react-rails isn't compatible yet with latest Sprockets.
 # https://github.com/reactjs/react-rails/pull/322
 gem 'react-rails' #, git: 'https://github.com/vipulnsward/react-rails', branch: 'sprockets-3-compat'
-# Add support to use es6 based on top of babel, instead of using coffeescript
-# gem 'sprockets-es6'
+# # Add support to use es6 based on top of babel, instead of using coffeescript
+# # gem 'sprockets-es6'
 gem 'sprockets-coffee-jsx'
 # DEPRECATED gem 'sprockets-coffee-react', git: 'https://github.com/raelgc/sprockets-coffee-react'
 #Use Redis adapter to run Action Cable in production
@@ -79,5 +81,5 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
-  gem "codeclimate-test-reporter", require: nil
+  gem 'codeclimate-test-reporter', require: nil
 end

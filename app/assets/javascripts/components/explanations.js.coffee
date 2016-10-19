@@ -6,9 +6,9 @@
     demand: React.PropTypes.object,
     current_user: React.PropTypes.object
   getInitialState: ->
-    # explanations: JSON.parse(this.props.explanations)
-    # return {explanations: explanations}
     explanations: @props.explanations
+    # return {explanations: explanations}
+    # explanations: @props.explanations
     demand: @props.demand
     current_user: @props.current_user
     createExplanationPath: @props.createExplanationPath
