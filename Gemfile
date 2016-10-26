@@ -6,6 +6,7 @@ gem 'sass-rails', '>= 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'execjs'
 # gem 'therubyracer', :platforms => :ruby
+gem 'mini_racer', platforms: :ruby
 gem 'coffee-rails'#, '~> 4.1.0'
 gem 'coffee-script-source', '1.10.0'
 gem 'jquery-rails'
@@ -86,5 +87,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'codeclimate-test-reporter', require: nil
 end
-
-gem 'mini_racer', platforms: :ruby

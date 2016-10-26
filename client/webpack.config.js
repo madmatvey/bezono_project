@@ -42,6 +42,14 @@ const config = {
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.coffee$/,
+        loader: "coffee-loader"
+      },
+      {
+        test: /\.(coffee\.md|litcoffee)$/,
+        loader: "coffee-loader?literate"
+      },
     ],
   },
 };
