@@ -83,6 +83,10 @@ pickle-email-*.html
 # tilde files are usually backup files from a text editor
 *~
 
+server.crt
+server.csr
+server.key
+
 /node_modules
 /app/assets/javascripts/react_bundle.js
 /app/assets/stylesheets/react_bundle.css
