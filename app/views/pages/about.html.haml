@@ -1,7 +1,18 @@
 .container
-  - content_for :title do
-    About
-  .page-header
-    %h2
-      About the #{t("project_name")}
-    .well 24TENDER представляет эко-систему для работы с закупками
+  .row
+    .col-lg-12.text-center
+      - content_for :title do
+        About
+      .page-header
+        %h2
+          About the #{t("project_name")}
+        %img{:src => "/images/4resolve_logo.png"}
+        .p.text-center
+          4RESOLVE представляет эко-систему для работы с закупками.
+        .p.text-center
+          Уважаемые партнеры, мы прошли вместе с Вами длинный путь в определении и удовлетворении потребностей рынка электронный торговли России, Казахстана и Белоруссии.
+          На этом пути мы выяснили что существующие продукты электронных-торговых площадок не решают большинства проблем клиентов
+        .h3.text-center
+          Мы упорно трудимся над новым проектом электронной торговли!
+        .h1.text-center
+          %a{:href => "http://eepurl.com/cjVv_5", :target => "_blank"} Сообщите мне когда будет готово
