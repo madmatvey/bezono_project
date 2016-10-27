@@ -30,7 +30,8 @@
     .col-md-6
       #explanations-list
         -if policy(@demand.explanations).index?
-          = react_component "ExplanationsApp", props: @explanations_props, prerender: false
+          = react_component("BezonoApp", props: @explanations_props )
+          -# = react_component "ExplanationsApp", props: @explanations_props, prerender: false
         -else
           Что бы просмотреть запросы разъяснений,
           =link_to 'авторизуйтесь', login_path

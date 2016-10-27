@@ -25,6 +25,15 @@ class ExplanationsController < ApplicationController
   # GET /explanations/1.json
   def show
     @explanation = @demand.explanations.find(params[:id])
+    @explanations_props = { explanations: Explanation.to_react(@demand),
+                            demand: @demand.as_json(only: [ :id,
+                                                            :description,
+                                                            :name,
+                                                            :organization_profile_id ]),
+                            current_user: current_user.as_json(only: [ :id,
+                                                                       :active_profile_id,
+                                                                       :organization_account_id ]).merge({"supplier" => current_user.supplier?,"customer" => current_user.customer?}),
+                                              createExplanationPath: demand_explanations_path(@demand)}
     authorize @explanation
   end
 
