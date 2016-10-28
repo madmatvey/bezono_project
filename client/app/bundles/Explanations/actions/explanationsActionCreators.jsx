@@ -1,8 +1,8 @@
 import actionTypes from '../constants/explanationsConstants';
 
-export function updateName(name) {
+export function explanationAdd(message) {
   return {
-    type: actionTypes.HELLO_WORLD_NAME_UPDATE,
-    name,
+    type: actionTypes.EXPLANATION_ADD,
+    message,
   };
 }

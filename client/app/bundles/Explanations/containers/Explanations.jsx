@@ -11,29 +11,36 @@ function select(state) {
   return { $$explanationsStore: state.$$explanationsStore };
 }
 
+// function mapStateToProps(state) {
+//   return { explanations: state.explanations }
+// }
+
 // Simple example of a React "smart" component
 const Explanations = (props) => {
   const { dispatch, $$explanationsStore } = props;
   const actions = bindActionCreators(explanationsActionCreators, dispatch);
-  // const { updateName } = actions;
-  const explanations = $$explanationsStore.get('explanations');
+  const { explanationAdd } = actions;
+  const explanations = $$explanationsStore.get('createExplanationPath');
+  // console.dir($$explanationsStore);
+  // console.log(explanations._tail.array);
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
-    <Explanations {...{ updateName, name }} />
+    <ExplanationsWidget />
   );
 };
 
 Explanations.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
 
   // This corresponds to the value used in function select above.
   // We prefix all property and variable names pointing to Immutable.js objects with '$$'.
   // This allows us to immediately know we don't call $$helloWorldStore['someProperty'], but
   // instead use the Immutable.js `get` API for Immutable.Map
-  $$explanationsStore: PropTypes.instanceOf(Immutable.Map).isRequired,
+  // $$explanationsStore: PropTypes.instanceOf(Immutable.Map).isRequired,
+  // explanations: PropTypes.array.isRequired
 };
 
 // Don't forget to actually use connect!

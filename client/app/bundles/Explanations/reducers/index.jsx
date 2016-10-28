@@ -5,7 +5,7 @@ import explanationsReducer from './ExplanationsReducer';
 import { $$initialState as $$explanationsState } from './ExplanationsReducer';
 
 export default {
-  $$explanationsStore: ExplanationsReducer,
+  $$explanationsStore: explanationsReducer,
 };
 
 export const initialStates = {

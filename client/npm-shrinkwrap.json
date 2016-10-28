@@ -687,6 +687,12 @@
       "from": "coffee-loader@>=0.7.2 <0.8.0",
       "resolved": "https://registry.npmjs.org/coffee-loader/-/coffee-loader-0.7.2.tgz"
     },
+    "coffee-script": {
+      "version": "1.11.1",
+      "from": "coffee-script@>=1.9.3 <2.0.0",
+      "resolved": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.11.1.tgz",
+      "dev": true
+    },
     "combined-stream": {
       "version": "1.0.5",
       "from": "combined-stream@>=1.0.5 <1.1.0",
@@ -2329,7 +2335,7 @@
     },
     "react-on-rails": {
       "version": "6.1.2",
-      "from": "react-on-rails@6.1.2",
+      "from": "https://registry.npmjs.org/react-on-rails/-/react-on-rails-6.1.2.tgz",
       "resolved": "https://registry.npmjs.org/react-on-rails/-/react-on-rails-6.1.2.tgz"
     },
     "react-redux": {
@@ -2366,6 +2372,11 @@
       "version": "3.6.0",
       "from": "redux@>=3.3.1 <4.0.0",
       "resolved": "https://registry.npmjs.org/redux/-/redux-3.6.0.tgz"
+    },
+    "redux-devtools-extension": {
+      "version": "1.0.0",
+      "from": "redux-devtools-extension@latest",
+      "resolved": "https://registry.npmjs.org/redux-devtools-extension/-/redux-devtools-extension-1.0.0.tgz"
     },
     "redux-promise": {
       "version": "0.5.3",

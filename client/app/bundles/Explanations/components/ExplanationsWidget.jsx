@@ -13,14 +13,16 @@ export default class Explanations extends React.Component {
 
   render() {
     const { explanations } = this.props;
+    console.log(explanations);
     return (
       <div className="explanations">
         <h3 className="title">Запросы разъяснений</h3>
         <div className="explanations-list">
-          {explanations.map((exp) => {
+          {explanations}
+          {/* {explanations.map((exp) => {
               return <div className="well rounded" key={`explanation_${exp.id}`}>{exp.message}</div>;
             })
-          }
+          } */}
         </div>
       </div>
     );
