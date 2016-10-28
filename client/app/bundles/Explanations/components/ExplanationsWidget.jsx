@@ -8,7 +8,7 @@ export default class Explanations extends React.Component {
   static propTypes = {
     // If you have lots of data or action properties, you should consider grouping them by
     // passing two properties: "data" and "actions".
-    explanations: PropTypes.array.isRequired,
+    // explanations: PropTypes.string.isRequired,
   };
 
   render() {

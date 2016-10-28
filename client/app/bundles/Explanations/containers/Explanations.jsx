@@ -20,15 +20,13 @@ const Explanations = (props) => {
   const { dispatch, $$explanationsStore } = props;
   const actions = bindActionCreators(explanationsActionCreators, dispatch);
   const { explanationAdd } = actions;
-  const explanations = $$explanationsStore.get('createExplanationPath');
-  // console.dir($$explanationsStore);
-  // console.log(explanations._tail.array);
+  const explanations = $$explanationsStore.get('createExplanationPath');//.entries();
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
-    <ExplanationsWidget />
+    <ExplanationsWidget explanations={explanations} />
   );
 };
 

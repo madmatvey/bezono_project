@@ -23,6 +23,8 @@ export default props => {
       createExplanationPath,
     }),
   };
+  console.log("$$explanationsState = ");
+  console.log($$explanationsState);
 
   const reducer = combineReducers(reducers);
   const composedStore = compose(
