@@ -8,21 +8,22 @@ export default class Explanations extends React.Component {
   static propTypes = {
     // If you have lots of data or action properties, you should consider grouping them by
     // passing two properties: "data" and "actions".
-    // explanations: PropTypes.string.isRequired,
+    explanations: PropTypes.array.isRequired,
   };
 
   render() {
     const { explanations } = this.props;
-    console.log(explanations);
+    // console.log(explanations);
     return (
       <div className="explanations">
         <h3 className="title">Запросы разъяснений</h3>
         <div className="explanations-list">
-          {explanations}
-          {/* {explanations.map((exp) => {
+          {/* {explanations} */}
+          {explanations.map((exp) => {
+              // exp = explanmap.toObject();
               return <div className="well rounded" key={`explanation_${exp.id}`}>{exp.message}</div>;
             })
-          } */}
+          }
         </div>
       </div>
     );

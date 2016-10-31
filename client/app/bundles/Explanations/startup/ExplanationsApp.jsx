@@ -13,6 +13,7 @@ import Explanations from '../containers/Explanations';
 const ExplanationsApp = (props, _railsContext) => {
   const store = createStore(props);
   const reactComponent = (
+
     <Provider store={store}>
       <Explanations />
     </Provider>

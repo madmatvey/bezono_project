@@ -8,11 +8,13 @@ export const $$initialState = Immutable.fromJS({
 });
 
 export default function explanationsReducer($$state = $$initialState, action) {
-  const { type, name } = action;
+  const { type, explanations } = action;
 
   switch (type) {
     case actionTypes.EXPLANATION_ADD:
-      return $$state.set('message', message);
+      return $$state.set('explanation', explanation);
+    case actionTypes.SET_EXPLANATIONS:
+      return explanations
 
     default:
       return $$state;

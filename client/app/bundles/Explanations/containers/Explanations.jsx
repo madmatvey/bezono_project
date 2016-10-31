@@ -19,14 +19,16 @@ function select(state) {
 const Explanations = (props) => {
   const { dispatch, $$explanationsStore } = props;
   const actions = bindActionCreators(explanationsActionCreators, dispatch);
-  const { explanationAdd } = actions;
-  const explanations = $$explanationsStore.get('createExplanationPath');//.entries();
+  const { explanationAdd, setExplanations } = actions;
+  const explanations = $$explanationsStore.get('explanations').toJS();
+  console.log("explanations = ");
+  console.log(explanations);
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
-    <ExplanationsWidget explanations={explanations} />
+    <ExplanationsWidget explanations={explanations} actions={actions} />
   );
 };
 
@@ -37,7 +39,7 @@ Explanations.propTypes = {
   // We prefix all property and variable names pointing to Immutable.js objects with '$$'.
   // This allows us to immediately know we don't call $$helloWorldStore['someProperty'], but
   // instead use the Immutable.js `get` API for Immutable.Map
-  // $$explanationsStore: PropTypes.instanceOf(Immutable.Map).isRequired,
+  $$explanationsStore: PropTypes.instanceOf(Immutable.Map).isRequired,
   // explanations: PropTypes.array.isRequired
 };
 
