@@ -1,4 +1,4 @@
-class Formulation < ActiveRecord::Base
+class Formulation < ApplicationRecord
   belongs_to :problem
   belongs_to :formulation
   belongs_to :organization_profile

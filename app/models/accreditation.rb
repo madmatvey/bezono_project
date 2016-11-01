@@ -1,4 +1,4 @@
-class Accreditation < ActiveRecord::Base
+class Accreditation < ApplicationRecord
   scope :verified,  -> { where(verified: Accreditation.verified) }
   belongs_to :organization_profile
   # accepts_nested_attributes_for :organization_profile
@@ -46,7 +46,7 @@ class Accreditation < ActiveRecord::Base
   end
 
   def verified?
-    if self[:state] > 0 && self[:state] < 666
+    if Accreditation.states[self.state] > 0 && Accreditation.states[self.state] < 666
       true
     else
       false

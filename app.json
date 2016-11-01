@@ -4,9 +4,6 @@
   "logo": "https://avatars3.githubusercontent.com/u/788200",
   "repository": "https://github.com/RailsApps/rails-devise-pundit",
   "keywords": [
-    "Rails Composer",
-    "RailsApps",
-    "starter",
     "RSpec",
     "Bootstrap",
     "authentication",

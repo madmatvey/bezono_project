@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   enum role: [:user, :operator, :admin, :banned]
   after_initialize :set_default_role, :set_default_account, :if => :new_record?
   belongs_to :organization_account

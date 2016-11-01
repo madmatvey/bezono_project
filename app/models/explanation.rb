@@ -1,4 +1,5 @@
-class Explanation < ActiveRecord::Base
+class Explanation < ApplicationRecord
+  after_create_commit { ExplanationBroadcastJob.perfom_later self }
   belongs_to :user
   belongs_to :demand
   belongs_to :organization_profile

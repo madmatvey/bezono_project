@@ -1,4 +1,4 @@
-class Criterion < ActiveRecord::Base
+class Criterion < ApplicationRecord
   has_and_belongs_to_many :demands
   has_and_belongs_to_many :explanations, autosave: true
   belongs_to :master_criterion, class_name: 'Criterion', foreign_key: 'master_criterion_id'
