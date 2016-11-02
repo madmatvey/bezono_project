@@ -1,4 +1,4 @@
-#
+
 # @Explanation = React.createClass
 #   propTypes:
 #     explanation: React.PropTypes.shape(
@@ -48,7 +48,7 @@
 #             className: 'p text-right'
 #             "User ID: "
 #             answer.user_id
-#
-#       # React.DOM.p null, @props.explanation.demand_id
-#       # React.DOM.p null, @props.explanation.organization_profile_id
-#       # React.DOM.p null, @props.explanation.question_id
+
+      # React.DOM.p null, @props.explanation.demand_id
+      # React.DOM.p null, @props.explanation.organization_profile_id
+      # React.DOM.p null, @props.explanation.question_id

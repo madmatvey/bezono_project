@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import ExplanationsWidget from '../components/ExplanationsWidget';
+// import Explanation from '../components/ExplanationsWidget';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
