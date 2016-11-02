@@ -22,14 +22,16 @@ const Explanations = (props) => {
   const actions = bindActionCreators(explanationsActionCreators, dispatch);
   const { explanationAdd, setExplanations } = actions;
   const explanations = $$explanationsStore.get('explanations').toJS();
-  console.log("explanations = ");
-  console.log(explanations);
+  const current_user = $$explanationsStore.get('current_user').toJS();
+  const demand = $$explanationsStore.get('demand').toJS();
+  // console.log("current_user = ");
+  // console.log(current_user);
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
-    <ExplanationsWidget explanations={explanations} actions={actions} />
+    <ExplanationsWidget explanations={explanations} current_user={current_user} demand={demand} actions={actions} />
   );
 };
 
