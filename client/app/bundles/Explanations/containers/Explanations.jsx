@@ -31,19 +31,18 @@ const Explanations = (props) => {
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
-    <ExplanationsWidget explanations={explanations} current_user={current_user} demand={demand} actions={actions} />
+    <ExplanationsWidget  {...{ explanationAdd, setExplanations, explanations, current_user, demand}} /> //explanations={explanations} current_user={current_user} demand={demand} actions={actions}
   );
 };
 
 Explanations.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 
   // This corresponds to the value used in function select above.
   // We prefix all property and variable names pointing to Immutable.js objects with '$$'.
   // This allows us to immediately know we don't call $$helloWorldStore['someProperty'], but
   // instead use the Immutable.js `get` API for Immutable.Map
   $$explanationsStore: PropTypes.instanceOf(Immutable.Map).isRequired,
-  // explanations: PropTypes.array.isRequired
 };
 
 // Don't forget to actually use connect!

@@ -6,14 +6,79 @@ import React, { PropTypes } from 'react';
 // Simple example of a React "dumb" component
 export default class Explanations extends React.Component {
   static propTypes = {
-    // If you have lots of data or action properties, you should consider grouping them by
-    // passing two properties: "data" and "actions".
     explanations: PropTypes.array.isRequired,
   };
 
   render() {
-    const { explanations, current_user } = this.props;
-    // console.log(explanations);
+    const { explanations, current_user, demand } = this.props;
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+    };
+
+    const handleChange = (e) => {};
+
+    const handleKeyUp = (e) => {
+      if(e.keyCode == 13){
+        if (typeof App !== 'undefined'){
+          App.explanations.add(e.target.value);
+        }else{
+          addMessage({id: explanations.length + 1, content: e.target.value})
+        }
+        e.target.value = "";
+      };
+    };
+
+    var form;
+
+    if (current_user.supplier) {
+      form = (
+        <form className="form-inline" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              className='form-control'
+              placeholder='Сообщение'
+              name='message'
+              type="text"
+              onKeyUp={handleKeyUp}
+              // value={me
+              onChange={handleChange}/>
+            <input
+              type="hidden"
+              name="udemand_id"
+              value={demand.id}/>
+            <input
+              type="hidden"
+              name="user_id"
+              value={current_user.id}/>
+            <input
+              type="hidden"
+              name="organization_profile_id"
+              value={current_user.active_profile_id}/>
+            {/* <input
+              type="hidden"
+              name="question_id"
+              value={question_id}/> */}
+            <button type="submit"     // disabled={!this.valid()}
+              className="btn btn-primary">
+
+              Добавить сообщение</button>
+          </div>
+
+        </form>
+      );
+
+      // React.createElement(ExplanationForm, {
+      //   handleNewExplanation: this.addExplanation,
+      //   button_message: "Задать вопрос",
+      //   key: "request_form_" + this.props.demand.id,
+      //   demand: this.props.demand,
+      //   current_user: this.props.current_user,
+      //   createExplanationPath: this.props.createExplanationPath
+      // });
+    }
+
+
     return (
       <div className="explanations">
         <h3 className="title">Запросы разъяснений</h3>
@@ -22,12 +87,11 @@ export default class Explanations extends React.Component {
             explanations.map((exp) => {
 
                 var answer;
-                // console.log(exp);
                 if (exp.question_id === null || typeof exp.question_id === 'undefined') {
                   answer = explanations.filter(function(obj) {
                     return obj.id === exp.answer_id;
                     })[0];
-                    // return <Explanation explanation={exp}/>
+
                   return <Explanation key={"explanation_" + exp.id}
                                       explanation= { exp }
                                       current_user= { this.props.current_user }
@@ -38,7 +102,9 @@ export default class Explanations extends React.Component {
                     // handleNewExplanation: this.addExplanation
                 }
             })
+
           }
+          {form}
         </div>
       </div>
     );
@@ -48,9 +114,6 @@ export default class Explanations extends React.Component {
 
 class Explanation extends React.Component {
   static propTypes = {
-    // If you have lots of data or action properties, you should consider grouping them by
-    // passing two properties: "data" and "actions".
-    // explanation: PropTypes.array.isRequired,
     explanation: PropTypes.shape({
       id: PropTypes.number.isRequired,
       user_id: PropTypes.number.isRequired,

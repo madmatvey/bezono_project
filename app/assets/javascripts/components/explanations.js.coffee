@@ -55,6 +55,6 @@
             # @setState "explanation_#{explanation.question_id}":explanation
 
 #
-#       if @props.current_user.supplier
-#         React.createElement ExplanationForm, handleNewExplanation: @addExplanation, button_message: "Задать вопрос", key: "request_form_#{@props.demand.id}", demand: @props.demand, current_user: @props.current_user, createExplanationPath: @props.createExplanationPath
+      # if @props.current_user.supplier
+      #   React.createElement ExplanationForm, handleNewExplanation: @addExplanation, button_message: "Задать вопрос", key: "request_form_#{@props.demand.id}", demand: @props.demand, current_user: @props.current_user, createExplanationPath: @props.createExplanationPath
 # )
