@@ -12,10 +12,6 @@ function select(state) {
   return { $$explanationsStore: state.$$explanationsStore };
 }
 
-// function mapStateToProps(state) {
-//   return { explanations: state.explanations }
-// }
-
 // Simple example of a React "smart" component
 const Explanations = (props) => {
   const { dispatch, $$explanationsStore } = props;
@@ -24,14 +20,14 @@ const Explanations = (props) => {
   const explanations = $$explanationsStore.get('explanations').toJS();
   const current_user = $$explanationsStore.get('current_user').toJS();
   const demand = $$explanationsStore.get('demand').toJS();
-  // console.log("current_user = ");
-  // console.log(current_user);
+
+
 
   // This uses the ES2015 spread operator to pass properties as it is more DRY
   // This is equivalent to:
   // <HelloWorldWidget $$helloWorldStore={$$helloWorldStore} actions={actions} />
   return (
-    <ExplanationsWidget  {...{ explanationAdd, setExplanations, explanations, current_user, demand}} /> //explanations={explanations} current_user={current_user} demand={demand} actions={actions}
+    <ExplanationsWidget  {...{ explanations, current_user, demand }} /> //explanations={explanations} current_user={current_user} demand={demand} actions={actions}
   );
 };
 
@@ -45,7 +41,4 @@ Explanations.propTypes = {
   $$explanationsStore: PropTypes.instanceOf(Immutable.Map).isRequired,
 };
 
-// Don't forget to actually use connect!
-// Note that we don't export HelloWorld, but the redux "connected" version of it.
-// See https://github.com/reactjs/react-redux/blob/master/docs/api.md#examples
 export default connect(select)(Explanations);

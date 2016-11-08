@@ -1,58 +1,27 @@
-// HelloWorldWidget is an arbitrary name for any "dumb" component. We do not recommend suffixing
-// all your dump component names with Widget.
-
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Explanation from './Explanation';
 import ExplanationForm from './ExplanationForm';
 
-// Simple example of a React "dumb" component
-export default class Explanations extends React.Component {
-  static propTypes = {
-    explanations: PropTypes.array.isRequired,
-  };
-
-  // componentWillMount(){
-  //   store.dispatch(setExplanations(this.props.explanations));
-  //
-  //   if (typeof App !== 'undefined'){
-  //     App.explanations = App.cable.subscriptions.create("ExplanationsChannel", {
-  //       connected () {},
-  //       disconnected () {},
-  //       received(data) {
-  //         return store.dispatch(explanationAdd(data['explanation']));
-  //       },
-  //       add (explanation) {
-  //         return this.perform('add', {
-  //           explanation: explanation
-  //         });
-  //       }
-  //     });
-  //   }
-  // }
-
-
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  // };
-  //
-  // const handleChange = (e) => {};
-  //
-  // const handleKeyUp = (e) => {
-  //   if(e.keyCode == 13){
-  //     if (typeof App !== 'undefined'){
-  //       App.explanations.add(e.target.value);
-  //     }else{
-  //       explanationAdd({id: explanations.length + 1, content: e.target.value})
-  //     }
-  //     e.target.value = "";
-  //   };
-  // };
+class Chat extends Component {
 
   render() {
-    const { dispatch, explanations, current_user, demand, createExplanationPath } = this.props;
 
+    const { explanations, addExplanation, current_user, demand } = this.props;
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+    };
+
+    const handleKeyUp = (e) => {
+      if(e.keyCode == 13){
+        if (typeof App !== 'undefined'){
+          App.explanations.add(e.target.value);
+        }else{
+          addExplanation({id: explanations.length + 1, content: e.target.value})
+        }
+        e.target.value = "";
+      };
+    };
 
     var request_form;
 
@@ -99,4 +68,34 @@ export default class Explanations extends React.Component {
       </div>
     );
   }
+
+  //   return (
+  //     // <div className="well rounded" key={"explanation_" + explanation.id}>
+  //     //   Сообщение №{ explanation.id }: { explanation.message }
+  //     //   <div className="p text-right">User ID:{explanation.user_id}</div>
+  //     //   {elem}
+  //     //   </div>
+  //
+  //
+  //
+  //
+  //     <div>
+  //       <ul>
+  //         {explanations.map((msg) => {
+  //             return <li key={`chat.msg.${msg.id}`}>{msg.message}</li>;
+  //           })
+  //         }
+  //       </ul>
+  //       <form onSubmit={handleSubmit}>
+  //         <input type="text" onKeyUp={handleKeyUp}/>
+  //       </form>
+  //     </div>
+  //   );
+  // }
 }
+
+Chat.propTypes = {
+  explanations: PropTypes.any
+};
+
+export default Chat;

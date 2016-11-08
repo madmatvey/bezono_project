@@ -9,7 +9,8 @@ const config = {
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
     'babel-polyfill',
-    './app/bundles/Explanations/startup/ExplanationsApp',
+    './app/bundles/fromChatApp/containers/Root',
+    // './app/bundles/Explanations/startup/ExplanationsApp',
   ],
 
   output: {
