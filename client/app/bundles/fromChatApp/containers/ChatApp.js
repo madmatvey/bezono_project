@@ -4,7 +4,7 @@ import Chat from '../components/Chat';
 import * as ChatActions from '../actions/chat';
 
 function mapStateToProps(state) {
-  console.log(state);
+  // console.log(state);
   return {
     explanations: state.explanations,
     current_user: state.current_user,

@@ -6,7 +6,7 @@ App.explanations = App.cable.subscriptions.create 'ExplanationsChannel',
     # Called when the subscription has been terminated by the server
     return
   received: (data) ->
-    alert data['explanation']
+    alert data
     # Called when theres incoming data on the websocket for this channel
     return
   add: (explanation)->

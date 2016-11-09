@@ -5,23 +5,25 @@ import ExplanationForm from './ExplanationForm';
 class Chat extends Component {
 
   render() {
+    console.log("PROPS at Chat");
+    console.log(this.props);
 
     const { explanations, addExplanation, current_user, demand } = this.props;
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-    };
-
-    const handleKeyUp = (e) => {
-      if(e.keyCode == 13){
-        if (typeof App !== 'undefined'){
-          App.explanations.add(e.target.value);
-        }else{
-          addExplanation({id: explanations.length + 1, content: e.target.value})
-        }
-        e.target.value = "";
-      };
-    };
+    // const handleSubmit = (e) => {
+    //   e.preventDefault();
+    // };
+    //
+    // const handleKeyUp = (e) => {
+    //   if(e.keyCode == 13){
+    //     if (typeof App !== 'undefined'){
+    //       App.explanations.add(e.target.value);
+    //     }else{
+    //       addExplanation({id: explanations.length + 1, content: e.target.value})
+    //     }
+    //     e.target.value = "";
+    //   };
+    // };
 
     var request_form;
 
@@ -31,7 +33,7 @@ class Chat extends Component {
           key={"request_form_"+demand.id}
           demand={demand}
           current_user={current_user}
-          createExplanationPath={createExplanationPath}
+          addExplanation={addExplanation}
           question_id={undefined}
           button_message="Задать вопрос"/>
       );
@@ -55,7 +57,8 @@ class Chat extends Component {
                                       explanation= { exp }
                                       current_user= { this.props.current_user }
                                       demand = { this.props.demand }
-                                      answer = { answer }>
+                                      answer = { answer }
+                                      explanations = {explanations}>
                                       </Explanation>
                     // createExplanationPath: this.props.createExplanationPath,
                     // handleNewExplanation: this.addExplanation

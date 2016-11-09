@@ -19,6 +19,7 @@ class ExplanationsChannel < ApplicationCable::Channel
   end
 
   def add (data)
-    Explanation.create! content: data['explanation']
+    puts "RECEIVED SOME DATA FROM ACTIONCABLE: #{data}"
+    Explanation.create! explanation: data['explanation']
   end
 end
