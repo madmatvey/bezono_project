@@ -74,6 +74,7 @@ group :development, :test do
 end
 
 gem 'pg'
+gem 'sidekiq'
 group :production do
 
   gem 'rails_12factor'

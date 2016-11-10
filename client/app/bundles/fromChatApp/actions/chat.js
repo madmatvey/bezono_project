@@ -13,6 +13,7 @@ export function setExplanations(explanations) {
 
 export function addExplanation(explanation) {
   console.log("ЗАПУСКАЕТСЯ ADD_EXPLANATION ");
+  console.log(explanation);
   return {
     type: ADD_EXPLANATION,
     explanation: explanation

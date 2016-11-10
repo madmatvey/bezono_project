@@ -22,30 +22,40 @@ export default class Root extends Component {
     }
   };
 
-  // componentWillMount() {
-  //
-  //   // console.log("componentWillMount");
-  //
-  //   store.dispatch(setExplanations(this.props.explanations));
-  //   store.dispatch(setCurrentUser(this.props.current_user));
-  //   store.dispatch(setDemand(this.props.demand));
-  //
-  //   if (typeof App !== 'undefined'){
-  //     App.explanations = App.cable.subscriptions.create("ExplanationsChannel", {
-  //       connected: function() {},
-  //       disconnected: function() {},
-  //       received: function(data) {
-  //         return store.dispatch(addExplanation(data['explanation']));
-  //       },
-  //       add: function(explanation) {
-  //         return this.perform('add', {
-  //           explanation: explanation
-  //         });
-  //       }
-  //     });
-  //   }
-  //
-  // }
+  componentWillMount() {
+
+    console.log("componentWillMount");
+
+    // store.dispatch(setExplanations(this.props.explanations));
+    // store.dispatch(setCurrentUser(this.props.current_user));
+    // store.dispatch(setDemand(this.props.demand));
+
+    if (typeof App !== 'undefined'){
+      App.explanations = App.cable.subscriptions.create("ExplanationsChannel", {
+        connected: function() {
+          console.log("connected");
+          console.log(this);
+        },
+        disconnected: function() {console.log("disconnected");},
+        received: function(data) {
+          console.log("received");
+          alert("received some DATA:"+data);
+          // return store.dispatch(addExplanation(data['explanation']));
+        },
+        add: function(explanation) {
+          console.log("add:");
+          console.log(explanation);
+          console.log(this);
+          addExplanation(explanation);
+          return this.perform('add', {
+            explanation: explanation
+          });
+        }
+      });
+    }
+
+  }
+
   render() {
     return (
       // <Provider store={store}>
@@ -61,7 +71,27 @@ export default class Root extends Component {
 const RootApp = (props, _railsContext) => {
   const store = configureStore(props);
 
+  // const componentWillMount = () => {
+  //
+  //   if (typeof App !== 'undefined'){
+  //     App.explanations = App.cable.subscriptions.create("ExplanationsChannel", {
+  //       connected: function() {},
+  //       disconnected: function() {},
+  //       received: function(data) {
+  //         alert("received some DATA:"+data);
+  //         // return store.dispatch(addExplanation(data['explanation']));
+  //       },
+  //       add: function(explanation) {
+  //         return this.perform('add', {
+  //           explanation: explanation
+  //         });
+  //       }
+  //     });
+  //   }
+  //
+  // }
   const reactComponent = (
+
     <Provider store={store}>
       <Root />
     </Provider>

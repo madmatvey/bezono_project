@@ -3,7 +3,16 @@ class ExplanationBroadcastJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    ActionCable.server.broadcast 'explanations_channel', explanation: ActiveSupport::JSON.decode(render_explanation(explanation))
+    ActionCable.server.broadcast 'ExplanationsChannel', explanation: explanation
+    # ActiveSupport::JSON.decode(render_explanation(explanation))
+    puts "
+
+
+    SEND broadcast msg: #{args}
+
+
+
+    "
   end
   private
     def render_explanation(explanation)

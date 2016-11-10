@@ -5,6 +5,7 @@ export default function explanations(state = {}, action) {
 
   switch (type) {
   case ADD_EXPLANATION:
+    console.log("зашли в редьюсер ADD_EXPLANATION");
     return [
       ...state,
       action.explanation
