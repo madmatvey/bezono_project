@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe ExplanationBroadcastJobJob, type: :job do
+RSpec.describe ExplanationBroadcastJob, type: :job do
   pending "add some examples to (or delete) #{__FILE__}"
 end

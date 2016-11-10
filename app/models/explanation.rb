@@ -1,5 +1,5 @@
 class Explanation < ApplicationRecord
-  # after_create_commit { ExplanationBroadcastJob.perfom_later self }
+  # after_create_commit { }
   belongs_to :user
   belongs_to :demand
   belongs_to :organization_profile
@@ -59,6 +59,7 @@ class Explanation < ApplicationRecord
 
   after_commit :create_notifications, on: [:create]
   def create_notifications
+    ExplanationBroadcastJob.perform_later self 
     active_organizations = self.demand.explanations.map {|expl| expl.organization_profile}
     active_organizations.push(self.demand.organization_profile)
     act_users = active_organizations.map { |org| org.active_users }.flatten.uniq - [self.user]

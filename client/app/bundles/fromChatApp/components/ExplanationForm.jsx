@@ -32,7 +32,13 @@ export default class ExplanationForm extends React.Component {
 
     if (typeof App !== 'undefined'){
       console.log("вызываю App.explanations.add ")
-      App.explanations.add({message: this.state.message,user_id: current_user.id});
+      App.explanations.add(
+          {
+            message: this.state.message,
+            user_id: current_user.id,
+            demand_id: demand.id,
+            organization_profile_id: current_user.active_profile_id
+          });
     }else{
       addExplanation({id: explanations.length + 1, message: this.state.message,user_id: current_user.id});
     }
