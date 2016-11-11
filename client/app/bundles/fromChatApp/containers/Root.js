@@ -22,7 +22,12 @@ export default class Root extends Component {
     }
   };
 
+
+
   componentWillMount() {
+
+    console.log("PROPS from Root component");
+    console.log(this.props);
 
     console.log("componentWillMount");
 
@@ -58,9 +63,9 @@ export default class Root extends Component {
 
   render() {
     return (
-      // <Provider store={store}>
+      // <SocketProvider socket={socket}>
         <ChatApp />
-      // </Provider>
+      // </SocketProvider>
     );
   }
 }
@@ -70,30 +75,14 @@ export default class Root extends Component {
 
 const RootApp = (props, _railsContext) => {
   const store = configureStore(props);
-
-  // const componentWillMount = () => {
-  //
-  //   if (typeof App !== 'undefined'){
-  //     App.explanations = App.cable.subscriptions.create("ExplanationsChannel", {
-  //       connected: function() {},
-  //       disconnected: function() {},
-  //       received: function(data) {
-  //         alert("received some DATA:"+data);
-  //         // return store.dispatch(addExplanation(data['explanation']));
-  //       },
-  //       add: function(explanation) {
-  //         return this.perform('add', {
-  //           explanation: explanation
-  //         });
-  //       }
-  //     });
-  //   }
-  //
-  // }
+  console.log("PROPS from RootApp");
+  console.log(props);
+  console.log("STORE from RootApp");
+  console.log(store);
   const reactComponent = (
 
     <Provider store={store}>
-      <Root />
+      <Root store={store}/>
     </Provider>
   );
   return reactComponent;

@@ -24,30 +24,48 @@ export default class ExplanationForm extends React.Component {
     this.setState({message: e.target.value})
   };
 
-  handleSubmit = (e) => {
-    const { current_user, demand, question_id, explanations, addExplanation } = this.props;
-    e.preventDefault();
-    console.log("Добавляем сообщение: " + this.state.message);
-    console.log(this.props);
+  //
+  // const handleKeyUp = (e) => {
+  //   if(e.keyCode == 13){
+  //     if (typeof App !== 'undefined'){
+  //       App.room.speak(e.target.value);
+  //     }else{
+  //       addMessage({id: messages.length + 1, content: e.target.value})
+  //     }
+  //     e.target.value = "";
+  //   };
+  // };
+  //
+  //
+  //
 
-    if (typeof App !== 'undefined'){
-      console.log("вызываю App.explanations.add ")
-      App.explanations.add(
-          {
-            message: this.state.message,
-            user_id: current_user.id,
-            demand_id: demand.id,
-            organization_profile_id: current_user.active_profile_id
-          });
-    }else{
-      addExplanation({id: explanations.length + 1, message: this.state.message,user_id: current_user.id});
-    }
-    e.target.value = "";
+  handleKeyUp = (e) => {
+    const { current_user, demand, question_id, explanations, addExplanation } = this.props;
+
+    // console.log("Добавляем сообщение: " + this.state.message);
+    // console.log(this.props);
+    if(e.keyCode == 13){
+        if (typeof App !== 'undefined'){
+        console.log("вызываю App.explanations.add ")
+        App.explanations.add(
+            {
+              message: this.state.message,
+              user_id: current_user.id,
+              demand_id: demand.id,
+              organization_profile_id: current_user.active_profile_id
+            });
+      }else{
+        addExplanation({id: explanations.length + 1, message: this.state.message, user_id: current_user.id});
+      }
+      this.state.message = "";
+    };
   };
-  // handleSubmit = (e) => {
-  //   console.log("Добавляем сообщение: "+ e.target.value)
-  //   // dispatch(explanationAdd({message: e.target.value}))
-  // }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log("Добавляем сообщение: "+ e.target.value)
+    // dispatch(explanationAdd({message: e.target.value}))
+  }
 
 
   render() {
@@ -72,9 +90,10 @@ export default class ExplanationForm extends React.Component {
             placeholder="Сообщение"
             name="message"
             type="text"
-            // onKeyUp={handleKeyUp}
+            onKeyUp={this.handleKeyUp}
             value={this.message}
-            onChange={this.handleChange}/>
+            onChange={this.handleChange}
+          />
           <input
             type="hidden"
             name="demand_id"

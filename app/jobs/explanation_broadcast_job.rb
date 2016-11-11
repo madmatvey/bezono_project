@@ -1,14 +1,14 @@
 class ExplanationBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(explanation)
     # Do something later
     ActionCable.server.broadcast 'ExplanationsChannel',
-      explanation: ActiveSupport::JSON.decode(render_explanation(args[0]))
+      explanation: ActiveSupport::JSON.decode(render_explanation(explanation))
     puts "
     SEND broadcast msg: #{args}
 
-    ActiveSupport::JSON.decode(render_explanation(args)): #{ActiveSupport::JSON.decode(render_explanation(args[0]))}
+    ActiveSupport::JSON.decode(render_explanation(args)): #{ActiveSupport::JSON.decode(render_explanation(explanation))}
 
     "
   end
